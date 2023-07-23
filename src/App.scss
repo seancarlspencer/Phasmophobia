@@ -138,7 +138,10 @@ body *{
   gap: 24px;
   padding: 24px;
   .paper-header{
-    
+    font-size: 3.2rem;
+    span{
+      font-size: 2.4rem;
+    }
   }
   .paper-filters{
     display: grid;
@@ -180,16 +183,67 @@ body *{
 .objective-board-content{
   display: grid;
   gap: 24px;
-  padding: 36px;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   height: 100%;
   overflow-y: auto;
   align-items: flex-start;
-  grid-template-rows: min-content;
+  grid-template-rows: repeat(2, min-content);
   //Very Cool
+}
+
+.objective-board-ghost-container{
+  display: grid;
+  gap: 24px;
+  padding: 36px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
 .ghost-container{
   background: var(--paperColor);
   padding: 24px;
+  display: grid;
+  gap: 20px;
+  grid-template-areas: "ghostname evidence"
+  "properties properties"
+  "secondary secondary";
+  align-items: center;
+  grid-template-columns: 80px 1fr;
+  grid-template-rows: auto auto auto 1fr;
+  .ghost-name{
+    grid-area: ghostname;
+    user-select: none;
+    pointer-events: none;
+  }
+  .ghost-evidence{
+    display: grid;
+    gap: 12px;
+    grid-auto-flow: column;
+    grid-area: evidence;
+    user-select: none;
+    pointer-events: none;
+    .ghost-evidence-display{
+      display: grid;
+      justify-items: center;
+      gap: 8px;
+    }
+    img{
+      width: 35px;
+    }
+    .evidence-text{
+      font-size: 1.4rem;
+    }
+  }
+  .ghost-secondary{
+    grid-area: secondary;
+    font-family: 'Pangolin', cursive;
+    font-weight: 400;
+    user-select: none;
+    pointer-events: none;
+    ul{
+      display: grid;
+      gap: 12px;
+      li{
+        font-size: 1.8rem;
+      }
+    }
+  }
 }

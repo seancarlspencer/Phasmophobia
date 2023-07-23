@@ -35,7 +35,7 @@ const Evidence = () => {
   return (
     <div className="evidence-paper">
       <div className="paper-header">
-        Evidence:
+        E<span>VIDENCE</span>
       </div>
       <div className="paper-filters">
         <div className="filter-box">

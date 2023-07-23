@@ -11,6 +11,7 @@ const ObjectiveBoard = () => {
 
   return (
     <div className="objective-board-content">
+      <div className="objective-board-ghost-container">
       {Object.keys(phasGhosts).map((ghost:string)=>{
         for(let i=0;i<evidenceValues.length;i++){
           if(evidenceValues[i] && !phasGhosts[ghost as keyof typeof phasGhosts]["evidenceArray"][i]){
@@ -21,6 +22,7 @@ const ObjectiveBoard = () => {
         ghostName={ghost}
         />
       })}
+      </div>
     </div>
   );
 };
