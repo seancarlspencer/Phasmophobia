@@ -1,0 +1,230 @@
+{
+    "Banshee": {
+        "evidenceArray":[false,true,true,true,false,false,false],
+        "secondaryEvidence": [
+            "Targets and hunts one player until killed (If the player is not in the building, it does a regular hunt)",
+            "Only checks their targets sanity % for initiating a hunt in multiplayer",
+            "Will often wander toward their target when roaming",
+            "Singing ghost events will now drain an extra 5% sanity on the Banshee's target",
+            "Preferes singing ghost events over other events",
+            "Can sometimes be heard wailing with a parabolic microphone"
+        ]
+    },
+    "Demon": {
+        "evidenceArray":[false,false,true,false,true,false,true],
+        "secondaryEvidence": [
+            "Can initiate a hunt at an avarage sanity of 70%",
+            "Insta-hunt: Low chance to start a hunt regardless the avarage sanity",
+            "Using cursed objects lowers sanity less than by other ghosts",
+            "The Crucifixes effective radius is 5m instead of 3m",
+            "Loose less sanity (80% of original loss) by answering to the Ouija board"
+        ]
+    },
+    "Deogen": {
+        "evidenceArray":[false,true,false,false,true,true,false],
+        "secondaryEvidence": [
+            "Can only initiate a hunt at an avarage sanity below 40%",
+            "Targets the closest player (not line of sight but really the closest player)",
+            "Moves very rapidly to its target (2.7 m/s) ignoring wherever the player hides",
+            "Approx. 4m before its target it becomes super slow",
+            "Unique Spirit Box interaction: Heavy breathing. You must stand on the exact position of the ghost"
+        ]
+    },
+    "Goryo": {
+        "evidenceArray":[true,true,true,false,false,false,false],
+        "secondaryEvidence": [
+            "D.O.T.S. only visible through a video cam and no players in the room",
+            "D.O.T.S. evidence are guaranteed on nightmare difficulty",
+            "Cannot change favorite room or roam long distances"
+        ]
+    },
+    "Hantu": {
+        "evidenceArray":[false,false,true,true,false,false,true],
+        "secondaryEvidence": [
+            "Walking speed is affected by room temperature when hunting",
+            "1.4 m/s= 15°C+ | 1.75 m/s= 12°C | 2.1 m/s= 9°C | 2.3 m/s= 6°C | 2.5 m/s= 3°C | 2.7 m/s= 0°C",
+            "Shows their breath on the ghost model in any room during hunts if the breaker is off",
+            "Has double the chance to turn off the breaker",
+            "Can no longer turn on the breaker, as this would stop them accelerating"
+        ]
+    },
+    "Jinn": {
+        "evidenceArray":[true,false,true,false,false,false,true],
+        "secondaryEvidence": [
+            "Cannot use any abilities when the breaker is turned off",
+            "During a hunt it travels faster (2.1m/s) when chasing a target until a distance of 10m",
+            "Ability: Can lower the sanity of all players by 25%, when within a 3m radius or in the same room as the ghost",
+            "When using their ability, Jinns will leave EMF at the breaker rather than where they currently stood.",
+            "Cannot turn off the breaker directly. (Unless by turning on too many lights)"
+        ]
+    },
+    "Mare": {
+        "evidenceArray":[false,false,false,true,true,true,false],
+        "secondaryEvidence": [
+            "Can hunt at 60 % avg sanity when lights in the room are turned off",
+            "This is not affected by candles, torches or other equipment",
+            "Tiny chance to turn off a light immediately after it was turned on by a player",
+            "Cannot turn on lights",
+            "More likely to roam to adjacent dark rooms when the lights in the current room are on",
+            "More likely to turn of lights the doing other ghost interactions",
+            "Preferes light events (red light &amp; shattering) over other ghost events"
+        ]
+    },
+    "Moroi": {
+        "evidenceArray":[false,false,false,false,true,true,true],
+        "secondaryEvidence": [
+            "When smudged during a hunt it wanders for around 12s",
+            "Curses any player whom it responds over the Spirit Box",
+            "Cursed players constantly loose sanity over time (0.3%/s)",
+            "When leaving the house, the sanity drain stops until entering again",
+            "A curse can only be lifted by taking sanity pills",
+            "Players can be cursed again after cured",
+            "Walking speed is affected by avarage team sanity",
+            "1.4 m/s sanity &lt;= 45% | 1.7 m/s sanity &lt;= 30% | 1.8 m/s sanity &lt;= 23% | 1.95 m/s sanity &lt;= 13% | 2.1 m/s sanity = 0%"
+        ]
+    },
+    "Myling": {
+        "evidenceArray":[true,false,true,false,true,false,false],
+        "secondaryEvidence": [
+            "More sounds on the parabolic mic",
+            "During a hunt all hunting sounds can only be heard when 10m or closer"
+        ]
+    },
+    "Obake": {
+        "evidenceArray":[true,false,true,true,false,false,false],
+        "secondaryEvidence": [
+            "During a hunt it has a 6.66% chance each time it flickers to shapeshift into a different ghost form and back",
+            "Shapeshift is guaranteed to happen at least once per hunt",
+            "Reduced chance of 75% to leave fingerprints",
+            "Low chance to leave fingerprints with 6 fingers,",
+            "double fingerprints on light switches, and 5 finger on prison doors and keyboards",
+            "Fingerprints have a 50% chance to disappear earlier (60s) than of other ghosts (120s)",
+            "Always gives the Fingerprints evidence on nightmare difficulty"
+        ]
+    },
+    "Oni": {
+        "evidenceArray":[true,true,false,false,false,false,true],
+        "secondaryEvidence": [
+            "More ghost activity and events when there are more people are nearby",
+            "Does not do the Ghost Myst event",
+            "Drains double the sanity of a normal ghost during ghost events",
+            "Can be seen for longer periods of time when flickering during hunts"
+        ]
+    },
+    "Onryo": {
+        "evidenceArray":[false,false,false,true,false,true,true],
+        "secondaryEvidence": [
+            "Can initiate a hunt when any flames are extinguished regardless of average sanity",
+            "Chance for the ability increases everytime a player is killed",
+            "Lit candles act as crucifixes. Blown out when successfuly prevented a hunt"
+        ]
+    },
+    "Phantom": {
+        "evidenceArray":[false,true,true,false,false,true,false],
+        "secondaryEvidence": [
+            "Looking at the ghost drops sanity by 0.4% each second instead of 0.2%",
+            "Taking a photo makes the ghost temporarily disappear (while not hunting)",
+            "Blinks slower during hunts (1s to 2s instead of 0.3s to 1s)",
+            "Can walk to a random player anywhere on the map (while not hunting) and do interactions"
+        ]
+    },
+    "Poltergeist": {
+        "evidenceArray":[false,false,true,false,true,true,false],
+        "secondaryEvidence": [
+            "Chance to throw objects with more force so they fly further (2 - 6 power, instead of 1 - 3 power)",
+            "Only ghost that can throw multiple objects at once",
+            "Every thrown object makes players loose 2% sanity instead of 1%",
+            "Very inactive in rooms without items",
+            "While hunting, guaranteed to throw an object in range every 0.5 seconds"
+        ]
+    },
+    "Raiju": {
+        "evidenceArray":[true,true,false,true,false,false,false],
+        "secondaryEvidence": [
+            "While hunting it has an increased movement speed when it touches electronic equipment",
+            "It doesn't matter if the equipment lies on the floor or held by a player",
+            "Abilities only affected by player equipment and not location electrics like TVs or lights",
+            "Head mounted cameras, motion sensors and sound sensors do not count towards the speed boost",
+            "Can initiate a hunt at an avarage sanity of 65% if there is electrical equipment nearby",
+            "Hunting affects light flicker for a longer range than oder ghosts (15 m instead of 10 m)"
+        ]
+    },
+    "Revenant": {
+        "evidenceArray":[false,false,false,true,true,false,true],
+        "secondaryEvidence": [
+            "Very fast when chasing a player during a hunt (2x normal speed)",
+            "Very slow when not chasing anyone during a hunt (1/2 of normal speed)",
+            "When it loses line of sight during a hunt it keeps their increaased speed until reaching the targets last known position",
+            "Their speed will decrease gradually over 2.7 seconds"
+        ]
+    },
+    "Shade": {
+        "evidenceArray":[true,false,false,false,true,false,true],
+        "secondaryEvidence": [
+            "Can only initiate a hunt at an avarage sanity of 35%",
+            "Less chance of ghost activity and ghost events when more than 1 player is nearby",
+            "Lower chance of initiating a hunt when more than 1 players are in the same room",
+            "For every 1% of average sanity lost, ghost event chance is increased by 2% (capped at 100%)"
+        ]
+    },
+    "Spirit": {
+        "evidenceArray":[true,false,false,false,true,true,false],
+        "secondaryEvidence": [
+            "Smudge sticks stop attacks for 3 min instead of 1.5"
+        ]
+    },
+    "Thaye": {
+        "evidenceArray":[false,true,false,true,true,false,false],
+        "secondaryEvidence": [
+            "Can initiate a hunt at an avarage sanity of 70% but decreases with age",
+            "At its oldest age it only can initiate a hunt at an avarage sanity below 15%",
+            "Ages over time while a player is either in the same room as the ghost or in the ghost room",
+            "Becomes less active and slower the older it gets"
+        ]
+    },
+    "The Mimic": {
+        "evidenceArray":[false,false,true,false,false,true,true],
+        "secondaryEvidence": [
+            "Picks another ghost type to imitate and changes it occasionally",
+            "Copies almost all abilities and behaviour of the picked ghost",
+            "Cannot switch picked ghost during a hunt",
+            "Has ghost orbs as 4th evidence which are always present, regardless of which ghost being imitated"
+        ]
+    },
+    "The Twins": {
+        "evidenceArray":[true,false,false,false,false,true,true],
+        "secondaryEvidence": [
+            "Main twin primary stays in the ghost room, makes freezing and spirit box",
+            "Secondary twin wanders around interacting with the environment",
+            "Secondary twin cannot interact with motion sensors, spirit box or make freezing",
+            "Either Twin can initiate a Hunt but not simultaneously",
+            "Crucifix only checks for main twin regardless of which will hunt",
+            "During hunts the main twin is slower (by 10%) and the decoy is faster (by 10%)"
+        ]
+    },
+    "Wraith": {
+        "evidenceArray":[true,true,false,false,false,true,false],
+        "secondaryEvidence": [
+            "Cannot step into salt and will never leave fotprints",
+            "Cannot have the 'Step into salt'-objective",
+            "Can teleport to a random player (while not hunting) which will do EMF lvl 2 or 5 and do interactions"
+        ]
+    },
+    "Yokai": {
+        "evidenceArray":[false,true,false,true,false,true,false],
+        "secondaryEvidence": [
+            "Can initiate an early hunt at an avarage sanity of 80% if players are talking nearby",
+            "During a hunt it only can hear sounds in a radius of 2m"
+        ]
+    },
+    "Yurei": {
+        "evidenceArray":[false,true,false,true,false,false,true],
+        "secondaryEvidence": [
+            "Ghost event drops sanity by 0.4% per second instead of 0.2%",
+            "This also applies when a player is within 10m during a hunt",
+            "Smudging will make it to stay in the room for 1.5 min",
+            "Can close doors randomly without doing a ghost event",
+            "Cannot use their ability when there is no door in its current room"
+        ]
+    }
+}

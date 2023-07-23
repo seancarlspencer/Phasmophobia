@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+:root{
+  --paperColor: #FFFBCF;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: 'Caveat', cursive;
+}
+
+html{
+  font-family: 'Caveat', cursive;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+body *{
+  font-size: 2.4rem;
+}
+
+.homepage{
+  height: 100vh;
+  width: 100vw;
+  position:relative;
+  padding: 36px;
+  &::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    filter: brightness(25%) grayscale(30%);
+    background-image: url("./assets/wood.jpg");
+    background-size: cover;
+    z-index: -1;
+  }
+}
+
+.objective-board-container{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "evidence1 board"
+  "evidence2 board";
+  gap: 24px;
+  height: 100%;
+  &>div{
+    width: 400px;
+    height: 100%;
+    position: relative;
+    &::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      height: 100%;
+      width: 100%;
+      background-image: url("./assets/cork.jpg");
+      background-size: cover;
+      z-index: -1;
+    }
+  }
+  .evidence{
+    padding: 24px;
+    align-self: flex-start;
+    height: auto;
+    border-radius: 24px;
+    &::before{
+      filter: brightness(50%);
+      border-radius: 24px;
+    }
+    &.evidence-1{
+      grid-area: evidence1;
+    }
+    &.evidence-2{
+      grid-area: evidence2;
+    }
+  }
+  .objective-board{
+    width: 100%;
+    height: 100%;
+    grid-area: board;
+  }
+}
+
+.evidence-paper{
+  background:var(--paperColor);
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: 24px;
+  padding: 24px;
+  .paper-header{
+    
+  }
+  .paper-filters{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    .filter-box{
+      display: flex;
+      align-items: center;
+      position:relative;
+      &.last{
+        grid-column: 1 / 3;
+      }
+      label{
+        padding: 6px 12px;
+        flex-grow: auto;
+        cursor:pointer;
+        user-select: none;
+      }
+      input{
+        padding: 6px;
+        margin: 0px;
+        height: 100%;
+        width: 25px;
+        cursor:pointer;
+        opacity: 0;
+        position: absolute;
+      }
+      img{
+        width: 25px;
+        opacity: 0;
+        &.checked{
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.objective-board-content{
+  display: grid;
+  gap: 24px;
+  padding: 36px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  height: 100%;
+  overflow-y: auto;
+  align-items: flex-start;
+  grid-template-rows: min-content;
+  //Very Cool
+}
+
+.ghost-container{
+  background: var(--paperColor);
+  padding: 24px;
+}
