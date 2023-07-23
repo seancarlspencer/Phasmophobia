@@ -54,10 +54,31 @@ table {
   font-family: 'Caveat', cursive;
 }
 
+.objective-board-content{
+  margin-right: 6px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgb(19, 12, 7);
+    border-radius: 24px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(19, 12, 7, 0.3);
+  }
+}
+
 html{
   font-family: 'Caveat', cursive;
   font-size: 10px;
   font-weight: bold;
+  @media screen and (max-width: 498px) {
+    font-size: 8px;
+  }
 }
 
 body *{
@@ -80,6 +101,17 @@ body *{
     background-image: url("./assets/wood.jpg");
     background-size: cover;
     z-index: -1;
+  }
+  @media screen and (max-width: 911px) {
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    &::before{
+      background-size: 100%;
+    }
+  }
+  @media screen and (max-width: 498px) {
+    padding: 6px;
   }
 }
 
@@ -127,6 +159,30 @@ body *{
     width: 100%;
     height: 100%;
     grid-area: board;
+  }
+  @media screen and (max-width: 911px) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "evidence1"
+    "evidence2"
+    "board"
+    "board";
+    gap: 6px;
+    &>div{
+      width: 100%;
+      &::before{
+        background-size: 100%;
+      }
+    }
+  }
+  @media screen and (max-width: 498px) {
+    // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .evidence{
+      padding:12px;
+      border-radius: 12px;
+      &::before{
+        border-radius: 12px;
+      }
+    }
   }
 }
 
@@ -178,12 +234,23 @@ body *{
       }
     }
   }
+  .paper-reset{
+    justify-self: flex-end;
+    margin-top: 18px;
+    .paper-reset-button{
+      background:none;
+      border: none;
+      font-weight: bold;
+      font-size: 2.4rem;
+    }
+  }
 }
 
 .objective-board-content{
   display: grid;
   gap: 24px;
-  height: 100%;
+  height: calc(100% - 12px);
+  width: calc(100% - 6px);
   overflow-y: auto;
   align-items: flex-start;
   grid-template-rows: repeat(2, min-content);
@@ -194,7 +261,12 @@ body *{
   display: grid;
   gap: 24px;
   padding: 36px;
+  padding-top: 30px;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  @media screen and (max-width: 498px) {
+    padding: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
 }
 
 .ghost-container{
