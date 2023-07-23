@@ -123,6 +123,8 @@ body *{
   "evidence2 board";
   gap: 24px;
   height: 100%;
+  max-width: 1800px;
+  margin:auto;
   &>div{
     width: 400px;
     height: 100%;
@@ -159,6 +161,9 @@ body *{
     width: 100%;
     height: 100%;
     grid-area: board;
+    &::before{
+      filter: brightness(75%) saturate(125%);
+    }
   }
   @media screen and (max-width: 911px) {
     grid-template-columns: 1fr;
@@ -276,14 +281,18 @@ body *{
   gap: 20px;
   grid-template-areas: "ghostname evidence"
   "properties properties"
-  "secondary secondary";
+  "secondary secondary"
+  "tertiary tertiary"
+  "more more";
   align-items: center;
-  grid-template-columns: 80px 1fr;
-  grid-template-rows: auto auto auto 1fr;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto auto 1fr;
   .ghost-name{
     grid-area: ghostname;
     user-select: none;
     pointer-events: none;
+    font-size: 2.8rem;
+    transform: skewX(15deg);
   }
   .ghost-evidence{
     display: grid;
@@ -292,16 +301,22 @@ body *{
     grid-area: evidence;
     user-select: none;
     pointer-events: none;
+    font-family: 'Pangolin', cursive;
     .ghost-evidence-display{
       display: grid;
       justify-items: center;
       gap: 8px;
+      &:nth-of-type(2){
+        transform: translateY(6px);
+      }
     }
     img{
       width: 35px;
     }
     .evidence-text{
-      font-size: 1.4rem;
+      font-size: 1.2rem;
+      justify-self: center;
+      text-align: center;
     }
   }
   .ghost-secondary{
@@ -315,7 +330,57 @@ body *{
       gap: 12px;
       li{
         font-size: 1.8rem;
+        color: rgb(48, 48, 48);
+        b{
+          font-size: 1.8rem;
+          color:#f01246;
+          font-weight: 700;
+          &.equipment{
+            color:#0d9759;
+          }
+          &.ability{
+            color: blue;
+          }
+          &.evidence-highlight{
+            color: #b9a102;
+          }
+        }
       }
+    }
+  }
+  .ghost-tertiary{
+    grid-area: tertiary;
+    font-family: 'Pangolin', cursive;
+    font-weight: 400;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    ul{
+      display: grid;
+      gap: 12px;
+      li{
+        font-size: 1.4rem;
+        color: rgb(64, 64, 64);
+        b{
+          font-size: 1.8rem;
+          color: red;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  .ghost-more{
+    justify-self: flex-end;
+    align-self:flex-end;
+    grid-area: more;
+    width: 100%;
+    text-align: end;
+    font-size: 1.4rem;
+    color: rgb(64, 64, 64);
+    font-family: 'Pangolin', cursive;
+    font-weight: 400;
+    &.hide{
+      margin-top: 24px;
     }
   }
 }
