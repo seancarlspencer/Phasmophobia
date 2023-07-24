@@ -277,6 +277,7 @@ body *{
 .ghost-container{
   background: var(--paperColor);
   padding: 24px;
+  padding-bottom: 12px;
   display: grid;
   gap: 20px;
   grid-template-areas: "ghostname evidence"
@@ -373,12 +374,13 @@ body *{
     justify-self: flex-end;
     align-self:flex-end;
     grid-area: more;
-    width: 100%;
     text-align: end;
     font-size: 1.4rem;
     color: rgb(64, 64, 64);
     font-family: 'Pangolin', cursive;
     font-weight: 400;
+    cursor: pointer;
+    padding: 12px 6px;
     &.hide{
       margin-top: 24px;
     }
