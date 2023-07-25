@@ -47,17 +47,20 @@ table {
 
 :root{
   --paperColor: #FFFBCF;
+  background-color: #22180D;
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
   font-family: 'Caveat', cursive;
+  overscroll-behavior: contain;
 }
 
 .objective-board-content{
   margin-right: 6px;
   margin-top: 6px;
   margin-bottom: 6px;
+  overscroll-behavior: contain;
   &::-webkit-scrollbar {
     width: 12px;
   }
@@ -91,6 +94,7 @@ body *{
   position:relative;
   padding: 36px;
   transition: transform .4s ease-in 0s;
+  overscroll-behavior: contain;
   &::before{
     content:"";
     position:absolute;
@@ -142,6 +146,7 @@ body *{
       height: 100%;
       width: 100%;
       background-image: url("./assets/cork.jpg");
+      // background-color: #C69B6F;
       background-size: cover;
       z-index: -1;
     }
@@ -155,6 +160,13 @@ body *{
       filter: brightness(75%) saturate(125%);
     }
   }
+  .evidence{
+    padding: 24px;
+    &::before{
+      filter: brightness(50%);
+      border-radius: 24px;
+    }
+  }
   @media screen and (max-width: 911px) {
     grid-template-columns: 1fr;
     grid-template-areas: "evidence1"
@@ -166,6 +178,8 @@ body *{
       width: 100%;
       &::before{
         background-size: 100%;
+        background-color: #C69B6F;
+        background-image: none;
       }
     }
     .evidence{
@@ -199,19 +213,23 @@ body *{
     background-image: url("./assets/cork.jpg");
     background-size: cover;
     z-index: -1;
+    background-color: #daaa7a;
+    background-image: none;
   }
   .sticky-remover{
     position: absolute;
-    width: 100%;
+    width: 110%;
     padding: 6px 0px;
     bottom: -30px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) skew(15deg);
     background-image: url("./assets/cork.jpg");
     background-size: cover;
     cursor: pointer;
     user-select: none;
     text-align: center;
+    background-color: #daaa7a;
+    background-image: none;
   }
   @media screen and (max-width: 911px) {
       padding: 12px;
@@ -310,15 +328,23 @@ body *{
       font-weight: bold;
       font-size: 2.4rem;
       transform: skew(15deg);
+      color: black;
     }
   }
   @media screen and (max-width: 911px) {
     padding: 6px;
     font-size: 8px;
     gap: 6px;
+    .paper-header{
+      font-size: 2.4rem;
+      span{
+        font-size: 2rem;
+      }
+    }
     .paper-filters{
       gap: 6px;
       margin: 0px 36px;
+      margin-bottom: 8px;
       .filter-box{
         label{
           font-size: .8em;
@@ -327,6 +353,8 @@ body *{
     }
     .paper-reset{
       margin-top: 0px;
+      position: absolute;
+      bottom: 0;
     }
   }
 }
@@ -348,6 +376,10 @@ body *{
   padding: 36px;
   padding-top: 30px;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  @media screen and (max-width: 911px) {
+    padding: 12px;
+    grid-template-columns: 1fr;
+  }
   @media screen and (max-width: 498px) {
     padding: 12px;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -372,8 +404,9 @@ body *{
     grid-area: ghostname;
     user-select: none;
     pointer-events: none;
-    font-size: 2.8rem;
-    transform: skewX(15deg);
+    font-size: 2.4rem;
+    font-family: 'Pangolin', cursive;
+    // transform: skewX(15deg);
   }
   .ghost-evidence{
     display: grid;
@@ -466,14 +499,18 @@ body *{
     }
   }
   &.hide{
-    display: none;
+    opacity: 0;
+    grid-area: none;
+    position: absolute;
+    pointer-events: none !important;
+    user-select: none !important;
   }
   @media screen and (max-width: 911px) {
     gap: 6px;
     padding: 12px;
     .ghost-name{
       font-size: 2.2rem;
-      letter-spacing: .3rem;
+      letter-spacing: .2rem;
     }
     .ghost-evidence{
       .ghost-evidence-display{
@@ -484,9 +521,11 @@ body *{
       }
       img{
         width: 25px;
+        display: none;
       }
       .evidence-text{
         font-size: 1.1rem;
+        color: #b9a102;
       }
     }
     .ghost-secondary{
@@ -501,13 +540,14 @@ body *{
     }
   }
   @media screen and (max-width: 498px) {
-    padding: 6px;
+    padding: 12px;
     .ghost-name{
       font-size: 2.4rem;
     }
     .ghost-evidence{
       .evidence-text{
         font-size: 1.2rem;
+        color: #b9a102;
       }
     }
     .ghost-secondary{
