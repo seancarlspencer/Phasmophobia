@@ -468,4 +468,63 @@ body *{
   &.hide{
     display: none;
   }
+  @media screen and (max-width: 911px) {
+    gap: 6px;
+    padding: 12px;
+    .ghost-name{
+      font-size: 2.2rem;
+      letter-spacing: .3rem;
+    }
+    .ghost-evidence{
+      .ghost-evidence-display{
+        transform: translateY(0px);
+        &:nth-of-type(2){
+          transform: translateY(0px);
+        }
+      }
+      img{
+        width: 25px;
+      }
+      .evidence-text{
+        font-size: 1.1rem;
+      }
+    }
+    .ghost-secondary{
+      ul{
+        li{
+          font-size: 1.4rem;
+          b{
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 498px) {
+    padding: 6px;
+    .ghost-name{
+      font-size: 2.4rem;
+    }
+    .ghost-evidence{
+      .evidence-text{
+        font-size: 1.2rem;
+      }
+    }
+    .ghost-secondary{
+      ul{
+        li{
+          font-size: 1.6rem;
+          b{
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+    .ghost-more{
+      padding: 6px;
+      &.hide{
+        margin-top: 6px;
+      }
+    }
+  }
 }
