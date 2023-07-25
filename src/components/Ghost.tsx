@@ -6,9 +6,10 @@ import phasGhosts from '../assets/phasEvidenceParsed.json';
 
 interface GhostInterface{
   ghostName: string
+  display: boolean
 }
 
-const Ghost: React.FC<GhostInterface> = ({ghostName}) => {
+const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
   const [toggleMore,setToggleMore] = useState(false);
   const dispatch = useDispatch();
@@ -20,13 +21,12 @@ const Ghost: React.FC<GhostInterface> = ({ghostName}) => {
   }
 
   return (
-    <div className="ghost-container">
+    <div className={`ghost-container${display ? "" : " hide"}`}>
       <div className="ghost-name">
         {ghostName}
       </div>
       <div className="ghost-evidence">
         {phasGhosts[ghostName as keyof typeof phasGhosts]["evidenceArray"].map((evidence,index)=>{
-          console.log(evidence);
           if(evidence){
             return <div className="ghost-evidence-display">
                       <img src={require(`../assets/${imageArray[index]}.png`)}/>

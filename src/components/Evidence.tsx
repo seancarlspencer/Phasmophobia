@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement, updateEvidence } from '../actions/actions';
 
@@ -20,7 +20,7 @@ const Evidence = () => {
     evidenceArray.forEach((evidence)=>{
       evidenceBoolArray.push(evidence.checked);
     })
-    console.log(evidenceBoolArray);
+    // console.log(evidenceBoolArray);
     dispatch(updateEvidence(evidenceBoolArray));
   };
 

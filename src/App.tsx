@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import './App.scss'
 import Homepage from './components/Homepage';
+import EvidenceMobile from './components/EvidenceMobile';
 
 // Reminder of how Redux works, Provider provides a store which holds all the states of application.
 // Reducers handle state transactions
@@ -21,6 +22,7 @@ import Homepage from './components/Homepage';
 const App = () => {
   return (
     <Provider store={store}>
+      <EvidenceMobile/>
       <Homepage/>
     </Provider>
   );

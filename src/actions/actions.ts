@@ -35,4 +35,8 @@ export const updateYear = (num: Number) => ({
     type: 'updateEvidence',
     payload: arr
   });
+
+  export const handleToggleStickyAction = () => ({
+    type: 'toggleSticky'
+  });
   

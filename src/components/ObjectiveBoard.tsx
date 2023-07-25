@@ -15,11 +15,15 @@ const ObjectiveBoard = () => {
       {Object.keys(phasGhosts).map((ghost:string)=>{
         for(let i=0;i<evidenceValues.length;i++){
           if(evidenceValues[i] && !phasGhosts[ghost as keyof typeof phasGhosts]["evidenceArray"][i]){
-            return;
+            return <Ghost
+              ghostName={ghost}
+              display={false}
+            />;
           }
         }
         return <Ghost
-        ghostName={ghost}
+          ghostName={ghost}
+          display={true}
         />
       })}
       </div>
