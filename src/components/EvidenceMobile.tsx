@@ -41,8 +41,8 @@ const EvidenceMobile = () => {
     <div className={`evidence evidence-1 mobile${toggleSticky ? " hide" : ""}`}>
       <Evidence/>
       <div onClick={handleToggleSticky} className="sticky-remover">
-          {toggleSticky ? "Hide Filters" : "Show Filters"}
-        </div>
+        {toggleSticky ? "Hide Evidence" : "Show Evidence"}
+      </div>
     </div>
   );
 };

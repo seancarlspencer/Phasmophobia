@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement } from '../actions/actions';
 import Evidence from './Evidence';
 import ObjectiveBoard from './ObjectiveBoard';
+import Extras from './Extras';
 
 const Homepage = () => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
@@ -34,12 +35,12 @@ const Homepage = () => {
   return (
     <div className={`homepage${toggleSticky ? " hide" : ""}`}>
       <div className="objective-board-container">
-        <div className={`evidence evidence-1 ghost-div`}>
+        <div className={`evidence evidence-1`}>
           <Evidence/>
         </div>
-        {/* <div className="evidence evidence-2">
-          
-        </div> */}
+        <div className={'evidence evidence-2'}>
+          <Extras/>
+        </div>
         <div className="objective-board">
           <ObjectiveBoard/>
         </div>

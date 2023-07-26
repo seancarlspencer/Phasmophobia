@@ -1,6 +1,11 @@
 {
-    "Banshee": {
+"Banshee": {
         "evidenceArray":[false,true,true,true,false,false,false],
+        "expertMode":[
+            "<b class=ability>Solo Target Test</b> (target in building)",
+            "<b class=equipment>Parabolic Microphone</b> Wail",
+            "<b>Singing Events</b> Often"
+        ],
         "secondaryEvidence": [
             "Targets and hunts <b>one player</b> until killed (If the player is not in the building, it does a regular hunt)",
             "Can sometimes be heard wailing with a <b class=equipment>parabolic microphone</b>",
@@ -14,8 +19,11 @@
     },
     "Demon": {
         "evidenceArray":[false,false,true,false,true,false,true],
+        "expertMode":[
+            "Early/<b class=ability>Insta-hunt</b> (70% or Ability)",
+            "<b class=equipment>Crucifix</b> Range Test (1.66x Larger)"
+        ],
         "secondaryEvidence": [
-            "Can initiate a hunt at an average sanity of 70%",
             "<b class=ability>Insta-hunt:</b> Low chance to start a hunt regardless of sanity level",
             "The <b class=equipment>crucifix's</b> effective radius is much larger: 5m instead of 3m"
         ],
@@ -26,8 +34,13 @@
     },
     "Deogen": {
         "evidenceArray":[false,true,false,false,true,true,false],
+        "expertMode":[
+            "<b class=equipment>Spirit Box</b> Heavy Breathing",
+            "<b>Low Sanity</b> Hunt (40%)",
+            "Ỷ̴̦͕̇O̶̙̞͊̍͗Ư̴̲̫̬̇ ̷̫̃Ç̷̪͌̃A̵̛̅ͅN̶̫̻̈́̀ͅ'̴̻̑́̕T̸̯͆͝ ̴̨̜̖͆̐̆H̷̬̫̃́̕I̵̛͎̱D̶͎͔̱̊̿̕E̶̺̤̎"
+        ],
         "secondaryEvidence": [
-            "Can only initiate a hunt at an avarage sanity below 40%",
+            "Can only initiate a hunt at an average sanity below 40%",
             "Targets the closest player, <b>moving very rapidly</b> towards them (2.7 m/s) regardless of where they hide",
             "<b>Slows down immensely</b> approximately 4m away from its target",
             "Unique <b class=equipment>Spirit Box</b> interaction: Heavy breathing. You must stand on the exact position of the ghost"
@@ -37,6 +50,10 @@
     },
     "Goryo": {
         "evidenceArray":[true,true,true,false,false,false,false],
+        "expertMode":[
+            "<b class=equipment>Video</b> <b class=evidence-highlight>D.O.T.S.</b> only (No players in room)",
+            "<b>Ghost Room</b> is the Same, no <b>Long-distance Roam.</b>"
+        ],
         "secondaryEvidence": [
             "<b class=evidence-highlight>D.O.T.S.</b> only visible through a <b class=equipment>video cam</b> and no players in the room",
             "<b>Cannot change favorite room</b> or roam long distances"
@@ -47,6 +64,10 @@
     },
     "Hantu": {
         "evidenceArray":[false,false,true,true,false,false,true],
+        "expertMode":[
+            "Fast in <b class=ability>cold rooms.</b>  Slow in <b>warmer rooms.</b>",
+            "Model has <b>Breath</b> (Breaker off)"
+        ],
         "secondaryEvidence": [
             "<b>Walking speed</b> is affected by room <b class=evidence-highlight>temperature</b> when hunting.  The colder it is, the faster it moves.",
             "Shows their <b>breath</b> on the ghost model in any room during hunts if the <b>breaker</b> is off"
@@ -59,6 +80,11 @@
     },
     "Jinn": {
         "evidenceArray":[true,false,true,false,false,false,true],
+        "expertMode":[
+            "Fast <b>Chaser</b>",
+            "<b class=equipment>EMF</b> at Breaker",
+            "Can't turn off <b>breaker</b> (rare)"
+        ],
         "secondaryEvidence": [
             "During a hunt, it travels <b>faster</b> (2.1m/s) when <b>chasing</b> a target until a distance of 10m",
             "<b class=ability>Sanity Breaker:</b> Can lower the sanity of all players by 25%, when within a 3m radius or in the same room as the ghost.  Leaves <b class=equipment>EMF</b> at the <b>breaker</b> when this is used."
@@ -70,6 +96,11 @@
     },
     "Mare": {
         "evidenceArray":[false,false,false,true,true,true,false],
+        "expertMode":[
+            "Favors <b>Light Events</b>",
+            "<b class=ability>Turns off light</b> immediately (tiny %)",
+            "Early hunt in <b>dark</b>/roams in <b>dark rooms</b> (60%)"
+        ],
         "secondaryEvidence": [
             "<b>Cannot turn on lights</b>",
             "More likely to <b>turn off lights</b> the doing other ghost interactions",
@@ -83,6 +114,11 @@
     },
     "Moroi": {
         "evidenceArray":[false,false,false,false,true,true,true],
+        "expertMode":[
+            "<b>Faster</b> at <b>lower sanity</b>",
+            "<b class=equipment>Smudge</b> twice as effective during hunt (12s)",
+            "<b class=ability>Curse Test</b> (100% Sanity > Cursed with <b class=equipment>Spirit Box/Candle</b> > Try <b class=equipment>Pills</b>)"
+        ],
         "secondaryEvidence": [
             "When <b class=equipment>smudged</b> during a hunt it wanders for around 12s",
             "<b class=ability>Cursed Voice:</b> Curses any player whom it responds over the <b class=equipment>Spirit Box</b>. Cursed players constantly loose sanity over time (0.3%/s).  Leaving the house stops the sanity drain, and taking sanity pills lifts the curse.",
@@ -95,6 +131,9 @@
     },
     "Myling": {
         "evidenceArray":[true,false,true,false,true,false,false],
+        "expertMode":[
+            "<b class=ability>Sound Test</b> w/ <b class=equipment>Flashlight</b> Flicker (same floor)"
+        ],
         "secondaryEvidence": [
             "More sounds on the <b class=equipment>parabolic mic</b>",
             "During a hunt, all <b>hunting sounds</b> can only be heard when 10m or <b>closer</b>"
@@ -105,6 +144,10 @@
     },
     "Obake": {
         "evidenceArray":[true,false,true,true,false,false,false],
+        "expertMode":[
+            "Six <b class=evidence-highlight>Fingers</b>",
+            "<b class=ability>Shapeshifts</b> during hunt"
+        ],
         "secondaryEvidence": [
             "<b class=ability>Shapeshifter:</b> During a hunt, it has a 6.66% chance each time it flickers to <b>shapeshift</b> into a different ghost form and back. This is <b>guaranteed</b> to happen at least <b>once per hunt</b>",
             "Reduced chance of 75% to leave <b class=evidence-highlight>fingerprints</b>",
@@ -118,6 +161,11 @@
     },
     "Oni": {
         "evidenceArray":[true,true,false,false,false,false,true],
+        "expertMode":[
+            "No <b>Airball</b>",
+            "<b>More Visible</b> when hunting (flickers less)",
+            "Many Activities/Events when <b>nearby</b>"
+        ],
         "secondaryEvidence": [
             "More ghost activity and events when there are more people are nearby",
             "<b>Does not</b> do the Ghost <b/>Mist/Airball</b> event",
@@ -130,6 +178,10 @@
     },
     "Onryo": {
         "evidenceArray":[false,false,false,true,false,true,true],
+        "expertMode":[
+            "<b class=equipment>Crucifix/Candle</b> (If <b class=equipment>Crucifix</b> activates first, NOT Onryo)",
+            "Hunts every <b class=ability>third flame blown</b>"
+        ],
         "secondaryEvidence": [
             "<b class=ability>Firestarter:</b> Can initiate a hunt when any <b class=equipment>flames/candles</b> are extinguished regardless of average sanity",
             "<b class=equipment>Lit candles</b> act as <b class=equipment>crucifixes</b>. <b>Blown out</b> when successfuly preventing a hunt"
@@ -140,6 +192,10 @@
     },
     "Phantom": {
         "evidenceArray":[false,true,true,false,false,true,false],
+        "expertMode":[
+            "<b>Disappears</b> with <b class=equipment>Photo</b> (not hunting)",
+            "<b>Less Visible</b> when Hunting (Every 1-2s)"
+        ],
         "secondaryEvidence": [
             "Taking a <b class=equipment>photo</b> makes the ghost temporarily <b>disappear</b> (while not hunting)",
             "Flickers <b>slower</b> during hunts (1s to 2s instead of 0.3s to 1s)",
@@ -151,6 +207,10 @@
     },
     "Poltergeist": {
         "evidenceArray":[false,false,true,false,true,true,false],
+        "expertMode":[
+            "Many <b class=equipment>Items</b> Test (Throws every 0.5s)",
+            "<b class=ability>Big/Multiple Throws</b> (Sometimes)"
+        ],
         "secondaryEvidence": [
             "Chance to throw objects with <b class=evidence-highlight>more force</b> so they fly further (2 - 6 power, instead of 1 - 3 power)",
             "Only ghost that can throw <b>multiple objects</b> at once",
@@ -163,6 +223,10 @@
     },
     "Raiju": {
         "evidenceArray":[true,true,false,true,false,false,false],
+        "expertMode":[
+            "<b>Faster</b> Around <b class=equipment>Electric Equipment</b>",
+            "Early Hunt Around <b class=equipment>Electric Equipment</b> (65%)"
+        ],
         "secondaryEvidence": [
             "<b class=ability>Jacked Up:</b> While hunting it has an <b>increased movement speed</b> when it touches <b class=equipment>electronic player equipment</b> (held or on the floor)",
             "<b class=equipment>Head mounted cameras, motion sensors and sound sensors</b> do not count towards the speed boost",
@@ -175,6 +239,11 @@
     },
     "Revenant": {
         "evidenceArray":[false,false,false,true,true,false,true],
+        "expertMode":[
+            "<b>Slow</b> When <b>Not Chasing</b>",
+            "Oh God, I see it",
+            "Y̷̞̊ͅO̸̢̤̍͠Ú̸͎̓ ̸̠̦̽͐Ċ̶̝̍A̶̜͋N̷̡̽̆'̷̬͋Ţ̷̦̃ ̷̗̩͋R̷̰̈́U̸̧͙̓̏N̴̰̏̀"
+        ],
         "secondaryEvidence": [
             "<b>Very fast</b> when chasing a player during a hunt (2x normal speed)",
             "<b>Very slow</b> when not chasing anyone during a hunt (1/2 of normal speed)"
@@ -186,8 +255,13 @@
     },
     "Shade": {
         "evidenceArray":[true,false,false,false,true,false,true],
+        "expertMode":[
+            "<b>Less Activity</b> with 2+ people",
+            "<b>Low Sanity</b> Hunt (35%)",
+            "No hunts with <b>2+ people in room</b>"
+        ],
         "secondaryEvidence": [
-            "Can only initiate a hunt at an avarage sanity of <b>35%</b>",
+            "Can only initiate a hunt at an average sanity of <b>35%</b>",
             "<b>Less chance</b> of ghost activity and ghost events when <b>more than 1 player is nearby</b>",
             "<b>Lower chance</b> of initiating a hunt when <b>more than 1 players are in the same room</b>"
         ],
@@ -197,6 +271,9 @@
     },
     "Spirit": {
         "evidenceArray":[true,false,false,false,true,true,false],
+        "expertMode":[
+            "<b class=equipment>Smudge</b> stops hunt (3m)"
+        ],
         "secondaryEvidence": [
             "<b class=equipment>Smudge sticks</b> stop attacks for <b>3 min</b> instead of <b>1.5 min</b>"
         ],
@@ -206,6 +283,11 @@
     },
     "Thaye": {
         "evidenceArray":[false,true,false,true,true,false,false],
+        "expertMode":[
+            "<b>Early Hunt</b> (70%)",
+            "<b>Starts Fast</b>, Slower as it <b class=ability>Ages</b>",
+            "<b>Low Sanity</b> Hunt when <b>Aged</b> (15%)"
+        ],
         "secondaryEvidence": [
             "Can initiate a hunt at an average sanity of 70% but <b>decreases with age</b> down to 15% at its oldest age.",
             "Ages over time while a player is either <b>in the same room as the ghost or in the ghost room</b>",
@@ -217,6 +299,10 @@
     },
     "The Mimic": {
         "evidenceArray":[false,false,true,false,false,true,true],
+        "expertMode":[
+            "<b class=evidence-highlight>Ghost Orbs</b> Fake Evidence",
+            "<b class=ability>Changes Behaviors</b>"
+        ],
         "secondaryEvidence": [
             "<b class=ability>Mimic:</b> Picks another ghost type to imitate and changes it occasionally, copying almost all of their abilities and behaviors",
             "Has <b class=evidence-highlight>ghost orbs</b> as 4th evidence which are <b>always present</b>, regardless of which ghost is being imitated"
@@ -227,6 +313,10 @@
     },
     "The Twins": {
         "evidenceArray":[true,false,false,false,false,true,true],
+        "expertMode":[
+            "Two <b>abnormal speeds</b> (Main 10% slower, twin 10% faster)",
+            "No <b class=evidence-highlight>Freezing/Spirit Box</b> in other interacted rooms"
+        ],
         "secondaryEvidence": [
             "Main twin primary stays in the ghost room, makes <b class=evidence-highlight>freezing</b> and <b class=equipment>Spirit Box</b>",
             "Secondary twin wanders around and interacts with the environment, but cannot interact with <b class=equipment>motion sensors</b>, <b class=equipment>Spirit Box</b> or cause <b class=evidence-highlight>freezing temps</b>",
@@ -240,6 +330,11 @@
     },
     "Wraith": {
         "evidenceArray":[true,true,false,false,false,true,false],
+        "expertMode":[
+            "No <b class=equipment>Salt</b> interaction",
+            "<b class=equipment>EMF 2/5</b> <b class=ability>Teleport</b> Test",
+            "Can <b class=ability>Teleport</b> Hunt"
+        ],
         "secondaryEvidence": [
             "Cannot step into <b class=equipment>salt</b> and will never leave <b class=evidence-highlight>footprints</b>",
             "Can <b>teleport</b> to a random player (while not hunting) which will do <b class=evidence-highlight>EMF lvl 2 or 5</b> and do interactions"
@@ -250,6 +345,10 @@
     },
     "Yokai": {
         "evidenceArray":[false,true,false,true,false,true,false],
+        "expertMode":[
+            "<b>Early Hunt</b> when <b>talking nearby</b> (80%)",
+            "Use <b class=equipment>Device</b>/Talk when <b>Hiding</b> and not in <b>line-of-sight</b>"
+        ],
         "secondaryEvidence": [
             "Can initiate an early hunt at an avarage sanity of 80% if players are <b>talking nearby</b>",
             "During a hunt it <b>only can hear sounds</b> in a radius of 2m"
@@ -260,6 +359,10 @@
     },
     "Yurei": {
         "evidenceArray":[false,true,false,true,false,false,true],
+        "expertMode":[
+            "<b class=equipment>Smudge</b> makes Yurei stay in room (1.5m)",
+            "<b class=ability>Closes Door</b> without event/hunt (exit door, Yurei guaranteed)"
+        ],
         "secondaryEvidence": [
             "<b class=equipment>Smudging</b> will make it to stay in the room for <b>1.5 min</b>",
             "<b class=ability>Yur Stuck:</b> Can <b>close doors randomly</b> without doing a ghost event"

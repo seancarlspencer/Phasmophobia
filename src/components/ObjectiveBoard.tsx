@@ -30,6 +30,7 @@ const ObjectiveBoard = () => {
             }
           }
         });
+        console.log(evidenceValues);
         console.log(possibleValues);
         handlePossible(possibleValues);
         return;
