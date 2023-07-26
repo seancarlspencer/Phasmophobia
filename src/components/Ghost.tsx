@@ -11,17 +11,24 @@ interface GhostInterface{
 
 const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
-  const [toggleMore,setToggleMore] = useState(false);
+  const [toggleMore,setMore] = useState(false);
+  const [toggleGuess,setGuess] = useState(false);
   const dispatch = useDispatch();
   let imageArray=["emf","dots","fingerprints","orbs","writing","ghost","freezing"];
   let displayArray=["EMF Level 5","D.O.T.S","Fingerprints","Ghost Orbs","Ghost Writing","Spirit Box","Freezing"];
 
-  const handleToggleMore = () => {
-    setToggleMore(toggleMore => !toggleMore);
+  const handleToggleMore = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setMore(toggleMore => !toggleMore);
+  }
+
+  const handleToggleGuess = () => {
+    console.log(toggleGuess);
+    setGuess(toggleGuess => !toggleGuess);
   }
 
   return (
-    <div className={`ghost-container${display ? "" : " hide"}`}>
+    <div className={`ghost-container${display ? "" : " hide"}${toggleGuess ? " eliminated" : ""}`} onClick={handleToggleGuess}>
       <div className="ghost-name">
         {ghostName}
       </div>

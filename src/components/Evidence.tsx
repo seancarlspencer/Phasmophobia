@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement, updateEvidence } from '../actions/actions';
 
 const Evidence = () => {
-  const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
+  const {evidenceValues,possibleValues} = useSelector((state: any) => 
+  ({evidenceValues:state.phas.evidenceValues,
+    possibleValues:state.phas.possibleValues}));
   const dispatch = useDispatch();
 
   const handleIncrement = () => {
@@ -13,6 +15,10 @@ const Evidence = () => {
   const handleDecrement = () => {
     dispatch(decrement());
   };
+
+  useEffect(()=>{
+    console.log(possibleValues);
+  })
 
   const handleEvidence = () => {
     let evidenceArray = document.querySelectorAll<HTMLInputElement>(".paper-filters input");
@@ -38,31 +44,31 @@ const Evidence = () => {
         E<span>VIDENCE</span>
       </div>
       <div className="paper-filters">
-        <div className="filter-box">
+        <div className={`filter-box${possibleValues[0] ? "" : " not-possible"}`}>
           <img src={require("../assets/check.png")} className={evidenceValues[0] ? "checked" : ""}/>
           <input onChange={handleEvidence} type="checkbox" id="e1"/><label htmlFor="e1">EMF Level 5</label>
         </div>
-        <div className="filter-box">
+        <div className={`filter-box${possibleValues[1] ? "" : " not-possible"}`}>
           <img src={require("../assets/check.png")} className={evidenceValues[1] ? "checked" : ""}/>
           <input onChange={handleEvidence} type="checkbox" id="e2"/><label htmlFor="e2">D.O.T.S</label>
         </div>
-        <div className="filter-box">
+        <div className={`filter-box${possibleValues[2] ? "" : " not-possible"}`}>
           <img src={require("../assets/check.png")} className={evidenceValues[2] ? "checked" : ""}/>
           <input onChange={handleEvidence} type="checkbox" id="e3"/><label htmlFor="e3">Fingerprints</label>
         </div>
-        <div className="filter-box">
+        <div className={`filter-box${possibleValues[3] ? "" : " not-possible"}`}>
           <img src={require("../assets/check.png")} className={evidenceValues[3] ? "checked" : ""}/>
           <input onChange={handleEvidence} type="checkbox" id="e4"/><label htmlFor="e4">Ghost Orbs</label>
         </div>
-        <div className="filter-box">
+        <div className={`filter-box${possibleValues[4] ? "" : " not-possible"}`}>
           <img src={require("../assets/check.png")} className={evidenceValues[4] ? "checked" : ""}/>
           <input onChange={handleEvidence} type="checkbox" id="e5"/><label htmlFor="e5">Ghost Writing</label>
         </div>
-        <div className="filter-box">
+        <div className={`filter-box${possibleValues[5] ? "" : " not-possible"}`}>
           <img src={require("../assets/check.png")} className={evidenceValues[5] ? "checked" : ""}/>
           <input onChange={handleEvidence} type="checkbox" id="e6"/><label htmlFor="e6">Spirit Box</label>
         </div>
-        <div className="filter-box last">
+        <div className={`filter-box last${possibleValues[6] ? "" : " not-possible"}`}>
           <img src={require("../assets/check.png")} className={evidenceValues[6] ? "checked" : ""}/>
           <input onChange={handleEvidence} type="checkbox" id="e7"/><label htmlFor="e7">Freezing Temperatures</label>
         </div>

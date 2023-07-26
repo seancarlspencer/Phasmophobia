@@ -36,6 +36,11 @@ export const updateYear = (num: Number) => ({
     payload: arr
   });
 
+  export const updatePossible = (arr: Array<boolean>) => ({
+    type: 'updatePossible',
+    payload: arr
+  });
+
   export const handleToggleStickyAction = () => ({
     type: 'toggleSticky'
   });

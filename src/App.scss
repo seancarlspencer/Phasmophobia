@@ -113,6 +113,8 @@ body *{
     width: 100%;
     &::before{
       background-size: 100%;
+      // background-color: #C69B6F;
+      background-image: none;
     }
   }
   @media screen and (max-width: 498px) {
@@ -291,6 +293,10 @@ body *{
       position:relative;
       &.last{
         grid-column: 1 / 3;
+      }
+      &.not-possible{
+        pointer-events: none;
+        color:rgba(0, 0, 0, .25);
       }
       label{
         padding: 6px 12px;
