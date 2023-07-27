@@ -4,19 +4,12 @@ import { increment, decrement } from '../actions/actions';
 import Evidence from './Evidence';
 import ObjectiveBoard from './ObjectiveBoard';
 import Extras from './Extras';
+import GhostSpeed from './GhostSpeed';
 
 const Homepage = () => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
   const [toggleSticky,setToggleSticky] = useState(false);
   const dispatch = useDispatch();
-
-  const handleIncrement = () => {
-    dispatch(increment());
-  };
-
-  const handleDecrement = () => {
-    dispatch(decrement());
-  };
 
   const handleToggleSticky = () => {
     setToggleSticky(toggleSticky => !toggleSticky);

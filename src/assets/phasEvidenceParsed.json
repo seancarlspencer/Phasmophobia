@@ -1,6 +1,7 @@
 {
 "Banshee": {
         "evidenceArray":[false,true,true,true,false,false,false],
+        "speedArray":[false,true,false],
         "expertMode":[
             "<b class=ability>Solo Target Test</b> (target in building)",
             "<b class=equipment>Parabolic Microphone</b> Wail",
@@ -19,6 +20,7 @@
     },
     "Demon": {
         "evidenceArray":[false,false,true,false,true,false,true],
+        "speedArray":[false,true,false],
         "expertMode":[
             "Early/<b class=ability>Insta-hunt</b> (70% or Ability)",
             "<b class=equipment>Crucifix</b> Range Test (1.66x Larger)"
@@ -34,6 +36,7 @@
     },
     "Deogen": {
         "evidenceArray":[false,true,false,false,true,true,false],
+        "speedArray":[true,false,true],
         "expertMode":[
             "<b class=equipment>Spirit Box</b> Heavy Breathing",
             "<b>Low Sanity</b> Hunt (40%)",
@@ -50,6 +53,7 @@
     },
     "Goryo": {
         "evidenceArray":[true,true,true,false,false,false,false],
+        "speedArray":[false,true,false],
         "expertMode":[
             "<b class=equipment>Video</b> <b class=evidence-highlight>D.O.T.S.</b> only (No players in room)",
             "<b>Ghost Room</b> is the Same, no <b>Long-distance Roam.</b>"
@@ -64,6 +68,7 @@
     },
     "Hantu": {
         "evidenceArray":[false,false,true,true,false,false,true],
+        "speedArray":[true,true,true],
         "expertMode":[
             "Fast in <b class=ability>cold rooms.</b>  Slow in <b>warmer rooms.</b>",
             "Model has <b>Breath</b> (Breaker off)"
@@ -80,6 +85,7 @@
     },
     "Jinn": {
         "evidenceArray":[true,false,true,false,false,false,true],
+        "speedArray":[false,true,true],
         "expertMode":[
             "Fast <b>Chaser</b>",
             "<b class=equipment>EMF</b> at Breaker",
@@ -96,6 +102,7 @@
     },
     "Mare": {
         "evidenceArray":[false,false,false,true,true,true,false],
+        "speedArray":[false,true,false],
         "expertMode":[
             "Favors <b>Light Events</b>",
             "<b class=ability>Turns off light</b> immediately (tiny %)",
@@ -114,6 +121,7 @@
     },
     "Moroi": {
         "evidenceArray":[false,false,false,false,true,true,true],
+        "speedArray":[true,true,true],
         "expertMode":[
             "<b>Faster</b> at <b>lower sanity</b>",
             "<b class=equipment>Smudge</b> twice as effective during hunt (12s)",
@@ -131,6 +139,7 @@
     },
     "Myling": {
         "evidenceArray":[true,false,true,false,true,false,false],
+        "speedArray":[false,true,false],
         "expertMode":[
             "<b class=ability>Sound Test</b> w/ <b class=equipment>Flashlight</b> Flicker (same floor)"
         ],
@@ -144,6 +153,7 @@
     },
     "Obake": {
         "evidenceArray":[true,false,true,true,false,false,false],
+        "speedArray":[false,true,false],
         "expertMode":[
             "Six <b class=evidence-highlight>Fingers</b>",
             "<b class=ability>Shapeshifts</b> during hunt"
@@ -161,6 +171,7 @@
     },
     "Oni": {
         "evidenceArray":[true,true,false,false,false,false,true],
+        "speedArray":[false,true,false],
         "expertMode":[
             "No <b>Airball</b>",
             "<b>More Visible</b> when hunting (flickers less)",
@@ -178,6 +189,7 @@
     },
     "Onryo": {
         "evidenceArray":[false,false,false,true,false,true,true],
+        "speedArray":[false,true,false],
         "expertMode":[
             "<b class=equipment>Crucifix/Candle</b> (If <b class=equipment>Crucifix</b> activates first, NOT Onryo)",
             "Hunts every <b class=ability>third flame blown</b>"
@@ -192,6 +204,7 @@
     },
     "Phantom": {
         "evidenceArray":[false,true,true,false,false,true,false],
+        "speedArray":[false,true,false],
         "expertMode":[
             "<b>Disappears</b> with <b class=equipment>Photo</b> (not hunting)",
             "<b>Less Visible</b> when Hunting (Every 1-2s)"
@@ -207,6 +220,7 @@
     },
     "Poltergeist": {
         "evidenceArray":[false,false,true,false,true,true,false],
+        "speedArray":[false,true,false],
         "expertMode":[
             "Many <b class=equipment>Items</b> Test (Throws every 0.5s)",
             "<b class=ability>Big/Multiple Throws</b> (Sometimes)"
@@ -223,6 +237,7 @@
     },
     "Raiju": {
         "evidenceArray":[true,true,false,true,false,false,false],
+        "speedArray":[false,true,true],
         "expertMode":[
             "<b>Faster</b> Around <b class=equipment>Electric Equipment</b>",
             "Early Hunt Around <b class=equipment>Electric Equipment</b> (65%)"
@@ -239,6 +254,7 @@
     },
     "Revenant": {
         "evidenceArray":[false,false,false,true,true,false,true],
+        "speedArray":[true,false,true],
         "expertMode":[
             "<b>Slow</b> When <b>Not Chasing</b>",
             "Oh God, I see it",
@@ -255,6 +271,7 @@
     },
     "Shade": {
         "evidenceArray":[true,false,false,false,true,false,true],
+        "speedArray":[false,true,false],
         "expertMode":[
             "<b>Less Activity</b> with 2+ people",
             "<b>Low Sanity</b> Hunt (35%)",
@@ -271,6 +288,7 @@
     },
     "Spirit": {
         "evidenceArray":[true,false,false,false,true,true,false],
+        "speedArray":[false,true,false],
         "expertMode":[
             "<b class=equipment>Smudge</b> stops hunt (3m)"
         ],
@@ -283,6 +301,7 @@
     },
     "Thaye": {
         "evidenceArray":[false,true,false,true,true,false,false],
+        "speedArray":[true,true,true],
         "expertMode":[
             "<b>Early Hunt</b> (70%)",
             "<b>Starts Fast</b>, Slower as it <b class=ability>Ages</b>",
@@ -299,6 +318,7 @@
     },
     "The Mimic": {
         "evidenceArray":[false,false,true,false,false,true,true],
+        "speedArray":[true,true,true],
         "expertMode":[
             "<b class=evidence-highlight>Ghost Orbs</b> Fake Evidence",
             "<b class=ability>Changes Behaviors</b>"
@@ -313,6 +333,7 @@
     },
     "The Twins": {
         "evidenceArray":[true,false,false,false,false,true,true],
+        "speedArray":[true,false,true],
         "expertMode":[
             "Two <b>abnormal speeds</b> (Main 10% slower, twin 10% faster)",
             "No <b class=evidence-highlight>Freezing/Spirit Box</b> in other interacted rooms"
@@ -330,6 +351,7 @@
     },
     "Wraith": {
         "evidenceArray":[true,true,false,false,false,true,false],
+        "speedArray":[false,true,false],
         "expertMode":[
             "No <b class=equipment>Salt</b> interaction",
             "<b class=equipment>EMF 2/5</b> <b class=ability>Teleport</b> Test",
@@ -345,6 +367,7 @@
     },
     "Yokai": {
         "evidenceArray":[false,true,false,true,false,true,false],
+        "speedArray":[false,true,false],
         "expertMode":[
             "<b>Early Hunt</b> when <b>talking nearby</b> (80%)",
             "Use <b class=equipment>Device</b>/Talk when <b>Hiding</b> and not in <b>line-of-sight</b>"
@@ -359,6 +382,7 @@
     },
     "Yurei": {
         "evidenceArray":[false,true,false,true,false,false,true],
+        "speedArray":[false,true,false],
         "expertMode":[
             "<b class=equipment>Smudge</b> makes Yurei stay in room (1.5m)",
             "<b class=ability>Closes Door</b> without event/hunt (exit door, Yurei guaranteed)"

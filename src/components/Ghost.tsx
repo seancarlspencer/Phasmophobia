@@ -102,7 +102,7 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
       </div>
       {!toggleMore ? 
       <div className="ghost-more" onClick={handleToggleMore}>
-        Click Here for More Information...
+        More...
       </div>
       :
       <div className="ghost-more hide" onClick={handleToggleMore}>

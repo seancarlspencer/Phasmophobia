@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, updateEvidence, updateEliminated } from '../actions/actions';
+import { increment, decrement, updateEvidence, updateEliminated, updateSpeed } from '../actions/actions';
 import FilterBox from './FilterBox';
 
 const Evidence = () => {
@@ -37,6 +37,7 @@ const Evidence = () => {
     })
     dispatch(updateEvidence([false,false,false,false,false,false,false]));
     dispatch(updateEliminated([false,false,false,false,false,false,false]));
+    dispatch(updateSpeed([false,false,false]));
   };
 
   return (

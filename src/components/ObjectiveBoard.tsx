@@ -6,22 +6,26 @@ import phasGhosts from '../assets/phasEvidenceParsed.json';
 import Ghost from './Ghost';
 
 const ObjectiveBoard = () => {
-  const {evidenceValues,possibleValues,eliminatedValues} = useSelector((state: any) => 
+  const {evidenceValues,possibleValues,eliminatedValues,speedValues,checkSpeed} = useSelector((state: any) => 
   ({evidenceValues:state.phas.evidenceValues,
     possibleValues:state.phas.possibleValues,
     eliminatedValues:state.phas.eliminatedValues,
+    speedValues:state.phas.speedValues,
+    checkSpeed:state.phas.checkSpeed
   }));
   const dispatch = useDispatch();
 
   useEffect(()=>{
     let possibleValues = [false,false,false,false,false,false,false];
     console.log("updating ghosts");
+    // Skip Speed Check if no speed selected
     for(let x=0;x<evidenceValues.length;x++){
       // Determines which ghosts are possible
       if(evidenceValues[x]){
         Object.keys(phasGhosts).map((ghost:string)=>{
           let valid = true;
           for(let i=0;i<evidenceValues.length;i++){
+            // Evidence selected, but Ghost does not have evidence
             if(evidenceValues[i] && !phasGhosts[ghost as keyof typeof phasGhosts]["evidenceArray"][i]){
               valid = false;
             }
@@ -42,18 +46,18 @@ const ObjectiveBoard = () => {
     }
     possibleValues = [true,true,true,true,true,true,true];
     handlePossible(possibleValues);
-  },[evidenceValues])
+  },[evidenceValues,speedValues])
 
   const handlePossible=(arr: Array<boolean>)=>{
     dispatch(updatePossible(arr))
-  }
-
-  const nothing=()=>{
   }
   
 
   return (
     <div className="objective-board-content">
+      <div className="objective-board-tooltip">
+        Tap on Ghost to Eliminate
+      </div>
       <div className="objective-board-ghost-container">
       {Object.keys(phasGhosts).map((ghost:string)=>{
         for(let i=0;i<evidenceValues.length;i++){
@@ -70,6 +74,18 @@ const ObjectiveBoard = () => {
               ghostName={ghost}
               display={false}
             />;
+          }
+        }
+        // Checks if ghost does not have speed that user selected
+        if (checkSpeed){
+          for(let i=0;i<speedValues.length;i++){
+            // Speed selected, but Ghost does not have speed
+            if(speedValues[i] && !phasGhosts[ghost as keyof typeof phasGhosts]["speedArray"][i]){
+              return <Ghost
+              ghostName={ghost}
+              display={false}
+            />;
+            }
           }
         }
         return <Ghost

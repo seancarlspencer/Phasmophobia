@@ -41,10 +41,11 @@ const FilterBox:React.FC<FilterBoxType> = ({index,displayText}) => {
 
   return (
     <div className={`filter-box${possibleValues[index] ? "" : " not-possible"}`}>
-      {evidenceValues[index] ? <img src={require("../assets/check.png")} className="checked"/> :
+      {/* {evidenceValues[index] ? <img src={require("../assets/check.png")} className="checked"/> :
       eliminatedValues[index] ? <img src={require("../assets/ghost.png")} className="checked"/> :
-      <img src={require("../assets/check.png")} className=""/>}
-      <input onClick={handleEvidence} type="checkbox" id={`e${index}`}/><label htmlFor={`e${index}`}><span>{displayText}</span></label>
+      <img src={require("../assets/check.png")} className=""/>} */}
+      <input onClick={handleEvidence} type="checkbox" id={`e${index}`}/><label className={`${evidenceValues[index] ? "checked" :
+      eliminatedValues[index] ? "eliminated" : ""}`}  htmlFor={`e${index}`}><span>{displayText}</span></label>
     </div>
   );
 };

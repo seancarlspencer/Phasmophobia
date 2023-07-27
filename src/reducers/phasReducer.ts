@@ -4,9 +4,10 @@ const initialState = {
   evidenceValues: [false,false,false,false,false,false,false],
   eliminatedValues: [false,false,false,false,false,false,false],
   possibleValues: [true,true,true,true,true,true,true],
-  guessValues:[''],
   toggleSticky: true,
-  toggleExpert: localStorage.getItem("expert")=="true"
+  toggleExpert: localStorage.getItem("expert")=="true",
+  speedValues: [false,false,false],
+  checkSpeed: false
 };
 
 const phasReducer = (state = initialState, action: AnyAction) => {
@@ -17,8 +18,19 @@ const phasReducer = (state = initialState, action: AnyAction) => {
       return { ...state, possibleValues: action.payload };
     case 'updateEliminated':
       return { ...state, eliminatedValues: action.payload };
-    case 'updateGuess':
-      return { ...state, guessValues: action.payload };
+    case 'updateSpeed':
+      let checkSpeedUpdate = false
+      for(let i=0;i<action.payload.length;i++){
+        console.log("Checking speed");
+        console.log(action.payload);
+        if(action.payload[i]){
+          console.log("Speed found!");
+          // If speed selected, check speed
+          checkSpeedUpdate=true;
+        }
+      }
+      return { ...state, speedValues: action.payload,
+      checkSpeed: checkSpeedUpdate};
     case 'toggleSticky':
       return { ...state, toggleSticky: !state.toggleSticky };
     case 'toggleExpert':
