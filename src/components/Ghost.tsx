@@ -17,6 +17,7 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
   const dispatch = useDispatch();
   let imageArray=["emf","dots","fingerprints","orbs","writing","ghost","freezing"];
   let displayArray=["EMF Level 5","D.O.T.S","Fingerprints","Ghost Orbs","Ghost Writing","Spirit Box","Freezing"];
+  let displayArrayExpert=["EMF 5","DOTS","Fingerp.","Orbs","Writing","Spirit Box","Freezing"];
   let eliminatedStrings=[
     `Not a ${ghostName}.`,
     `Couldn't be a ${ghostName}.`,
@@ -58,7 +59,7 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
   }
 
   return (
-    <div className={`ghost-container${display ? "" : " hide"}${toggleGuess ? " eliminated" : ""}`} onClick={handleToggleGuess}>
+    <div className={`ghost-container${display ? "" : " hide"}${toggleGuess ? " eliminated" : ""}${toggleExpert ? " expert" : ""}`} onClick={handleToggleGuess}>
       <div className="ghost-name">
         {toggleGuess ? 
         (["The Twins","The Mimic"].includes(ghostName) ? 
@@ -70,7 +71,7 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
           if(evidence){
             return <div className="ghost-evidence-display">
                       <img src={require(`../assets/${imageArray[index]}.png`)}/>
-                      <div className="evidence-text">{displayArray[index]}</div>
+                      <div className="evidence-text">{toggleExpert ? displayArrayExpert[index] : displayArray[index]}</div>
                     </div>
           }
           else{
@@ -99,7 +100,8 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
           })}
         </ul>
       </div>
-      {!toggleMore ? 
+      {(phasGhosts[ghostName as keyof typeof phasGhosts]["tertiaryEvidence"].length != 0 || toggleExpert) ? 
+      !toggleMore ? 
       <div className="ghost-more" onClick={handleToggleMore}>
         More...
       </div>
@@ -107,6 +109,8 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
       <div className="ghost-more hide" onClick={handleToggleMore}>
         Hide...
       </div>
+      :
+      <div></div>
       }
     </div>
   );

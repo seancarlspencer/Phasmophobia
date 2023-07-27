@@ -6,12 +6,13 @@ import phasGhosts from '../assets/phasEvidenceParsed.json';
 import Ghost from './Ghost';
 
 const ObjectiveBoard = () => {
-  const {evidenceValues,possibleValues,eliminatedValues,speedValues,checkSpeed} = useSelector((state: any) => 
+  const {evidenceValues,possibleValues,eliminatedValues,speedValues,checkSpeed,toggleExpert} = useSelector((state: any) => 
   ({evidenceValues:state.phas.evidenceValues,
     possibleValues:state.phas.possibleValues,
     eliminatedValues:state.phas.eliminatedValues,
     speedValues:state.phas.speedValues,
-    checkSpeed:state.phas.checkSpeed
+    checkSpeed:state.phas.checkSpeed,
+    toggleExpert:state.phas.toggleExpert
   }));
   const dispatch = useDispatch();
 
@@ -58,8 +59,8 @@ const ObjectiveBoard = () => {
       <div className="objective-board-tooltip">
         Tap on Ghost to Eliminate
       </div>
-      <div className="objective-board-ghost-container">
-      {Object.keys(phasGhosts).map((ghost:string)=>{
+      <div className={`objective-board-ghost-container${toggleExpert ? " expert" : ""}`}>
+      {Object.keys(phasGhosts).sort((a, b) => phasGhosts[a as keyof typeof phasGhosts]["index"] > phasGhosts[b as keyof typeof phasGhosts]["index"] ? 1 : -1).map((ghost:string)=>{
         for(let i=0;i<evidenceValues.length;i++){
           // Checks if ghost does not have evidence that user selected
           if(evidenceValues[i] && !phasGhosts[ghost as keyof typeof phasGhosts]["evidenceArray"][i]){

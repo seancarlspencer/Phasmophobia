@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement } from '../actions/actions';
 import Evidence from './Evidence';
@@ -9,6 +9,10 @@ import GhostSpeed from './GhostSpeed';
 const Homepage = () => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
   const [toggleSticky,setToggleSticky] = useState(false);
+
+  useEffect(()=>{
+    document.documentElement.setAttribute('data-theme', 'dark');
+  },[])
 
   return (
     <div className={`homepage${toggleSticky ? " hide" : ""}`}>

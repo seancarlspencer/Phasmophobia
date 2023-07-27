@@ -19,15 +19,7 @@ const Extras = () => {
 
   return (
     <div className="evidence-paper extras">
-      <div className="paper-header">
-        E<span>XTRAS</span>
-      </div>
       <div className="paper-filters">
-        <div className={`filter-box`}>
-          <img src={require("../assets/check.png")} className={toggleExpert ? "checked" : ""}/>
-          <input onChange={handleToggleExpertAction} type="checkbox" id="expert"/><label className="extra-input" htmlFor="expert"><span className="skew">Expert Mode</span></label>
-          <div className="recommended">(Recommended for Nightmare/Insane Mode)</div>
-        </div>
         <div className="ghost-speed-container">
           <div className="ghost-speed-header">
             G<span>HOST</span> S<span>PEED</span>
@@ -38,6 +30,11 @@ const Extras = () => {
             index={index}
             />
           })}
+        </div>
+        <div className={`filter-box expert`}>
+          <img src={require("../assets/check.png")} className={toggleExpert ? "checked" : ""}/>
+          <input onChange={handleToggleExpertAction} type="checkbox" id="expert"/><label className="extra-input" htmlFor="expert"><span className="skew">Expert Mode</span></label>
+          <div className="recommended">(Recommended for Nightmare/Insane Mode)</div>
         </div>
       </div>
     </div>

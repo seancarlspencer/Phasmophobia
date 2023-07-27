@@ -1,5 +1,6 @@
 {
-"Banshee": {
+    "Banshee": {
+        "index":4,
         "evidenceArray":[false,true,true,true,false,false,false],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -19,6 +20,7 @@
         ]
     },
     "Demon": {
+        "index":9,
         "evidenceArray":[false,false,true,false,true,false,true],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -35,12 +37,12 @@
         ]
     },
     "Deogen": {
+        "index":22,
         "evidenceArray":[false,true,false,false,true,true,false],
         "speedArray":[true,false,true],
         "expertMode":[
             "<b class=equipment>Spirit Box</b> Heavy Breathing",
-            "<b>Low Sanity</b> Hunt (40%)",
-            "Ỷ̴̦͕̇O̶̙̞͊̍͗Ư̴̲̫̬̇ ̷̫̃Ç̷̪͌̃A̵̛̅ͅN̶̫̻̈́̀ͅ'̴̻̑́̕T̸̯͆͝ ̴̨̜̖͆̐̆H̷̬̫̃́̕I̵̛͎̱D̶͎͔̱̊̿̕E̶̺̤̎"
+            "<b>Low Sanity</b> Hunt (40%)"
         ],
         "secondaryEvidence": [
             "Can only initiate a hunt at an average sanity below 40%",
@@ -52,6 +54,7 @@
         ]
     },
     "Goryo": {
+        "index":14,
         "evidenceArray":[true,true,true,false,false,false,false],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -67,6 +70,7 @@
         ]
     },
     "Hantu": {
+        "index":13,
         "evidenceArray":[false,false,true,true,false,false,true],
         "speedArray":[true,true,true],
         "expertMode":[
@@ -84,6 +88,7 @@
         ]
     },
     "Jinn": {
+        "index":5,
         "evidenceArray":[true,false,true,false,false,false,true],
         "speedArray":[false,true,true],
         "expertMode":[
@@ -101,6 +106,7 @@
         ]
     },
     "Mare": {
+        "index":6,
         "evidenceArray":[false,false,false,true,true,true,false],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -120,6 +126,7 @@
         ]
     },
     "Moroi": {
+        "index":21,
         "evidenceArray":[false,false,false,false,true,true,true],
         "speedArray":[true,true,true],
         "expertMode":[
@@ -138,6 +145,7 @@
         ]
     },
     "Myling": {
+        "index":15,
         "evidenceArray":[true,false,true,false,true,false,false],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -152,6 +160,7 @@
         ]
     },
     "Obake": {
+        "index":19,
         "evidenceArray":[true,false,true,true,false,false,false],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -170,6 +179,7 @@
         ]
     },
     "Oni": {
+        "index":11,
         "evidenceArray":[true,true,false,false,false,false,true],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -188,6 +198,7 @@
         ]
     },
     "Onryo": {
+        "index":16,
         "evidenceArray":[false,false,false,true,false,true,true],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -203,6 +214,7 @@
         ]
     },
     "Phantom": {
+        "index":2,
         "evidenceArray":[false,true,true,false,false,true,false],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -219,6 +231,7 @@
         ]
     },
     "Poltergeist": {
+        "index":3,
         "evidenceArray":[false,false,true,false,true,true,false],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -236,6 +249,7 @@
         ]
     },
     "Raiju": {
+        "index":18,
         "evidenceArray":[true,true,false,true,false,false,false],
         "speedArray":[false,true,true],
         "expertMode":[
@@ -253,12 +267,12 @@
         ]
     },
     "Revenant": {
+        "index":7,
         "evidenceArray":[false,false,false,true,true,false,true],
         "speedArray":[true,false,true],
         "expertMode":[
             "<b>Slow</b> When <b>Not Chasing</b>",
-            "Oh God, I see it",
-            "Y̷̞̊ͅO̸̢̤̍͠Ú̸͎̓ ̸̠̦̽͐Ċ̶̝̍A̶̜͋N̷̡̽̆'̷̬͋Ţ̷̦̃ ̷̗̩͋R̷̰̈́U̸̧͙̓̏N̴̰̏̀"
+            "<b>Fast</b> When <b>Chasing</b>"
         ],
         "secondaryEvidence": [
             "<b>Very fast</b> when chasing a player during a hunt (2x normal speed)",
@@ -270,6 +284,7 @@
         ]
     },
     "Shade": {
+        "index":8,
         "evidenceArray":[true,false,false,false,true,false,true],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -287,6 +302,7 @@
         ]
     },
     "Spirit": {
+        "index":0,
         "evidenceArray":[true,false,false,false,true,true,false],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -300,6 +316,7 @@
         ]
     },
     "Thaye": {
+        "index":23,
         "evidenceArray":[false,true,false,true,true,false,false],
         "speedArray":[true,true,true],
         "expertMode":[
@@ -317,6 +334,7 @@
         ]
     },
     "The Mimic": {
+        "index":20,
         "evidenceArray":[false,false,true,false,false,true,true],
         "speedArray":[true,true,true],
         "expertMode":[
@@ -332,6 +350,7 @@
         ]
     },
     "The Twins": {
+        "index":17,
         "evidenceArray":[true,false,false,false,false,true,true],
         "speedArray":[true,false,true],
         "expertMode":[
@@ -350,6 +369,7 @@
         ]
     },
     "Wraith": {
+        "index":1,
         "evidenceArray":[true,true,false,false,false,true,false],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -366,6 +386,7 @@
         ]
     },
     "Yokai": {
+        "index":12,
         "evidenceArray":[false,true,false,true,false,true,false],
         "speedArray":[false,true,false],
         "expertMode":[
@@ -381,6 +402,7 @@
         ]
     },
     "Yurei": {
+        "index":10,
         "evidenceArray":[false,true,false,true,false,false,true],
         "speedArray":[false,true,false],
         "expertMode":[

@@ -48,6 +48,76 @@ table {
 :root{
   --paperColor: #FFFBCF;
   background-color: #22180D;
+  --fontColor: black;
+  --tipColor: #FFFBCF;
+  --listColor: rgb(48, 48, 48);
+  --listTertiaryColor: rgb(64, 64, 64);
+  --tooltipColor: rgba(0, 0, 0,.5);
+  --mobileBGColor: #C69B6F;
+  --mobileBGColorLighter: #daaa7a;
+  --backgroundImage: url("./assets/wood.jpg");
+  --boardImage: url("./assets/cork.jpg");
+  b{
+    filter:contrast(.7);
+  }
+}
+
+:root[data-theme="dark"] {
+  --paperColor: rgb(0, 63, 87);
+  --paperColor: rgb(0, 57, 80);
+  --fontColor: rgb(198, 198, 222);
+  --tipColor: rgb(198, 198, 222);
+  --listColor: rgb(176, 176, 199);
+  --listTertiaryColor: rgb(158, 158, 179);
+  --tooltipColor: rgba(198, 198, 222, .5);
+  --backgroundImage: url("./assets/concrete.jpg");
+  --boardImage: url("./assets/metalNew.jpg");
+  --mobileBGColor: rgb(0, 36, 51);
+  --mobileBGColorLighter: rgb(0, 40, 57);
+  background-color: black;
+  b{
+    filter:brightness(2) contrast(.4);
+  }
+  .evidence-text{
+    @media screen and (max-width: 1309px) {
+      filter:contrast(.7);
+    }
+  }
+  .expert .evidence-text{
+    filter:contrast(.7);
+  }
+  .homepage{
+    &::before{
+      filter: brightness(.5);
+      background-color: rgba(0, 63, 87,.25);
+      background-blend-mode:screen;
+    }
+  }
+  .objective-board{
+    &::before{
+          filter: brightness(.1);
+        }
+      }
+    .objective-board-container{
+      &>div{
+        &::before{
+          filter: brightness(.1);
+          @media screen and (max-width: 911px) {
+            filter: brightness(.5);
+          }
+        }
+      }
+    }
+  .objective-board-content{
+    &::-webkit-scrollbar-thumb {
+        background: rgb(0, 57, 80);
+        border-radius: 24px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 57, 80,.3);
+    }
+  }
 }
 
 *, *::before, *::after {
@@ -58,7 +128,7 @@ table {
 
 .objective-board-content{
   margin-right: 6px;
-  margin-top: 3.4rem;
+  margin-top: 3.6rem;
   margin-bottom: 6px;
   overscroll-behavior: contain;
   &::-webkit-scrollbar {
@@ -79,6 +149,7 @@ html{
   font-family: 'Caveat', cursive;
   font-size: 10px;
   font-weight: bold;
+  color: var(--fontColor);
   @media screen and (max-width: 498px) {
     font-size: 8px;
   }
@@ -92,7 +163,7 @@ body *{
   height: 100vh;
   width: 100vw;
   position:relative;
-  padding: 36px;
+  padding: 24px 12px;
   transition: transform .3s ease-in 0s;
   overscroll-behavior: contain;
   &::before{
@@ -103,7 +174,7 @@ body *{
     height: 100%;
     width: 100%;
     filter: brightness(25%) grayscale(30%);
-    background-image: url("./assets/wood.jpg");
+    background-image: var(--backgroundImage);
     background-size: cover;
     z-index: -1;
   }
@@ -132,7 +203,7 @@ body *{
   grid-template-rows: auto 1fr;
   grid-template-areas: "evidence1 board"
   "evidence2 board";
-  gap: 24px;
+  gap: 12px;
   height: 100%;
   max-width: 1800px;
   margin:auto;
@@ -147,7 +218,7 @@ body *{
       left:0;
       height: 100%;
       width: 100%;
-      background-image: url("./assets/cork.jpg");
+      background-image: var(--boardImage);
       // background-color: #C69B6F;
       background-size: cover;
       z-index: -1;
@@ -185,7 +256,7 @@ body *{
       width: 100%;
       &::before{
         background-size: 100%;
-        background-color: #C69B6F;
+        background-color: var(--mobileBGColor);
         background-image: none;
       }
     }
@@ -196,7 +267,7 @@ body *{
       padding: 12px;
       &::before{
         background-size: 100%;
-        background-color: #C69B6F;
+        background-color: var(--mobileBGColor);
         background-image: none;
         border-radius: 0px;
       }
@@ -218,7 +289,7 @@ body *{
       padding: 6px;
       &::before{
         background-size: 100%;
-        background-color: #C69B6F;
+        background-color: var(--mobileBGColor);
         background-image: none;
         border-radius: 0px;
       }
@@ -238,10 +309,10 @@ body *{
     left:0;
     height: 100%;
     width: 100%;
-    background-image: url("./assets/cork.jpg");
+    background-image: var(--boardImage);
     background-size: cover;
     z-index: -1;
-    background-color: #daaa7a;
+    background-color: var(--mobileBGColorLighter);
     background-image: none;
   }
   .sticky-remover{
@@ -251,12 +322,12 @@ body *{
     bottom: -34px;
     left: 50%;
     transform: translateX(-50%) skew(15deg);
-    background-image: url("./assets/cork.jpg");
+    background-image: var(--boardImage);
     background-size: cover;
     cursor: pointer;
     user-select: none;
     text-align: center;
-    background-color: #daaa7a;
+    background-color: var(--mobileBGColorLighter);
     background-image: none;
   }
   @media screen and (max-width: 911px) {
@@ -328,7 +399,7 @@ body *{
       }
       &.not-possible{
         pointer-events: none;
-        color:rgba(0, 0, 0, .25);
+        color:var(--tooltipColor);
       }
       label{
         padding: 6px 12px;
@@ -365,12 +436,14 @@ body *{
         &.checked{
           &::before{
             background-image: url("./assets/checked.png");
+            background-image: url("./assets/checkedDark.png");
             transform: translate(-50%,-50%) scaleY(1.2) scaleX(1.1);
           }
         }
         &.eliminated{
           &::before{
             background-image: url("./assets/eliminated.png");
+            background-image: url("./assets/eliminatedDark.png");
             transform: translate(-50%,-50%) rotateZ(-1deg);
             background-size: 100% 6px;
             background-repeat: no-repeat;
@@ -408,13 +481,16 @@ body *{
         font-family: 'Pangolin', cursive;
         bottom: -12px;
         left: 36px;
-        color: rgba(0, 0, 0,.5);
+        color: var(--tooltipColor);
         font-style: italic;
         user-select: none;
         pointer-events: none;
         @media screen and (max-width: 498px) {
           bottom: -6px;
         }
+      }
+      &.expert{
+        margin-bottom: 12px;
       }
     }
     .ghost-speed-container{
@@ -424,7 +500,7 @@ body *{
       grid-template-areas: "header header header"
       "slow normal fast";
       row-gap: 20px;
-      margin-top: 12px;
+      // margin-top: 12px;
       .ghost-speed-header{
         font-size: 3.2em;
         transform: skew(15deg);
@@ -454,7 +530,7 @@ body *{
       font-weight: bold;
       font-size: 2.4rem;
       transform: skew(15deg);
-      color: black;
+      color: var(--fontColor);
       cursor: pointer;
     }
   }
@@ -499,7 +575,7 @@ body *{
 .objective-board-content{
   display: grid;
   gap: 24px;
-  height: calc(100% - 32px);
+  height: calc(100% - 40px);
   width: calc(100% - 6px);
   overflow-y: auto;
   align-items: flex-start;
@@ -509,9 +585,9 @@ body *{
     position: absolute;
     font-family: 'Pangolin', cursive;
     font-size: 2.2rem;
-    left: 6px;
-    top: 6px;
-    color: var(--paperColor);
+    left: 8px;
+    top: 8px;
+    color: var(--tipColor);
     text-shadow: 5px 5px 3px rgba(0,0,0,0.7);
   }
   @media screen and (max-width: 911px) {
@@ -531,6 +607,13 @@ body *{
   padding: 36px;
   padding-top: 6px;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  &.expert{
+    @media screen and (min-width: 1310px) {
+    padding: 12px;
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    gap:12px;
+    }
+  }
   @media screen and (max-width: 1309px) {
     padding: 12px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -553,6 +636,7 @@ body *{
   padding-bottom: 12px;
   display: grid;
   gap: 20px;
+  min-height: 85px;
   grid-template-areas: "ghostname evidence"
   "expert expert"
   "secondary secondary"
@@ -616,7 +700,7 @@ body *{
       justify-items: center;
       gap: 8px;
       &:nth-of-type(2){
-        transform: translateY(6px);
+        // transform: translateY(6px);
       }
     }
     img{
@@ -639,7 +723,7 @@ body *{
       gap: 12px;
       li{
         font-size: 1.8rem;
-        color: rgb(48, 48, 48);
+        color: var(----listColor);
         b{
           font-size: 1.8rem;
           color:#f01246;
@@ -675,7 +759,7 @@ body *{
       gap: 12px;
       li{
         font-size: 1.4rem;
-        color: rgb(64, 64, 64);
+        color: var(--listTertiaryColor);
         b{
           font-size: 1.8rem;
           color: red;
@@ -693,7 +777,7 @@ body *{
     grid-area: more;
     text-align: end;
     font-size: 1.4rem;
-    color: rgb(64, 64, 64);
+    color: var(----listTertiaryColor);
     font-family: 'Pangolin', cursive;
     font-weight: 400;
     cursor: pointer;
@@ -716,24 +800,59 @@ body *{
       display:none;
     }
     .ghost-name{
-      color:rgba(0, 0, 0,.25);
+      color: var(--tooltipColor);
     }
   }
   .ghost-secondary,.ghost-expert,.ghost-tertiary{
-    padding-right: 36px;
+    padding-right: 42px;
   }
   .ghost-more{
     position: absolute;
-    right: -12px;
+    right: -8px;
     bottom: -12px;
   }
-  @media screen and (min-width: 1310px){
-    .ghost-name,.ghost-evidence{
-      transform: translateY(-6px);
-      margin-bottom: -6px;
+  &.expert{
+    gap: 6px;
+    padding: 12px;
+    .ghost-name{
+      font-size: 2.2rem;
+      letter-spacing: .2rem;
+      transform: translateX(-3px) translateY(-6px);
     }
-}
-  @media screen and (max-width: 911px),(max-width: 1309px) {
+    .ghost-evidence{
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      grid-auto-flow: row;
+      gap: 4px;
+      white-space: nowrap;
+      .ghost-evidence-display{
+        transform: translateY(0px);
+        &:nth-of-type(2){
+          transform: translateY(0px);
+        }
+      }
+      img{
+        width: 25px;
+        display: none;
+      }
+      .evidence-text{
+        font-size: 1.1rem;
+        color: #b9a102;
+      }
+    }
+    .ghost-secondary,.ghost-expert{
+      ul{
+        li{
+          font-size: 1.4rem;
+          b{
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1309px) {
     gap: 6px;
     padding: 12px;
     .ghost-name{
