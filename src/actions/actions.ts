@@ -16,6 +16,11 @@ export const increment = () => ({
     payload: arr
   });
 
+  export const updateEliminated = (arr: Array<boolean>) => ({
+    type: 'updateEliminated',
+    payload: arr
+  });
+
   export const updateGuess = (arr: Array<string>) => ({
     type: 'updateGuess',
     payload: arr

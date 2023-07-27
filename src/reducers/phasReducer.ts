@@ -2,6 +2,7 @@ import { AnyAction } from 'redux';
 
 const initialState = {
   evidenceValues: [false,false,false,false,false,false,false],
+  eliminatedValues: [false,false,false,false,false,false,false],
   possibleValues: [true,true,true,true,true,true,true],
   guessValues:[''],
   toggleSticky: true,
@@ -14,6 +15,8 @@ const phasReducer = (state = initialState, action: AnyAction) => {
       return { ...state, evidenceValues: action.payload };
     case 'updatePossible':
       return { ...state, possibleValues: action.payload };
+    case 'updateEliminated':
+      return { ...state, eliminatedValues: action.payload };
     case 'updateGuess':
       return { ...state, guessValues: action.payload };
     case 'toggleSticky':

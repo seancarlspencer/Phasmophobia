@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, updateEvidence } from '../actions/actions';
+import { increment, decrement, updateEvidence, updateEliminated } from '../actions/actions';
+import FilterBox from './FilterBox';
 
 const Evidence = () => {
-  const {evidenceValues,possibleValues} = useSelector((state: any) => 
+  const {evidenceValues,possibleValues,eliminatedValues} = useSelector((state: any) => 
   ({evidenceValues:state.phas.evidenceValues,
-    possibleValues:state.phas.possibleValues}));
+    possibleValues:state.phas.possibleValues,
+    eliminatedValues:state.phas.eliminatedValues,
+  }));
   const dispatch = useDispatch();
-
-  const handleIncrement = () => {
-    dispatch(increment());
-  };
-
-  const handleDecrement = () => {
-    dispatch(decrement());
-  };
-
-  useEffect(()=>{
-    console.log(possibleValues);
-  })
+  let evidenceArrayDisplay = [
+    "EMF Level 5",
+    "D.O.T.S",
+    "Fingerprints",
+    "Ghost Orbs",
+    "Ghost Writing",
+    "Spirit Box",
+    "Freezing Temperatures",
+  ]
 
   const handleEvidence = () => {
     let evidenceArray = document.querySelectorAll<HTMLInputElement>(".evidence-filters .paper-filters input");
@@ -36,6 +36,7 @@ const Evidence = () => {
       evidence.checked=false;
     })
     dispatch(updateEvidence([false,false,false,false,false,false,false]));
+    dispatch(updateEliminated([false,false,false,false,false,false,false]));
   };
 
   return (
@@ -44,34 +45,12 @@ const Evidence = () => {
         E<span>VIDENCE</span>
       </div>
       <div className="paper-filters">
-        <div className={`filter-box${possibleValues[0] ? "" : " not-possible"}`}>
-          <img src={require("../assets/check.png")} className={evidenceValues[0] ? "checked" : ""}/>
-          <input onChange={handleEvidence} type="checkbox" id="e1"/><label htmlFor="e1"><span>EMF Level 5</span></label>
-        </div>
-        <div className={`filter-box${possibleValues[1] ? "" : " not-possible"}`}>
-          <img src={require("../assets/check.png")} className={evidenceValues[1] ? "checked" : ""}/>
-          <input onChange={handleEvidence} type="checkbox" id="e2"/><label htmlFor="e2"><span>D.O.T.S</span></label>
-        </div>
-        <div className={`filter-box${possibleValues[2] ? "" : " not-possible"}`}>
-          <img src={require("../assets/check.png")} className={evidenceValues[2] ? "checked" : ""}/>
-          <input onChange={handleEvidence} type="checkbox" id="e3"/><label htmlFor="e3"><span>Fingerprints</span></label>
-        </div>
-        <div className={`filter-box${possibleValues[3] ? "" : " not-possible"}`}>
-          <img src={require("../assets/check.png")} className={evidenceValues[3] ? "checked" : ""}/>
-          <input onChange={handleEvidence} type="checkbox" id="e4"/><label htmlFor="e4"><span>Ghost Orbs</span></label>
-        </div>
-        <div className={`filter-box${possibleValues[4] ? "" : " not-possible"}`}>
-          <img src={require("../assets/check.png")} className={evidenceValues[4] ? "checked" : ""}/>
-          <input onChange={handleEvidence} type="checkbox" id="e5"/><label htmlFor="e5"><span>Ghost Writing</span></label>
-        </div>
-        <div className={`filter-box${possibleValues[5] ? "" : " not-possible"}`}>
-          <img src={require("../assets/check.png")} className={evidenceValues[5] ? "checked" : ""}/>
-          <input onChange={handleEvidence} type="checkbox" id="e6"/><label htmlFor="e6"><span>Spirit Box</span></label>
-        </div>
-        <div className={`filter-box last${possibleValues[6] ? "" : " not-possible"}`}>
-          <img src={require("../assets/check.png")} className={evidenceValues[6] ? "checked" : ""}/>
-          <input onChange={handleEvidence} type="checkbox" id="e7"/><label htmlFor="e7"><span>Freezing Temperatures</span></label>
-        </div>
+        {evidenceArrayDisplay.map((ev,index)=>{
+          return <FilterBox
+            displayText={ev}
+            index={index}
+          />
+        })}
       </div>
       <div className="paper-reset">
         <button className="paper-reset-button" onClick={handleReset}>Reset</button>
