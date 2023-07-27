@@ -306,6 +306,8 @@ body *{
   .paper-header{
     font-size: 3.2em;
     transform: skew(15deg);
+    user-select: none;
+    pointer-events: none;
     span{
       font-size: 2.4rem;
     }
@@ -395,6 +397,7 @@ body *{
       img{
         width: 25px;
         opacity: 0;
+        user-select: none;
         &.checked{
           opacity: 1;
         }
@@ -407,6 +410,8 @@ body *{
         left: 36px;
         color: rgba(0, 0, 0,.5);
         font-style: italic;
+        user-select: none;
+        pointer-events: none;
         @media screen and (max-width: 498px) {
           bottom: -6px;
         }
@@ -419,10 +424,13 @@ body *{
       grid-template-areas: "header header header"
       "slow normal fast";
       row-gap: 20px;
+      margin-top: 12px;
       .ghost-speed-header{
         font-size: 3.2em;
         transform: skew(15deg);
         grid-area: header;
+        user-select: none;
+        pointer-events: none;
         span{
           font-size: .8em;
         }
@@ -439,6 +447,7 @@ body *{
   .paper-reset{
     justify-self: flex-end;
     margin-top: 18px;
+    user-select: none;
     .paper-reset-button{
       background:none;
       border: none;
@@ -689,6 +698,7 @@ body *{
     font-weight: 400;
     cursor: pointer;
     padding: 12px 6px;
+    user-select: none;
     &.hide{
       margin-top: 24px;
     }

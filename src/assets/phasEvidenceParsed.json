@@ -245,7 +245,7 @@
         "secondaryEvidence": [
             "<b class=ability>Jacked Up:</b> While hunting it has an <b>increased movement speed</b> when it touches <b class=equipment>electronic player equipment</b> (held or on the floor)",
             "<b class=equipment>Head mounted cameras, motion sensors and sound sensors</b> do not count towards the speed boost",
-            "Can initiate a hunt at an avarage sanity of 65% if there is electrical equipment nearby"
+            "Can initiate a hunt at an average sanity of 65% if there is electrical equipment nearby"
         ],
         "tertiaryEvidence": [
             "Abilities only affected by player equipment and not location electrics like TVs or lights",
@@ -373,7 +373,7 @@
             "Use <b class=equipment>Device</b>/Talk when <b>Hiding</b> and not in <b>line-of-sight</b>"
         ],
         "secondaryEvidence": [
-            "Can initiate an early hunt at an avarage sanity of 80% if players are <b>talking nearby</b>",
+            "Can initiate an early hunt at an average sanity of 80% if players are <b>talking nearby</b>",
             "During a hunt it <b>only can hear sounds</b> in a radius of 2m"
         ],
         "tertiaryEvidence": [
