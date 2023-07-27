@@ -399,6 +399,18 @@ body *{
           opacity: 1;
         }
       }
+      .recommended{
+        position: absolute;
+        font-size: 1.2rem;
+        font-family: 'Pangolin', cursive;
+        bottom: -12px;
+        left: 36px;
+        color: rgba(0, 0, 0,.5);
+        font-style: italic;
+        @media screen and (max-width: 498px) {
+          bottom: -6px;
+        }
+      }
     }
     .ghost-speed-container{
       grid-template-columns: 1fr 1.3fr 1fr;

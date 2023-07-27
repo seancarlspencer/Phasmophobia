@@ -26,6 +26,7 @@ const Extras = () => {
         <div className={`filter-box`}>
           <img src={require("../assets/check.png")} className={toggleExpert ? "checked" : ""}/>
           <input onChange={handleToggleExpertAction} type="checkbox" id="expert"/><label className="extra-input" htmlFor="expert"><span className="skew">Expert Mode</span></label>
+          <div className="recommended">(Recommended for Nightmare/Insane Mode)</div>
         </div>
         <div className="ghost-speed-container">
           <div className="ghost-speed-header">
@@ -38,9 +39,6 @@ const Extras = () => {
             />
           })}
         </div>
-      </div>
-      <div className="paper-reset">
-        {/* <button className="paper-reset-button" onClick={handleReset}>Reset</button> */}
       </div>
     </div>
   );
