@@ -21,19 +21,19 @@ const FilterBox:React.FC<FilterBoxType> = ({index,displayText}) => {
     if(!evArray[index] && !elArray[index]){
       // Neither Checked nor eliminated
       evArray[index] = true;
-      console.log("Checking")
+      // console.log("Checking")
     }
     else if (evArray[index]){
       // Currently Checked
       evArray[index] = false;
       elArray[index] = true;
-      console.log("Eliminating")
+      // console.log("Eliminating")
     }
     else if (elArray[index]){
       // Currently Eliminated
       evArray[index] = false;
       elArray[index] = false;
-      console.log("Unchecking")
+      // console.log("Unchecking")
     }
     dispatch(updateEvidence(evArray));
     dispatch(updateEliminated(elArray));

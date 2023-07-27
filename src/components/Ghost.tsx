@@ -54,7 +54,6 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
   }
 
   const handleToggleGuess = () => {
-    console.log(toggleGuess);
     setGuess(toggleGuess => !toggleGuess);
   }
 

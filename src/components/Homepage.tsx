@@ -9,21 +9,6 @@ import GhostSpeed from './GhostSpeed';
 const Homepage = () => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
   const [toggleSticky,setToggleSticky] = useState(false);
-  const dispatch = useDispatch();
-
-  const handleToggleSticky = () => {
-    setToggleSticky(toggleSticky => !toggleSticky);
-    var offsetHeight = document.querySelector<HTMLDivElement>('.evidence');
-    var objectiveBoard = document.querySelector<HTMLDivElement>('.homepage');
-    if (offsetHeight && objectiveBoard && !toggleSticky){
-      console.log(offsetHeight.offsetHeight);
-      objectiveBoard.style.transform = `translateY(${offsetHeight.offsetHeight}px)`;
-    }
-    else if (offsetHeight && objectiveBoard && toggleSticky){
-      console.log(offsetHeight.offsetHeight);
-      objectiveBoard.style.transform = `translateY(0px)`;
-    }
-  }
 
   return (
     <div className={`homepage${toggleSticky ? " hide" : ""}`}>

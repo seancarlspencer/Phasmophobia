@@ -13,11 +13,11 @@ const EvidenceMobile = () => {
     var offsetHeight = document.querySelector<HTMLDivElement>('.evidence');
     var objectiveBoard = document.querySelector<HTMLDivElement>('.homepage');
     if (offsetHeight && objectiveBoard && toggleSticky){
-      console.log(offsetHeight.offsetHeight);
+      // console.log(offsetHeight.offsetHeight);
       objectiveBoard.style.transform = `translateY(${offsetHeight.offsetHeight}px)`;
     }
     else if (offsetHeight && objectiveBoard && !toggleSticky){
-      console.log(offsetHeight.offsetHeight);
+      // console.log(offsetHeight.offsetHeight);
       objectiveBoard.style.transform = `translateY(0px)`;
     }
   });
@@ -28,11 +28,11 @@ const EvidenceMobile = () => {
     var offsetHeight = document.querySelector<HTMLDivElement>('.evidence');
     var objectiveBoard = document.querySelector<HTMLDivElement>('.homepage');
     if (offsetHeight && objectiveBoard && !toggleSticky){
-      console.log(offsetHeight.offsetHeight);
+      // console.log(offsetHeight.offsetHeight);
       objectiveBoard.style.transform = `translateY(${offsetHeight.offsetHeight}px)`;
     }
     else if (offsetHeight && objectiveBoard && toggleSticky){
-      console.log(offsetHeight.offsetHeight);
+      // console.log(offsetHeight.offsetHeight);
       objectiveBoard.style.transform = `translateY(0px)`;
     }
   }

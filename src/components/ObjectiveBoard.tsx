@@ -17,7 +17,7 @@ const ObjectiveBoard = () => {
 
   useEffect(()=>{
     let possibleValues = [false,false,false,false,false,false,false];
-    console.log("updating ghosts");
+    // console.log("updating ghosts");
     // Skip Speed Check if no speed selected
     for(let x=0;x<evidenceValues.length;x++){
       // Determines which ghosts are possible

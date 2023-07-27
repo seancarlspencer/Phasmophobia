@@ -21,10 +21,7 @@ const phasReducer = (state = initialState, action: AnyAction) => {
     case 'updateSpeed':
       let checkSpeedUpdate = false
       for(let i=0;i<action.payload.length;i++){
-        console.log("Checking speed");
-        console.log(action.payload);
         if(action.payload[i]){
-          console.log("Speed found!");
           // If speed selected, check speed
           checkSpeedUpdate=true;
         }
