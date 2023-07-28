@@ -45,7 +45,7 @@ table {
 	border-spacing: 0;
 }
 
-:root{
+:root[data-theme="light"] {
   --paperColor: #FFFBCF;
   background-color: #22180D;
   --fontColor: black;
@@ -62,7 +62,7 @@ table {
   }
 }
 
-:root[data-theme="dark"] {
+:root {
   --paperColor: rgb(0, 63, 87);
   --paperColor: rgb(0, 57, 80);
   --fontColor: rgb(198, 198, 222);
@@ -796,11 +796,15 @@ body *{
   }
   &.eliminated{
     gap: 0px;
+    min-height: 0px;
+    grid-template-areas: "ghostname ghostname" !important;
+    grid-template-rows: 1fr !important;
     .ghost-evidence,.ghost-secondary,.ghost-tertiary,.ghost-more,.ghost-expert{
       display:none;
     }
     .ghost-name{
       color: var(--tooltipColor);
+      transform: none !important;
     }
   }
   .ghost-secondary,.ghost-expert,.ghost-tertiary{

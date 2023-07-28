@@ -11,8 +11,13 @@ const Homepage = () => {
   const [toggleSticky,setToggleSticky] = useState(false);
 
   useEffect(()=>{
-    document.documentElement.setAttribute('data-theme', 'dark');
-  },[])
+    if (localStorage.getItem("lightMode")=="true"){
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+    else{
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  },)
 
   return (
     <div className={`homepage${toggleSticky ? " hide" : ""}`}>

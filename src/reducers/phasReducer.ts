@@ -5,9 +5,10 @@ const initialState = {
   eliminatedValues: [false,false,false,false,false,false,false],
   possibleValues: [true,true,true,true,true,true,true],
   toggleSticky: true,
-  toggleExpert: localStorage.getItem("expert")=="true",
+  toggleExpert: localStorage.getItem("expert")=="true" || localStorage.getItem("expert")==null,
   speedValues: [false,false,false],
-  checkSpeed: false
+  checkSpeed: false,
+  lightMode: localStorage.getItem("lightMode")=="true",
 };
 
 const phasReducer = (state = initialState, action: AnyAction) => {
@@ -33,6 +34,15 @@ const phasReducer = (state = initialState, action: AnyAction) => {
     case 'toggleExpert':
       localStorage.setItem("expert",`${!state.toggleExpert}`)
       return { ...state, toggleExpert: !state.toggleExpert };
+    case 'lightMode':
+      localStorage.setItem("lightMode",`${!state.lightMode}`)
+      if(!state.lightMode){
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+      else{
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+      return { ...state, lightMode: !state.lightMode };
     default:
       return state;
   }

@@ -39,3 +39,7 @@ export const increment = () => ({
     type: 'toggleExpert'
   });
   
+  export const handleLightMode = () => ({
+    type: 'lightMode'
+  });
+  

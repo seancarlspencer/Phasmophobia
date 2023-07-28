@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, updateEvidence, handleToggleExpert } from '../actions/actions';
+import { increment, decrement, updateEvidence, handleToggleExpert, handleLightMode } from '../actions/actions';
 import GhostSpeed from './GhostSpeed';
 
 const Extras = () => {
-  const {toggleExpert} = useSelector((state: any) => 
-  ({toggleExpert:state.phas.toggleExpert}));
+  const {toggleExpert,lightMode} = useSelector((state: any) => 
+  ({
+    toggleExpert:state.phas.toggleExpert,
+    lightMode:state.phas.lightMode,
+  }));
   const dispatch = useDispatch();
   let speedDisplayValues = ["Slow","Normal","Fast"]
 
 
   useEffect(()=>{
-  })
+    console.log(lightMode);
+  },[lightMode])
 
   const handleToggleExpertAction = () =>{
+    console.log(lightMode);
     dispatch(handleToggleExpert());
+  }
+
+  const handleLightModeAction = () =>{
+    dispatch(handleLightMode());
   }
 
   return (
@@ -32,9 +41,14 @@ const Extras = () => {
           })}
         </div>
         <div className={`filter-box expert`}>
-          <img src={require("../assets/check.png")} className={toggleExpert ? "checked" : ""}/>
-          <input onChange={handleToggleExpertAction} type="checkbox" id="expert"/><label className="extra-input" htmlFor="expert"><span className="skew">Expert Mode</span></label>
-          <div className="recommended">(Recommended for Nightmare/Insane Mode)</div>
+          <img src={require("../assets/check.png")} className={!toggleExpert ? "checked" : ""}/>
+          <input onChange={handleToggleExpertAction} type="checkbox" id="expert"/><label className="extra-input" htmlFor="expert"><span className="skew">Beginner Mode</span></label>
+          <div className="recommended">(Recommended for New Players)</div>
+        </div>
+        <div className={`filter-box expert`}>
+          <img src={require("../assets/check.png")}/>
+          <input onChange={handleLightModeAction} type="checkbox" id="light"/><label className="extra-input" htmlFor="light"><span className="skew">{lightMode ? "Back to the Asylum": "Back to the Van"}</span></label>
+          <div className="recommended">{lightMode ? "(Dark Mode)": "(Light Mode)"}</div>
         </div>
       </div>
     </div>
