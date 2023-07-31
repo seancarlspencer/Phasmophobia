@@ -5,7 +5,7 @@
         "speedArray":[false,true,false],
         "expertMode":[
             "<b class=ability>Solo Target Test</b> (target in building)",
-            "<b class=equipment>Parabolic Microphone</b> Wail",
+            "<b class=equipment>Parabolic Microphone</b> Wail (33% chance)",
             "<b>Singing Events</b> Often"
         ],
         "secondaryEvidence": [
@@ -59,7 +59,8 @@
         "speedArray":[false,true,false],
         "expertMode":[
             "<b class=equipment>Video</b> <b class=evidence-highlight>D.O.T.S.</b> only (No players in room)",
-            "<b>Ghost Room</b> is the Same, no <b>Long-distance Roam.</b>"
+            "<b>Ghost Room</b> is the Same, no <b>Long-distance Roam.</b>",
+            "Guaranteed <b class=evidence-highlight>D.O.T.S.</b> in <b>Nightmare/Insane</b>"
         ],
         "secondaryEvidence": [
             "<b class=evidence-highlight>D.O.T.S.</b> only visible through a <b class=equipment>video cam</b> and no players in the room",
@@ -75,7 +76,8 @@
         "speedArray":[true,true,true],
         "expertMode":[
             "Fast in <b class=ability>cold rooms.</b>  Slow in <b>warmer rooms.</b>",
-            "Model has <b>Breath</b> (Breaker off)"
+            "Model has <b>Breath</b> (Breaker off)",
+            "Guaranteed <b class=evidence-highlight>Freezing</b> in Nightmare/Insane"
         ],
         "secondaryEvidence": [
             "<b>Walking speed</b> is affected by room <b class=evidence-highlight>temperature</b> when hunting.  The colder it is, the faster it moves.",
@@ -92,9 +94,9 @@
         "evidenceArray":[true,false,true,false,false,false,true],
         "speedArray":[false,true,true],
         "expertMode":[
-            "Fast <b>Chaser</b>",
+            "Fast <b>Chaser</b> (breaker on)",
             "<b class=equipment>EMF</b> at Breaker",
-            "Can't turn off <b>breaker</b> (rare)"
+            "Can only <b>turn off breaker</b> by <b>overloading</b>"
         ],
         "secondaryEvidence": [
             "During a hunt, it travels <b>faster</b> (2.1m/s) when <b>chasing</b> a target until a distance of 10m",
@@ -335,7 +337,7 @@
     },
     "The Mimic": {
         "index":20,
-        "evidenceArray":[false,false,true,false,false,true,true],
+        "evidenceArray":[false,false,true,true,false,true,true],
         "speedArray":[true,true,true],
         "expertMode":[
             "<b class=evidence-highlight>Ghost Orbs</b> Fake Evidence",

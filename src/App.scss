@@ -45,6 +45,10 @@ table {
 	border-spacing: 0;
 }
 
+:root{
+  --normalFontFam: 'Pangolin', cursive;
+}
+
 :root[data-theme="light"] {
   --paperColor: #FFFBCF;
   background-color: #22180D;
@@ -382,6 +386,19 @@ body *{
     span{
       font-size: 2.4rem;
     }
+    select,select *,select::after{
+      transform: skew(-15deg);
+      user-select:all;
+      pointer-events: all;
+      background: var(--mobileBGColor);
+      color: var(--fontColor);
+      border-radius: 6px;
+      margin-left: 16px;
+      padding-right: 4px;
+      font-family: var(--normalFontFam);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
   }
   .paper-filters{
     display: grid;
@@ -589,6 +606,7 @@ body *{
     top: 8px;
     color: var(--tipColor);
     text-shadow: 5px 5px 3px rgba(0,0,0,0.7);
+    user-select: none;
   }
   @media screen and (max-width: 911px) {
     height: calc(100% - 24px);

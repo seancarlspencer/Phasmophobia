@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, updateEvidence, updateEliminated, updateSpeed } from '../actions/actions';
+import { increment, decrement, updateEvidence, updateEliminated, updateSpeed, updateEvidenceNumber } from '../actions/actions';
 import FilterBox from './FilterBox';
 
 const Evidence = () => {
-  const {evidenceValues,possibleValues,eliminatedValues} = useSelector((state: any) => 
-  ({evidenceValues:state.phas.evidenceValues,
-    possibleValues:state.phas.possibleValues,
-    eliminatedValues:state.phas.eliminatedValues,
+  const {evidenceNumber} = useSelector((state: any) => 
+  ({evidenceNumber:state.phas.evidenceNumber
   }));
+  const [stateEvidenceNum, updateStateEvidenceNum] = useState(evidenceNumber);
   const dispatch = useDispatch();
   let evidenceArrayDisplay = [
     "EMF Level 5",
@@ -20,14 +19,9 @@ const Evidence = () => {
     "Freezing Temperatures",
   ]
 
-  const handleEvidence = () => {
-    let evidenceArray = document.querySelectorAll<HTMLInputElement>(".evidence-filters .paper-filters input");
-    let evidenceBoolArray: boolean[] = [];
-    evidenceArray.forEach((evidence)=>{
-      evidenceBoolArray.push(evidence.checked);
-    })
-    // console.log(evidenceBoolArray);
-    dispatch(updateEvidence(evidenceBoolArray));
+  const handleEvidenceNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    updateStateEvidenceNum(parseInt(e.target.value));
+    dispatch(updateEvidenceNumber(parseInt(e.target.value)));
   };
 
   const handleReset = () => {
@@ -44,6 +38,12 @@ const Evidence = () => {
     <div className="evidence-paper evidence-filters">
       <div className="paper-header">
         E<span>VIDENCE</span>
+        <select defaultValue={evidenceNumber.toString()} onChange={(e)=>handleEvidenceNumber(e)} id="evNum" value={stateEvidenceNum}>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
       </div>
       <div className="paper-filters">
         {evidenceArrayDisplay.map((ev,index)=>{

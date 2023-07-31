@@ -42,4 +42,9 @@ export const increment = () => ({
   export const handleLightMode = () => ({
     type: 'lightMode'
   });
+
+  export const updateEvidenceNumber = (num: number) => ({
+    type: 'evidenceNumber',
+    payload: num
+  });
   
