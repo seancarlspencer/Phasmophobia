@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, updateEvidence, updateEliminated } from '../actions/actions';
+import { updateEvidence, updateEliminated } from '../actions/actions';
 
 type FilterBoxType = {
   index: number,
-  displayText: string
+  displayText: string,
+  aria: string
 }
 
-const FilterBox:React.FC<FilterBoxType> = ({index,displayText}) => {
+const FilterBox:React.FC<FilterBoxType> = ({index,displayText,aria}) => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
   const possibleValues = useSelector((state: any) => state.phas.possibleValues);
   const eliminatedValues = useSelector((state: any) => state.phas.eliminatedValues);
@@ -55,11 +56,8 @@ const FilterBox:React.FC<FilterBoxType> = ({index,displayText}) => {
 
   return (
     <div className={`filter-box${possibleValues[index] ? "" : " not-possible"}`}>
-      {/* {evidenceValues[index] ? <img src={require("../assets/check.png")} className="checked"/> :
-      eliminatedValues[index] ? <img src={require("../assets/ghost.png")} className="checked"/> :
-      <img src={require("../assets/check.png")} className=""/>} */}
-      <input onClick={handleEvidence} type="checkbox" id={`e${index}`}/><label className={`${evidenceValues[index] ? "checked" :
-      eliminatedValues[index] ? "eliminated" : ""}`}  htmlFor={`e${index}`}><span>{displayText}</span></label>
+      <input onClick={handleEvidence} type="checkbox" id={`e${index}-${aria}`}/><label className={`${evidenceValues[index] ? "checked" :
+      eliminatedValues[index] ? "eliminated" : ""}`}  htmlFor={`e${index}-${aria}`}><span>{displayText}</span></label>
     </div>
   );
 };

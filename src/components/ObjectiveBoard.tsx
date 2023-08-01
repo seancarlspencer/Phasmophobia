@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, updatePossible } from '../actions/actions';
-import Evidence from './Evidence';
+import { updatePossible } from '../actions/actions';
 import phasGhosts from '../assets/phasEvidenceParsed.json';
 import Ghost from './Ghost';
 
@@ -65,10 +64,10 @@ const ObjectiveBoard = () => {
       </div>
       <div className={`objective-board-ghost-container${toggleExpert ? " expert" : ""}`}>
       {Object.keys(phasGhosts).sort((a, b) => phasGhosts[a as keyof typeof phasGhosts]["index"] > phasGhosts[b as keyof typeof phasGhosts]["index"] ? 1 : -1).map((ghost:string)=>{
-        if(ghost == "Hantu" || ghost == "Goryo"){
+        if(ghost === "Hantu" || ghost === "Goryo"){
           let guaranteedEvCheck = evidenceValues.filter((x: any) => x).length;
-          if(guaranteedEvCheck == evidenceNumber && evidenceNumber!=0){
-            if(ghost == "Hantu"){
+          if(guaranteedEvCheck === evidenceNumber && evidenceNumber!=0){
+            if(ghost === "Hantu"){
               if (evidenceValues[6]){
                 return <Ghost
                 key={ghost}
@@ -84,7 +83,7 @@ const ObjectiveBoard = () => {
               />;
               }
             }
-            if(ghost == "Goryo"){
+            if(ghost === "Goryo"){
               if (evidenceValues[1]){
                 return <Ghost
                 key={ghost}

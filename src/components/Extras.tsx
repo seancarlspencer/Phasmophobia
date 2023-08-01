@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, updateEvidence, handleToggleExpert, handleLightMode } from '../actions/actions';
+import {handleToggleExpert, handleLightMode } from '../actions/actions';
 import GhostSpeed from './GhostSpeed';
 
 const Extras = () => {
@@ -33,12 +32,12 @@ const Extras = () => {
           })}
         </div>
         <div className={`filter-box expert`}>
-          <img src={require("../assets/check.png")} className={!toggleExpert ? "checked" : ""}/>
+          <img alt="checkmark" src={require("../assets/check.png").default} className={!toggleExpert ? "checked" : ""}/>
           <input onChange={handleToggleExpertAction} type="checkbox" id="expert"/><label className="extra-input" htmlFor="expert"><span className="skew">Beginner Mode</span></label>
           <div className="recommended">(Recommended for New Players)</div>
         </div>
         <div className={`filter-box expert`}>
-          <img src={require("../assets/check.png")}/>
+          <img alt="checkmark" src={require("../assets/check.png").default}/>
           <input onChange={handleLightModeAction} type="checkbox" id="light"/><label className="extra-input" htmlFor="light"><span className="skew">{lightMode ? "Back to the Asylum": "Back to the Van"}</span></label>
           <div className="recommended">{lightMode ? "(Dark Mode)": "(Light Mode)"}</div>
         </div>

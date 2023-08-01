@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, handleToggleStickyAction } from '../actions/actions';
+import { handleToggleStickyAction } from '../actions/actions';
 import Evidence from './Evidence';
-import GhostSpeed from './GhostSpeed';
-import ObjectiveBoard from './ObjectiveBoard';
 import Extras from './Extras';
 
 const EvidenceMobile = () => {
@@ -44,7 +42,6 @@ const EvidenceMobile = () => {
     if(!toggleSticky){
       handleToggleSticky(e);
     }
-    var offsetHeight = document.querySelector<HTMLDivElement>('.evidence');
     var objectiveBoard = document.querySelector<HTMLDivElement>('.homepage');
     if(objectiveBoard){
       objectiveBoard.style.transition = "none";
@@ -74,7 +71,7 @@ const EvidenceMobile = () => {
 
   return (
     <div className={`evidence mobile${toggleSticky ? " hide" : ""}`}>
-      {evidenceScreenOn ? <Evidence/> : <Extras />}
+      {evidenceScreenOn ? <Evidence displayType='mobile'/> : <Extras />}
       <div className="sticky-remover-container">
       <div onClick={handleToggleEvidenceScreen} className="evidence-screen-switcher">
         <span>{evidenceScreenOn ? "More Options" : "Back to Evidence"}</span>

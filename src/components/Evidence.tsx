@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, updateEvidence, updateEliminated, updateSpeed, updateEvidenceNumber } from '../actions/actions';
+import { updateEvidence, updateEliminated, updateSpeed, updateEvidenceNumber } from '../actions/actions';
 import FilterBox from './FilterBox';
 import GhostSpeed from './GhostSpeed';
 
-const Evidence = () => {
+type EvidenceType = {
+  displayType: string
+}
+
+const Evidence:React.FC<EvidenceType> = ({displayType}) => {
   const evidenceNumber = useSelector((state: any) => state.phas.evidenceNumber);
   const [stateEvidenceNum, updateStateEvidenceNum] = useState(evidenceNumber);
   const dispatch = useDispatch();
@@ -42,10 +46,10 @@ const Evidence = () => {
       <div className="paper-header">
         E<span>VIDENCE</span>
         <select onChange={(e)=>handleEvidenceNumber(e)} id="evNum" value={stateEvidenceNum}>
-          <option value="3">3 (Default)</option>
-          <option value="2">2 (Nightmare)</option>
-          <option value="1">1 (Insane)</option>
-          <option value="0">0</option>
+          <option value="3" id="evNum-3">3 (Default)</option>
+          <option value="2" id="evNum-2">2 (Nightmare)</option>
+          <option value="1" id="evNum-1">1 (Insane)</option>
+          <option value="0" id="evNum-0">0</option>
         </select>
       </div>
       <div className="paper-filters">
@@ -53,6 +57,7 @@ const Evidence = () => {
           return <FilterBox
             displayText={ev}
             index={index}
+            aria={displayType}
             key={ev}
           />
         })}

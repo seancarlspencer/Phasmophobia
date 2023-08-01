@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, updateEvidence, handleToggleExpert, updateSpeed } from '../actions/actions';
+import {updateSpeed } from '../actions/actions';
 
 type GhostSpeedType = {
   index: number,
@@ -30,8 +30,8 @@ const GhostSpeed:React.FC<GhostSpeedType> = ({index,displayText}) => {
   return (
     <div className="filter-box">
       {speedValues[index]
-      ? <img src={require("../assets/check.png")} className="checked"/>
-      : <img src={require("../assets/check.png")} className=""/>}
+      ? <img alt="checkmark" src={require("../assets/check.png").default} className="checked"/>
+      : <img alt="hidden checkmark" src={require("../assets/check.png").default} className=""/>}
       <input onClick={handleUpdateSpeed} type="checkbox" id={`speed-${index}`}/><label htmlFor={`speed-${index}`}><span>{displayText}</span></label>
     </div>
   );

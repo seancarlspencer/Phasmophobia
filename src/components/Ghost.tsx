@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../actions/actions';
-import Evidence from './Evidence';
 import phasGhosts from '../assets/phasEvidenceParsed.json';
 
 interface GhostInterface{
@@ -14,7 +12,6 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
   const toggleExpert = useSelector((state:any) => state.phas.toggleExpert);
   const [toggleMore,setMore] = useState(false);
   const [toggleGuess,setGuess] = useState(false);
-  const dispatch = useDispatch();
   let imageArray=["emf","dots","fingerprints","orbs","writing","ghost","freezing"];
   let displayArray=["EMF Level 5","D.O.T.S","Fingerprints","Ghost Orbs","Ghost Writing","Spirit Box","Freezing"];
   let displayArrayExpert=["EMF 5","DOTS","Fingerp.","Orbs","Writing","Spirit Box","Freezing"];
@@ -71,15 +68,15 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
       </div>
       <div className="ghost-evidence">
         {phasGhosts[ghostName as keyof typeof phasGhosts]["evidenceArray"].map((evidence,index)=>{
-          if(evidence && index != 3){
+          if(evidence && index !== 3){
             return <div key={index} className="ghost-evidence-display">
-                      <img src={require(`../assets/${imageArray[index]}.png`)}/>
+                      <img alt={imageArray[index]} src={require(`../assets/${imageArray[index]}.png`).default}/>
                       <div className="evidence-text">{toggleExpert ? displayArrayExpert[index] : displayArray[index]}</div>
                     </div>
           }
-          else if(evidence && ghostName!="The Mimic"){
+          else if(evidence && ghostName!=="The Mimic"){
             return <div key={index} className="ghost-evidence-display">
-                    <img src={require(`../assets/${imageArray[index]}.png`)}/>
+                    <img alt={imageArray[index]} src={require(`../assets/${imageArray[index]}.png`).default}/>
                     <div className="evidence-text">{toggleExpert ? displayArrayExpert[index] : displayArray[index]}</div>
                   </div>
           }
