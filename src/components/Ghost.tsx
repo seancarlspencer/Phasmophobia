@@ -71,11 +71,17 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
       </div>
       <div className="ghost-evidence">
         {phasGhosts[ghostName as keyof typeof phasGhosts]["evidenceArray"].map((evidence,index)=>{
-          if(evidence){
+          if(evidence && index != 3){
             return <div key={index} className="ghost-evidence-display">
                       <img src={require(`../assets/${imageArray[index]}.png`)}/>
                       <div className="evidence-text">{toggleExpert ? displayArrayExpert[index] : displayArray[index]}</div>
                     </div>
+          }
+          else if(evidence && ghostName!="The Mimic"){
+            return <div key={index} className="ghost-evidence-display">
+                    <img src={require(`../assets/${imageArray[index]}.png`)}/>
+                    <div className="evidence-text">{toggleExpert ? displayArrayExpert[index] : displayArray[index]}</div>
+                  </div>
           }
           else{
             return;

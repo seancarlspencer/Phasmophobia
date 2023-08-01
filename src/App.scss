@@ -65,6 +65,52 @@ table {
   b{
     filter:contrast(.7);
   }
+  .evidence-text{
+    @media screen and (max-width: 1309px) {
+      filter:contrast(1);
+    }
+  }
+  .expert .evidence-text{
+    filter:contrast(1);
+  }
+  .homepage{
+    &::before{
+      filter: brightness(25%) grayscale(30%);
+      background-color: none;
+      background-blend-mode:normal;
+    }
+  }
+    .objective-board-container{
+      .evidence{
+        &::before{
+          filter: brightness(.5);
+          background-color: none;
+          background-blend-mode:normal;
+          @media screen and (max-width: 911px) {
+            filter: brightness(.5);
+          }
+        }
+      }
+    }
+    .objective-board{
+      &::before{
+          filter: brightness(.65) saturate(1.25);
+          @media screen and (max-width: 911px) {
+            background-color: var(--mobileBGColor);
+            filter: brightness(.5);
+          }
+        }
+      }
+  .objective-board-content{
+    &::-webkit-scrollbar-thumb {
+      background: rgb(19, 12, 7);
+      border-radius: 24px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(19, 12, 7, 0.3);
+    }
+  }
 }
 
 :root {
@@ -238,7 +284,6 @@ body *{
     grid-area: board;
     transition: transform .2s ease-in 0s;
     &::before{
-      filter: brightness(75%) saturate(125%);
     }
   }
   .evidence{
