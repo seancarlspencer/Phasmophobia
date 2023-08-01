@@ -4,21 +4,12 @@ import { increment, decrement, updateEvidence, handleToggleExpert, handleLightMo
 import GhostSpeed from './GhostSpeed';
 
 const Extras = () => {
-  const {toggleExpert,lightMode} = useSelector((state: any) => 
-  ({
-    toggleExpert:state.phas.toggleExpert,
-    lightMode:state.phas.lightMode,
-  }));
+  const toggleExpert = useSelector((state: any) => state.phas.toggleExpert);
+  const lightMode = useSelector((state: any) => state.phas.lightMode);
   const dispatch = useDispatch();
   let speedDisplayValues = ["Slow","Normal","Fast"]
 
-
-  useEffect(()=>{
-    console.log(lightMode);
-  },[lightMode])
-
   const handleToggleExpertAction = () =>{
-    console.log(lightMode);
     dispatch(handleToggleExpert());
   }
 
@@ -37,6 +28,7 @@ const Extras = () => {
             return <GhostSpeed
             displayText={speed}
             index={index}
+            key={speed}
             />
           })}
         </div>

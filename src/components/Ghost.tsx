@@ -10,8 +10,8 @@ interface GhostInterface{
 }
 
 const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
-  const {evidenceValues,toggleExpert} = useSelector((state: any) => ({evidenceValues: state.phas.evidenceValues,
-    toggleExpert: state.phas.toggleExpert}));
+  const evidenceValues = useSelector((state:any) => state.phas.evidenceValues);
+  const toggleExpert = useSelector((state:any) => state.phas.toggleExpert);
   const [toggleMore,setMore] = useState(false);
   const [toggleGuess,setGuess] = useState(false);
   const dispatch = useDispatch();
@@ -40,6 +40,9 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
     `Insym says it's not ${ghostName}.`
   ];
 
+  let eliminatedString = eliminatedStrings[Math.floor(Math.random() * eliminatedStrings.length)];
+  let eliminatedStringTwins = eliminatedStringsTwins[Math.floor(Math.random() * eliminatedStringsTwins.length)];
+
   useEffect(()=>{
     if(evidenceValues.includes(true)){
       return;
@@ -63,13 +66,13 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
       <div className="ghost-name">
         {toggleGuess ? 
         (["The Twins","The Mimic"].includes(ghostName) ? 
-        eliminatedStringsTwins[Math.floor(Math.random() * eliminatedStringsTwins.length)] : eliminatedStrings[Math.floor(Math.random() * eliminatedStrings.length)])
+        eliminatedStringTwins : eliminatedString)
          : ghostName}
       </div>
       <div className="ghost-evidence">
         {phasGhosts[ghostName as keyof typeof phasGhosts]["evidenceArray"].map((evidence,index)=>{
           if(evidence){
-            return <div className="ghost-evidence-display">
+            return <div key={index} className="ghost-evidence-display">
                       <img src={require(`../assets/${imageArray[index]}.png`)}/>
                       <div className="evidence-text">{toggleExpert ? displayArrayExpert[index] : displayArray[index]}</div>
                     </div>
@@ -82,21 +85,21 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
       <div className={`ghost-expert${toggleExpert && !toggleMore ? "": " hide"}`}>
       <ul>
         {phasGhosts[ghostName as keyof typeof phasGhosts]["expertMode"].map((evidence,index)=>{
-          return <li dangerouslySetInnerHTML={{__html: evidence}}></li>
+          return <li key={index} dangerouslySetInnerHTML={{__html: evidence}}></li>
         })}
       </ul>
       </div>
       <div className={`ghost-secondary${!toggleExpert ? "": toggleMore ? "" : " hide"}`}>
       <ul>
         {phasGhosts[ghostName as keyof typeof phasGhosts]["secondaryEvidence"].map((evidence,index)=>{
-          return <li dangerouslySetInnerHTML={{__html: evidence}}></li>
+          return <li key={index} dangerouslySetInnerHTML={{__html: evidence}}></li>
         })}
       </ul>
       </div>
       <div className={`ghost-tertiary${toggleMore ? "": " hide"}`}>
         <ul>
           {phasGhosts[ghostName as keyof typeof phasGhosts]["tertiaryEvidence"].map((evidence,index)=>{
-            return <li dangerouslySetInnerHTML={{__html: evidence}}></li>
+            return <li key={index} dangerouslySetInnerHTML={{__html: evidence}}></li>
           })}
         </ul>
       </div>

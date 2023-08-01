@@ -8,32 +8,46 @@ type FilterBoxType = {
 }
 
 const FilterBox:React.FC<FilterBoxType> = ({index,displayText}) => {
-  const {evidenceValues,possibleValues,eliminatedValues} = useSelector((state: any) => 
-  ({evidenceValues:state.phas.evidenceValues,
-    possibleValues:state.phas.possibleValues,
-    eliminatedValues:state.phas.eliminatedValues,
-  }));
+  const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
+  const possibleValues = useSelector((state: any) => state.phas.possibleValues);
+  const eliminatedValues = useSelector((state: any) => state.phas.eliminatedValues);
+  const evidenceNumber = useSelector((state: any) => state.phas.evidenceNumber);
   const dispatch = useDispatch();
 
   const handleEvidence = () => {
     let evArray = [...evidenceValues];
     let elArray = [...eliminatedValues];
-    if(!evArray[index] && !elArray[index]){
-      // Neither Checked nor eliminated
-      evArray[index] = true;
-      // console.log("Checking")
+    if (evidenceNumber < 3){
+      // Cannot Eliminate Evidence in Nightmare/Insane/Custom 0 evidence modes.
+      if(!evArray[index] && !elArray[index]){
+        // Neither Checked nor eliminated
+        evArray[index] = true;
+        // console.log("Checking")
+      }
+      else if (evArray[index]){
+        // Currently Checked
+        evArray[index] = false;
+        // console.log("Unchecking")
+      }
     }
-    else if (evArray[index]){
-      // Currently Checked
-      evArray[index] = false;
-      elArray[index] = true;
-      // console.log("Eliminating")
-    }
-    else if (elArray[index]){
-      // Currently Eliminated
-      evArray[index] = false;
-      elArray[index] = false;
-      // console.log("Unchecking")
+    else{
+      if(!evArray[index] && !elArray[index]){
+        // Neither Checked nor eliminated
+        evArray[index] = true;
+        // console.log("Checking")
+      }
+      else if (evArray[index]){
+        // Currently Checked
+        evArray[index] = false;
+        elArray[index] = true;
+        // console.log("Eliminating")
+      }
+      else if (elArray[index]){
+        // Currently Eliminated
+        evArray[index] = false;
+        elArray[index] = false;
+        // console.log("Unchecking")
+      }
     }
     dispatch(updateEvidence(evArray));
     dispatch(updateEliminated(elArray));

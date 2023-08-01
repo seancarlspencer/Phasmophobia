@@ -7,7 +7,6 @@ import Extras from './Extras';
 import GhostSpeed from './GhostSpeed';
 
 const Homepage = () => {
-  const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
   const [toggleSticky,setToggleSticky] = useState(false);
 
   useEffect(()=>{

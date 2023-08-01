@@ -8,8 +8,7 @@ type GhostSpeedType = {
 }
 
 const GhostSpeed:React.FC<GhostSpeedType> = ({index,displayText}) => {
-  const {speedValues} = useSelector((state: any) => 
-  ({speedValues:state.phas.speedValues}));
+  const speedValues = useSelector((state: any) => state.phas.speedValues);
   const dispatch = useDispatch();
 
 

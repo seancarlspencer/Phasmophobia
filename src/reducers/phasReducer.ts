@@ -10,6 +10,7 @@ const initialState = {
   checkSpeed: false,
   lightMode: localStorage.getItem("lightMode")=="true",
   evidenceNumber: localStorage.getItem("evidenceNumber") ? localStorage.getItem("evidenceNumber") : 3,
+  resetNum: 0
 };
 
 const phasReducer = (state = initialState, action: AnyAction) => {
@@ -46,7 +47,6 @@ const phasReducer = (state = initialState, action: AnyAction) => {
       return { ...state, lightMode: !state.lightMode };
     case 'evidenceNumber':
       localStorage.setItem("evidenceNumber",`${action.payload}`)
-      console.log(action.payload);
       return { ...state, evidenceNumber: action.payload };
     default:
       return state;
