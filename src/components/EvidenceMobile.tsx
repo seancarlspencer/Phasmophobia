@@ -71,7 +71,7 @@ const EvidenceMobile = () => {
 
   return (
     <div className={`evidence mobile${toggleSticky ? " hide" : ""}`}>
-      {evidenceScreenOn ? <Evidence displayType='mobile'/> : <Extras />}
+      {evidenceScreenOn ? <Evidence displayType='mobile'/> : <Extras displayType='mobile'/>}
       <div className="sticky-remover-container">
       <div onClick={handleToggleEvidenceScreen} className="evidence-screen-switcher">
         <span>{evidenceScreenOn ? "More Options" : "Back to Evidence"}</span>

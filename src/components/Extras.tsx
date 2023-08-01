@@ -2,7 +2,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import {handleToggleExpert, handleLightMode } from '../actions/actions';
 import GhostSpeed from './GhostSpeed';
 
-const Extras = () => {
+type EvidenceType = {
+  displayType: string
+}
+
+const Extras:React.FC<EvidenceType> = ({displayType}) => {
   const toggleExpert = useSelector((state: any) => state.phas.toggleExpert);
   const lightMode = useSelector((state: any) => state.phas.lightMode);
   const dispatch = useDispatch();
@@ -28,6 +32,7 @@ const Extras = () => {
             displayText={speed}
             index={index}
             key={speed}
+            aria={displayType}
             />
           })}
         </div>

@@ -22,7 +22,7 @@ const Homepage = () => {
           <Evidence displayType='standard'/>
         </div>
         <div className={'evidence evidence-2'}>
-          <Extras/>
+          <Extras displayType='standard'/>
         </div>
         <div className="objective-board">
           <ObjectiveBoard/>

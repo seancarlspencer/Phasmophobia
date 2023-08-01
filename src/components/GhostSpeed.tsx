@@ -4,10 +4,11 @@ import {updateSpeed } from '../actions/actions';
 
 type GhostSpeedType = {
   index: number,
-  displayText: string
+  displayText: string,
+  aria: string
 }
 
-const GhostSpeed:React.FC<GhostSpeedType> = ({index,displayText}) => {
+const GhostSpeed:React.FC<GhostSpeedType> = ({index,displayText,aria}) => {
   const speedValues = useSelector((state: any) => state.phas.speedValues);
   const dispatch = useDispatch();
 
@@ -32,7 +33,7 @@ const GhostSpeed:React.FC<GhostSpeedType> = ({index,displayText}) => {
       {speedValues[index]
       ? <img alt="checkmark" src={require("../assets/check.png").default} className="checked"/>
       : <img alt="hidden checkmark" src={require("../assets/check.png").default} className=""/>}
-      <input onClick={handleUpdateSpeed} type="checkbox" id={`speed-${index}`}/><label htmlFor={`speed-${index}`}><span>{displayText}</span></label>
+      <input onClick={handleUpdateSpeed} type="checkbox" id={`speed-${index}-${aria}`}/><label htmlFor={`speed-${index}`}><span>{displayText}</span></label>
     </div>
   );
 };

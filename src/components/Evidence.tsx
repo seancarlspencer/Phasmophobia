@@ -45,11 +45,11 @@ const Evidence:React.FC<EvidenceType> = ({displayType}) => {
     <div className="evidence-paper evidence-filters">
       <div className="paper-header">
         E<span>VIDENCE</span>
-        <select onChange={(e)=>handleEvidenceNumber(e)} id="evNum" value={stateEvidenceNum}>
-          <option value="3" id="evNum-3">3 (Default)</option>
-          <option value="2" id="evNum-2">2 (Nightmare)</option>
-          <option value="1" id="evNum-1">1 (Insane)</option>
-          <option value="0" id="evNum-0">0</option>
+        <select onChange={(e)=>handleEvidenceNumber(e)} id={`evNum-${displayType}`} value={stateEvidenceNum}>
+          <option value="3">3 (Default)</option>
+          <option value="2">2 (Nightmare)</option>
+          <option value="1">1 (Insane)</option>
+          <option value="0">0</option>
         </select>
       </div>
       <div className="paper-filters">
@@ -71,6 +71,7 @@ const Evidence:React.FC<EvidenceType> = ({displayType}) => {
           key={speed}
           displayText={speed}
           index={index}
+          aria={displayType}
           />
         })}
       </div>
