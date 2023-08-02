@@ -33,7 +33,7 @@ const GhostSpeed:React.FC<GhostSpeedType> = ({index,displayText,aria}) => {
       {speedValues[index]
       ? <img alt="checkmark" src={require("../assets/check.png").default} className="checked"/>
       : <img alt="hidden checkmark" src={require("../assets/check.png").default} className=""/>}
-      <input onClick={handleUpdateSpeed} type="checkbox" id={`speed-${index}-${aria}`}/><label htmlFor={`speed-${index}`}><span>{displayText}</span></label>
+      <input onClick={handleUpdateSpeed} type="checkbox" id={`speed-${index}-${aria}`}/><label htmlFor={`speed-${index}-${aria}`}><span>{displayText}</span></label>
     </div>
   );
 };

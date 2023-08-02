@@ -51,6 +51,8 @@ table {
 
 :root[data-theme="light"] {
   --paperColor: #FFFBCF;
+  --newPaperColor: rgb(79, 76, 59);
+  // --newPaperColor: rgba(79, 76, 59, .7);
   background-color: #22180D;
   --fontColor: black;
   --tipColor: #FFFBCF;
@@ -116,6 +118,8 @@ table {
 :root {
   --paperColor: rgb(0, 63, 87);
   --paperColor: rgb(0, 57, 80);
+  --newPaperColor: rgb(0, 37, 51);
+  --newPaperColor: rgba(0, 37, 51, .7);
   --fontColor: rgb(198, 198, 222);
   --tipColor: rgb(198, 198, 222);
   --listColor: rgb(176, 176, 199);
@@ -129,6 +133,9 @@ table {
   background-color: black;
   b{
     filter:brightness(2) contrast(.4);
+    &.ability{
+      filter:brightness(2) contrast(.25);
+    }
   }
   .evidence-text{
     @media screen and (max-width: 1309px) {
@@ -217,7 +224,7 @@ body *{
   height: 100vh;
   width: 100vw;
   position:relative;
-  padding: 24px 12px;
+  padding: 12px 12px;
   transition: transform .2s ease-in 0s;
   overscroll-behavior: contain;
   &::before{
@@ -727,16 +734,16 @@ body *{
 .objective-board-content{
   display: grid;
   gap: 24px;
-  height: calc(100% - 40px);
+  height: calc(100% - 32px);
   width: calc(100% - 6px);
   overflow-y: auto;
   align-items: flex-start;
-  grid-template-rows: repeat(2, min-content);
-  //Very Cool
+  grid-template-rows: repeat(1, min-content);
+  //Very Cool, shrinks to fit content
   .objective-board-tooltip{
     position: absolute;
     font-family: 'Pangolin', cursive;
-    font-size: 2.2rem;
+    font-size: 2rem;
     left: 8px;
     top: 8px;
     color: var(--tipColor);
@@ -758,7 +765,8 @@ body *{
   display: grid;
   gap: 24px;
   padding: 36px;
-  padding-top: 6px;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   &.expert{
     @media screen and (min-width: 1310px) {
@@ -800,6 +808,7 @@ body *{
   grid-template-rows: auto auto auto auto 1fr;
   position: relative;
   cursor:pointer;
+  overflow:hidden;
   &:has(.ghost-secondary.hide){
     grid-template-areas: "ghostname evidence"
       "expert expert"
@@ -949,6 +958,8 @@ body *{
   }
   &.eliminated{
     gap: 0px;
+    // background: var(--paperColor);
+    background-image: none !important;
     min-height: 0px;
     grid-template-areas: "ghostname ghostname" !important;
     grid-template-rows: 1fr !important;
@@ -960,21 +971,36 @@ body *{
       transform: none !important;
     }
   }
-  .ghost-secondary,.ghost-expert,.ghost-tertiary{
-    padding-right: 42px;
-  }
   .ghost-more{
     position: absolute;
-    right: -8px;
-    bottom: -12px;
+    right: -16px;
+    bottom: -16px;
   }
   &.expert{
-    gap: 6px;
+    background-image: linear-gradient(-90deg, var(--newPaperColor) 0%, var(--newPaperColor) 66px, var(--paperColor) 66px);
+    gap: 0px;
     padding: 12px;
     .ghost-name{
-      font-size: 2.2rem;
+      font-size: 2rem;
       letter-spacing: .2rem;
       transform: translateX(-3px) translateY(-6px);
+      color: var(--listTertiaryColor);
+      color: var(--tipColor);
+      justify-self: flex-start;
+      position: relative;
+      margin-bottom: 10px;
+      &::before{
+        content:"";
+        position: absolute;
+        background-color: var(--newPaperColor);
+        width: 200%;
+        height: 200%;
+        bottom: -6px;
+        right: -12px;
+        z-index: -1;
+        border-bottom-right-radius: 12px;
+        opacity: .8;
+      }
     }
     .ghost-evidence{
       position: absolute;
@@ -998,6 +1024,10 @@ body *{
         color: #b9a102;
       }
     }
+    .ghost-secondary,.ghost-expert,.ghost-tertiary{
+      padding-right: 60px;
+      padding-left: 12px;
+    }
     .ghost-secondary,.ghost-expert{
       ul{
         li{
@@ -1007,6 +1037,10 @@ body *{
           }
         }
       }
+    }
+    .ghost-more{
+      right: -8px;
+      color: var(--tipColor);
     }
   }
   @media screen and (max-width: 1309px) {
@@ -1069,6 +1103,15 @@ body *{
       padding: 6px;
       &.hide{
         margin-top: 6px;
+      }
+    }
+    &.expert{
+      .ghost-evidence{
+        right: 2px;
+      }
+      .ghost-more{
+        bottom: -8px;
+        right: -6px;
       }
     }
   }
