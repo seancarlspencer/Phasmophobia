@@ -99,7 +99,7 @@ table {
           filter: brightness(.65) saturate(1.25);
           @media screen and (max-width: 911px) {
             background-color: var(--mobileBGColor);
-            filter: brightness(.5);
+            filter: brightness(.25);
           }
         }
       }
@@ -882,7 +882,7 @@ body *{
     pointer-events: none;
     ul{
       display: grid;
-      gap: 12px;
+      gap: 8px;
       li{
         font-size: 1.8rem;
         color: var(----listColor);
