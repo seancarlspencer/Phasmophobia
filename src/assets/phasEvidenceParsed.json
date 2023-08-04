@@ -4,19 +4,21 @@
         "evidenceArray":[false,true,true,true,false,false,false],
         "speedArray":[false,true,false],
         "expertMode":[
-            "<b class=ability>Solo Target Test</b> (target in building)",
-            "<b class=equipment>Parabolic Microphone</b> Wail (33% chance)",
-            "<b>Singing Events</b> Often"
+            "<b class=ability>Solo Target Test</b> (target in area)",
+            "<b class=equipment>Paramic Wail</b> (33% chance), <b>Singing Events</b> Often",
+            "Often <b class=ability>roams to target</b> (67% chance, target in area)",
+            "<b class=ability>Target-based sanity</b> hunt (50%, target <b>not required</b> in area)"
         ],
         "secondaryEvidence": [
-            "Targets and hunts <b>one player</b> until killed (If the player is not in the building, it does a regular hunt)",
+            "<b class=ability>Tunnel Vision: </b>Targets and hunts <b>one player</b> until killed (If the player is not in the building, it does a regular hunt).  If the target dies or leaves the game, a new target is selected.",
             "Can sometimes be heard wailing with a <b class=equipment>parabolic microphone</b>",
-            "Prefers <b>singing ghost events</b> over other events"
+            "Prefers <b>singing ghost events</b> over other events",
+            "Has a 67% chance to <b>wander towards their target</b> when <b>roaming</b> given that the target is inside the investigation area.",
+            "When initiating a hunt, the Banshee will only check their target's sanity level (<50% to hunt)",
+            "Only checks their target's sanity % for initiating a hunt in multiplayer"
         ],
         "tertiaryEvidence": [
-            "Only checks their targets sanity % for initiating a hunt in multiplayer",
-            "Will often wander toward their target when roaming",
-            "Singing ghost events will now drain an extra 5% sanity on the Banshee's target"
+            "Singing ghost events drain an extra 5% sanity on the Banshee's target (15% as opposed to 10%)"
         ]
     },
     "Demon": {
@@ -25,15 +27,19 @@
         "speedArray":[false,true,false],
         "expertMode":[
             "Early/<b class=ability>Insta-hunt</b> (70% or Ability)",
-            "<b class=equipment>Crucifix</b> Range Test (1.66x Larger)"
+            "<b class=equipment>Crucifix Range</b> Test (1.66x Larger)",
+            "<b class=equipment>Smudge</b> stops hunt for only 60s",
+            "<b>20s Hunt Cooldown</b> Between hunts"
         ],
         "secondaryEvidence": [
-            "<b class=ability>Insta-hunt:</b> Low chance to start a hunt regardless of sanity level",
-            "The <b class=equipment>crucifix's</b> effective radius is much larger: 5m instead of 3m"
+            "<b class=ability>Insta-hunt:</b> Low chance to start a hunt regardless of sanity level.  Only happens every few minutes.",
+            "The <b class=equipment>crucifix's</b> effective radius is much larger: 5m instead of 3m",
+            "Hunt Cooldown of only 20s between attempted hunts as opposed to 25s",
+            "<b class=equipment>Smudges</b> will only stop hunts for 60s as opposed to 90s"
         ],
         "tertiaryEvidence": [
             "Using cursed objects lowers sanity less than by other ghosts",
-            "Loose less sanity (80% of original loss) by answering to the Ouija board"
+            "Lose less sanity (80% of original loss) by answering to the Ouija board"
         ]
     },
     "Deogen": {
@@ -41,16 +47,20 @@
         "evidenceArray":[false,true,false,false,true,true,false],
         "speedArray":[true,false,true],
         "expertMode":[
-            "<b class=equipment>Spirit Box</b> Heavy Breathing",
-            "<b>Low Sanity</b> Hunt (40%)"
+            "<b class=equipment>Spirit Box</b> Heavy Breathing (within 1m of ghost)",
+            "<b>Low Sanity</b> Hunt (40%)",
+            "<b>Fast</b> seeker, <b class=ability>ignores hiding,</b> <b>slows down</b> within 4m",
+            "Guaranteed <b class=evidence-highlight>Spirit Box</b> in <b>Nightmare/Insane</b>"
         ],
         "secondaryEvidence": [
             "Can only initiate a hunt at an average sanity below 40%",
             "Targets the closest player, <b>moving very rapidly</b> towards them (2.7 m/s) regardless of where they hide",
             "<b>Slows down immensely</b> approximately 4m away from its target",
-            "Unique <b class=equipment>Spirit Box</b> interaction: Heavy breathing. You must stand on the exact position of the ghost"
+            "Unique <b class=equipment>Spirit Box</b> interaction: Heavy breathing. You must stand within 1m of the ghost",
+            "Always gives the <b class=evidence-highlight>Spirit Box</b> evidence on <b>nightmare or higher</b> difficulty"
         ],
         "tertiaryEvidence": [
+            "Increased chance to give <b class=evidence-highlight>D.O.T.S. and Writing</b> as evidence."
         ]
     },
     "Goryo": {
@@ -59,15 +69,15 @@
         "speedArray":[false,true,false],
         "expertMode":[
             "<b class=equipment>Video</b> <b class=evidence-highlight>D.O.T.S.</b> only (No players in room)",
-            "<b>Ghost Room</b> is the Same, no <b>Long-distance Roam.</b>",
+            "<b>Ghost Room</b> doesn't change, no <b>Long-distance Roam.</b>",
             "Guaranteed <b class=evidence-highlight>D.O.T.S.</b> in <b>Nightmare/Insane</b>"
         ],
         "secondaryEvidence": [
             "<b class=evidence-highlight>D.O.T.S.</b> only visible through a <b class=equipment>video cam</b> and no players in the room",
-            "<b>Cannot change favorite room</b> or roam long distances"
+            "<b>Cannot change favorite room</b> or roam long distances",
+            "Always gives <b class=evidence-highlight>D.O.T.S.</b> as evidence on <b>nightmare or higher</b> difficulty"
         ],
         "tertiaryEvidence": [
-            "<b class=evidence-highlight>D.O.T.S.</b> evidence are guaranteed on nightmare difficulty"
         ]
     },
     "Hantu": {
@@ -77,16 +87,18 @@
         "expertMode":[
             "Fast in <b class=ability>cold rooms.</b>  Slow in <b>warmer rooms.</b>",
             "Model has <b>Breath</b> (Breaker off)",
+            "Cannot <b>turn breaker on</b>",
             "Guaranteed <b class=evidence-highlight>Freezing</b> in Nightmare/Insane"
         ],
         "secondaryEvidence": [
             "<b>Walking speed</b> is affected by room <b class=evidence-highlight>temperature</b> when hunting.  The colder it is, the faster it moves.",
-            "Shows their <b>breath</b> on the ghost model in any room during hunts if the <b>breaker</b> is off"
+            "Shows their <b>breath</b> on the ghost model in any room during hunts if the <b>breaker</b> is off",
+            "Always gives <b class=evidence-highlight>Freezing Temperatures</b> as evidence on <b>nightmare or higher</b> difficulty",
+            "Can no longer <b>turn on the breaker,</b> as this would stop them accelerating"
         ],
         "tertiaryEvidence": [
-            "1.4 m/s= 15°C+ | 1.75 m/s= 12°C | 2.1 m/s= 9°C | 2.3 m/s= 6°C | 2.5 m/s= 3°C | 2.7 m/s= 0°C",
-            "Has double the chance to turn off the breaker",
-            "Can no longer turn on the breaker, as this would stop them accelerating"
+            "Speed based on temps: 1.4 m/s= 15°C+ | 1.75 m/s= 12°C | 2.1 m/s= 9°C | 2.3 m/s= 6°C | 2.5 m/s= 3°C | 2.7 m/s= 0°C",
+            "Has double the chance to turn off the breaker"
         ]
     },
     "Jinn": {
@@ -95,16 +107,16 @@
         "speedArray":[false,true,true],
         "expertMode":[
             "Fast <b>Chaser</b> (breaker on)",
-            "<b class=equipment>EMF</b> at Breaker",
+            "<b class=equipment>EMF</b> at Breaker (Lowers Sanity 25%)",
             "Can only <b>turn off breaker</b> by <b>overloading</b>"
         ],
         "secondaryEvidence": [
             "During a hunt, it travels <b>faster</b> (2.1m/s) when <b>chasing</b> a target until a distance of 10m",
-            "<b class=ability>Sanity Breaker:</b> Can lower the sanity of all players by 25%, when within a 3m radius or in the same room as the ghost.  Leaves <b class=equipment>EMF</b> at the <b>breaker</b> when this is used."
+            "<b class=ability>Sanity Breaker:</b> Can lower the sanity of all players by 25%, when within a 3m radius or in the same room as the ghost.  Leaves <b class=equipment>EMF</b> at the <b>breaker</b> when this is used.",
+            "Cannot turn off the breaker directly. (Unless by turning on too many lights)"
         ],
         "tertiaryEvidence": [
-            "Cannot use any abilities when the breaker is turned off",
-            "Cannot turn off the breaker directly. (Unless by turning on too many lights)"
+            "Cannot use any abilities when the breaker is turned off"
         ]
     },
     "Mare": {
@@ -112,19 +124,20 @@
         "evidenceArray":[false,false,false,true,true,true,false],
         "speedArray":[false,true,false],
         "expertMode":[
-            "Favors <b>Light Events</b>",
+            "Favors <b>Light Events</b> and <b>cannot turn on lights</b>",
             "<b class=ability>Turns off light</b> immediately (tiny %)",
-            "Early hunt in <b>dark</b>/roams in <b>dark rooms</b> (60%)"
+            "<b>Early hunt</b> in <b class=ability>dark</b> (60%), <b>Late hunt</b> in <b class=ability>light</b> (40%)",
+            "Prefers to roam in <b>dark rooms</b>"
         ],
         "secondaryEvidence": [
             "<b>Cannot turn on lights</b>",
             "More likely to <b>turn off lights</b> the doing other ghost interactions",
-            "Prefers <b>light events (red light & shattering)</b> over other ghost events"
-        ],
-        "tertiaryEvidence": [
+            "Prefers <b>light events (red light & shattering)</b> over other ghost events",
             "Can hunt at 60 % avg sanity when lights in the room are turned off.  This is not affected by candles, torches or other equipment",
             "Tiny chance to turn off a light immediately after it was turned on by a player",
             "More likely to roam to adjacent dark rooms when the lights in the current room are on"
+        ],
+        "tertiaryEvidence": [
         ]
     },
     "Moroi": {
@@ -134,16 +147,20 @@
         "expertMode":[
             "<b>Faster</b> at <b>lower sanity</b>",
             "<b class=equipment>Smudge</b> twice as effective during hunt (12s)",
-            "<b class=ability>Curse Test</b> (100% Sanity > Cursed with <b class=equipment>Spirit Box/Candle</b> > Try <b class=equipment>Pills</b>)"
+            "<b class=ability>Curse Test</b> with <b class=equipment>Spirit Box/Candle/Pills</b> (in 'More...')",
+            "Guaranteed <b class=evidence-highlight>Spirit Box</b> in <b>Nightmare/Insane</b>"
         ],
         "secondaryEvidence": [
             "When <b class=equipment>smudged</b> during a hunt it wanders for around 12s",
-            "<b class=ability>Cursed Voice:</b> Curses any player whom it responds over the <b class=equipment>Spirit Box</b>. Cursed players constantly loose sanity over time (0.3%/s).  Leaving the house stops the sanity drain, and taking sanity pills lifts the curse.",
-            "<b>Walking speed</b> is affected by average <b>team sanity</b>.  The lower the sanity, the faster it is."
+            "<b class=ability>Cursed Voice:</b> Curses any player whom it responds over the <b class=equipment>Spirit Box or Paramic</b>. Cursed players constantly lose sanity over time (0.3%/s).  Leaving the house stops the sanity drain, and taking sanity pills lifts the curse.",
+            "<b class=ability>Curse Test:</b> At <b>100% Sanity</b>, walk into the house with a <b class=equipment>Spirit Box (or Paramic) and Candle.</b> Speak to the Potential Moroi and get <b>cursed</b> on purpose.  Walk back to the van with your <b class=equipment>candle</b> and try to take <b class=equipment>Pills</b>.  If you can take them, you were successfully <b>cursed</b>, and it is a Moroi",
+            "<b class=equipment>Candles</b> will not prevent <b>sanity drain,</b> which is why the above test is effective",
+            "<b>Walking speed</b> is affected by average <b>team sanity</b>.  The lower the sanity, the <b>faster</b> it is",
+            "Always gives the <b class=evidence-highlight>Spirit Box</b> evidence on <b>nightmare or higher</b> difficulty"
         ],
         "tertiaryEvidence": [
-            "Players can be cursed again after cured",
-            "1.4 m/s sanity &lt;= 45% | 1.7 m/s sanity &lt;= 30% | 1.8 m/s sanity &lt;= 23% | 1.95 m/s sanity &lt;= 13% | 2.1 m/s sanity = 0%"
+            "Players can be cursed again after being cured",
+            "Speed based on Sanity: 1.4 m/s sanity &lt;= 45% | 1.7 m/s sanity &lt;= 30% | 1.8 m/s sanity &lt;= 23% | 1.95 m/s sanity &lt;= 13% | 2.1 m/s sanity = 0%"
         ]
     },
     "Myling": {
@@ -151,14 +168,15 @@
         "evidenceArray":[true,false,true,false,true,false,false],
         "speedArray":[false,true,false],
         "expertMode":[
-            "<b class=ability>Sound Test</b> w/ <b class=equipment>Flashlight</b> Flicker (same floor)"
+            "<b class=ability>Sound Test</b> w/ <b class=equipment>Flashlight</b> Flicker (same floor)",
+            "<b class=equipment>Paramic Sounds</b> More Often"
         ],
         "secondaryEvidence": [
             "More sounds on the <b class=equipment>parabolic mic</b>",
-            "During a hunt, all <b>hunting sounds</b> can only be heard when 10m or <b>closer</b>"
+            "<b class=ability>Twinkletoes:</b> During a hunt, all <b>hunting sounds</b> can only be heard when 10m or <b>closer</b>",
+            "<b class=ability>Flashlight Test:</b> Drop your <b class=equipment>flashlight</b> on the floor near you, and observe when it flickers.  If it <b>flickers before you can hear it,</b> you may have a Myling.  Make sure you are on the <b>same floor</b> as the ghost when conducting this test; if the ghost is above or below you, this test won't be effective."
         ],
-        "tertiaryEvidence": [
-            
+        "tertiaryEvidence": [    
         ]
     },
     "Obake": {
@@ -166,18 +184,19 @@
         "evidenceArray":[true,false,true,true,false,false,false],
         "speedArray":[false,true,false],
         "expertMode":[
-            "Six <b class=evidence-highlight>Fingers</b>",
-            "<b class=ability>Shapeshifts</b> during hunt"
+            "<b class=evidence-highlight>Fingerprints</b> can have <b class=evidence-highlight>6 fingers,</b> disappear quicker, and have reduced chance to appear",
+            "<b class=ability>Shapeshifts</b> during hunt",
+            "Guaranteed <b class=evidence-highlight>Fingerprints</b> in <b>Nightmare/Insane</b>"
         ],
         "secondaryEvidence": [
             "<b class=ability>Shapeshifter:</b> During a hunt, it has a 6.66% chance each time it flickers to <b>shapeshift</b> into a different ghost form and back. This is <b>guaranteed</b> to happen at least <b>once per hunt</b>",
             "Reduced chance of 75% to leave <b class=evidence-highlight>fingerprints</b>",
             "Low chance to leave <b class=evidence-highlight>fingerprints</b> with <b>6 fingers</b>",
-            "Always gives the <b class=evidence-highlight>Fingerprints</b> evidence on <b>nightmare<b/> difficulty"
+            "Can leave <b class=evidence-highlight>double fingerprints</b> on light switches, and 5 fingerprints on prison doors and keyboards (instead of 4)",
+            "Always gives the <b class=evidence-highlight>Fingerprints</b> evidence on <b>nightmare or higher<b/> difficulty",
+            "Fingerprints have a 50% chance to disappear earlier (60s) than of other ghosts (120s)"
         ],
         "tertiaryEvidence": [
-            "Fingerprints have a 50% chance to disappear earlier (60s) than of other ghosts (120s)",
-            "Double fingerprints on light switches, and 5 finger on prison doors and keyboards"
         ]
     },
     "Oni": {
@@ -185,14 +204,14 @@
         "evidenceArray":[true,true,false,false,false,false,true],
         "speedArray":[false,true,false],
         "expertMode":[
-            "No <b>Airball</b>",
+            "No <b>Airball</b>, ghost events drain <b class=ability>20% Sanity</b> instead of 10%",
             "<b>More Visible</b> when hunting (flickers less)",
             "Many Activities/Events when <b>nearby</b>"
         ],
         "secondaryEvidence": [
             "More ghost activity and events when there are more people are nearby",
             "<b>Does not</b> do the Ghost <b/>Mist/Airball</b> event",
-            "<b class=ability>O-no!:</b> Drains <b>double the sanity</b> of a normal ghost during <b>ghost events</b>",
+            "<b class=ability>O-no!:</b> Drains <b>double the sanity</b> of a normal ghost during <b>ghost events</b> (20% as opposed to 10%)",
             "Can be seen for <b>longer</b> periods of time when <b>flickering</b> during hunts"
         ],
         "tertiaryEvidence": [
@@ -204,11 +223,13 @@
         "evidenceArray":[false,false,false,true,false,true,true],
         "speedArray":[false,true,false],
         "expertMode":[
-            "<b class=equipment>Crucifix/Candle</b> (If <b class=equipment>Crucifix</b> activates first, NOT Onryo)",
-            "Hunts every <b class=ability>third flame blown</b>"
+            "<b class=equipment>Crucifix/Candle</b> Test (If <b class=equipment>Crucifix</b> activates first, NOT Onryo)",
+            "Hunts every <b class=ability>third flame blown</b>",
+            "<b>Early Hunt</b> (60%)"
         ],
         "secondaryEvidence": [
-            "<b class=ability>Firestarter:</b> Can initiate a hunt when any <b class=equipment>flames/candles</b> are extinguished regardless of average sanity",
+            "<b class=ability>Firestarter:</b> Can initiate a hunt when any <b class=equipment>flames/candles</b> are extinguished regardless of average sanity.  It will attempt to hunt <b class=ability>every third flame</b> it blows out.",
+            "<b class=ability>Crucifix/Candle Test:</b> Put a <b class=equipment>lit Candle</b> on top of a <b class=equipment>Crucifix</b> and keep it lit.  Onryos will always blow out the <b class=equipment>Candle</b> before using the <b class=equipment>Crucifix.</b>  If the ghost uses the Crucifix before blowing out the Candle, you can be sure it is <b>not an Onryo.</b>",
             "<b class=equipment>Lit candles</b> act as <b class=equipment>crucifixes</b>. <b>Blown out</b> when successfuly preventing a hunt"
         ],
         "tertiaryEvidence": [
@@ -308,7 +329,7 @@
         "evidenceArray":[true,false,false,false,true,true,false],
         "speedArray":[false,true,false],
         "expertMode":[
-            "<b class=equipment>Smudge</b> stops hunt (3m)"
+            "<b class=equipment>Smudge</b> stops hunt for <b>twice as long</b> (3m)"
         ],
         "secondaryEvidence": [
             "<b class=equipment>Smudge sticks</b> stop attacks for <b>3 min</b> instead of <b>1.5 min</b>"

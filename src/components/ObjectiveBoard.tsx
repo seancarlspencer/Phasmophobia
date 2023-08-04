@@ -64,18 +64,20 @@ const ObjectiveBoard = () => {
       </div>
       <div className={`objective-board-ghost-container${toggleExpert ? " expert" : ""}`}>
       {Object.keys(phasGhosts).sort((a, b) => phasGhosts[a as keyof typeof phasGhosts]["index"] > phasGhosts[b as keyof typeof phasGhosts]["index"] ? 1 : -1).map((ghost:string)=>{
-        if(ghost == "Hantu" || ghost == "Goryo"){
+        if(["Hantu","Goryo","Obake","Deogen","Moroi"].includes(ghost)){
           let guaranteedEvCheck = evidenceValues.filter((x: any) => x).length;
           if(guaranteedEvCheck == evidenceNumber && evidenceNumber!=0){
             if(ghost == "Hantu"){
-              if(evidenceValues[6]){
-                return <Ghost
-                key={ghost}
-                ghostName={ghost}
-                display={true}
-              />;
+              if(!evidenceValues[6]){
+                  return <Ghost
+                  key={ghost}
+                  ghostName={ghost}
+                  display={false}
+                />;
               }
-              else{
+            }
+            if(ghost == "Goryo"){
+              if(!evidenceValues[1]){
                 return <Ghost
                 key={ghost}
                 ghostName={ghost}
@@ -83,15 +85,17 @@ const ObjectiveBoard = () => {
               />;
               }
             }
-            if(ghost == "Goryo"){
-              if(evidenceValues[1]){
+            if(ghost == "Obake"){
+              if(!evidenceValues[2]){
                 return <Ghost
                 key={ghost}
                 ghostName={ghost}
-                display={true}
+                display={false}
               />;
               }
-              else{
+            }
+            if(ghost == "Deogen" || ghost== "Moroi"){
+              if(!evidenceValues[5]){
                 return <Ghost
                 key={ghost}
                 ghostName={ghost}

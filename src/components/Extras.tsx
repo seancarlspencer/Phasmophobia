@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import {handleToggleExpert, handleLightMode } from '../actions/actions';
 import GhostSpeed from './GhostSpeed';
+import GhostTimer from './GhostTimer';
 
 type EvidenceType = {
   displayType: string
@@ -36,10 +37,32 @@ const Extras:React.FC<EvidenceType> = ({displayType}) => {
             />
           })}
         </div>
+        <div className="timer-container smudge">
+          <div className="timer-header">
+            S<span>MUDGE</span>
+          </div>
+          <GhostTimer
+            time={180}
+            key={`smudge${displayType}`}
+            timerType={`smudge${displayType}`}
+            intervals={[60,90,180]}
+            intervalLabels={["Demon","Normal","Spirit"]} />
+        </div>
+        <div className="timer-container hunt">
+          <div className="timer-header">
+            H<span>UNT</span> C<span>OOLDOWN</span>
+          </div>
+          <GhostTimer
+            time={25}
+            key={`hunt${displayType}`}
+            timerType={`hunt${displayType}`}
+            intervals={[20,25]}
+            intervalLabels={["Demon","Normal"]} />
+        </div>
         <div className={`filter-box expert`}>
           <img alt="checkmark" src={require("../assets/check.png").default} className={!toggleExpert ? "checked" : ""}/>
-          <input onChange={handleToggleExpertAction} type="checkbox" id="expert"/><label className="extra-input" htmlFor="expert"><span className="skew">Beginner Mode</span></label>
-          <div className="recommended">(Recommended for New Players)</div>
+          <input onChange={handleToggleExpertAction} type="checkbox" id="expert"/><label className="extra-input" htmlFor="expert"><span className="skew">Verbose Mode</span></label>
+          <div className="recommended">(Recommended for Learning Players)</div>
         </div>
         <div className={`filter-box expert`}>
           <img alt="checkmark" src={require("../assets/check.png").default}/>

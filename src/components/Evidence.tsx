@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateEvidence, updateEliminated, updateSpeed, updateEvidenceNumber } from '../actions/actions';
 import FilterBox from './FilterBox';
@@ -22,6 +22,15 @@ const Evidence:React.FC<EvidenceType> = ({displayType}) => {
     "Freezing Temperatures",
   ]
   let speedDisplayValues = ["Slow","Normal","Fast"]
+
+  useEffect(()=>{
+    if(evidenceNumber != stateEvidenceNum){
+      updateStateEvidenceNum(evidenceNumber);
+      dispatch(updateEvidence([false,false,false,false,false,false,false]));
+      dispatch(updateEliminated([false,false,false,false,false,false,false]));
+      dispatch(updateSpeed([false,false,false]));
+    }
+  },[evidenceNumber])
 
   const handleEvidenceNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
     updateStateEvidenceNum(parseInt(e.target.value));
