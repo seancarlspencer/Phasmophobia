@@ -48,3 +48,7 @@ export const increment = () => ({
     payload: num
   });
   
+  export const updateGuessArray = (arr: Array<boolean>) => ({
+    type: 'updateGuessArray',
+    payload: arr
+  });

@@ -18,16 +18,49 @@ const FilterBox:React.FC<FilterBoxType> = ({index,displayText,aria}) => {
   const handleEvidence = () => {
     let evArray = [...evidenceValues];
     let elArray = [...eliminatedValues];
-    if (evidenceNumber < 3){
-      // Cannot Eliminate Evidence in Nightmare/Insane/Custom 0 evidence modes.
-      if(!evArray[index] && !elArray[index]){
-        // Neither Checked nor eliminated
-        evArray[index] = true;
-        // console.log("Checking")
+    // if (evidenceNumber < 3){
+    //   // Cannot Eliminate Evidence in Nightmare/Insane/Custom 0 evidence modes.
+    //   if(!evArray[index] && !elArray[index]){
+    //     // Neither Checked nor eliminated
+    //     evArray[index] = true;
+    //     // console.log("Checking")
+    //   }
+    //   else if (evArray[index]){
+    //     // Currently Checked
+    //     evArray[index] = false;
+    //     // console.log("Unchecking")
+    //   }
+    // }
+    // else{
+    //   if(!evArray[index] && !elArray[index]){
+    //     // Neither Checked nor eliminated
+    //     evArray[index] = true;
+    //     // console.log("Checking")
+    //   }
+    //   else if (evArray[index]){
+    //     // Currently Checked
+    //     evArray[index] = false;
+    //     elArray[index] = true;
+    //     // console.log("Eliminating")
+    //   }
+    //   else if (elArray[index]){
+    //     // Currently Eliminated
+    //     evArray[index] = false;
+    //     elArray[index] = false;
+    //     // console.log("Unchecking")
+    //   }
+    // }
+    if(possibleValues[index] && (evidenceValues.filter((x: any) => x).length >= evidenceNumber && !evidenceValues[index])){
+      // Still allow eliminations
+      if(!elArray[index]){
+        // Not eliminated
+        elArray[index] = true;
+        // console.log("Eliminating")
       }
-      else if (evArray[index]){
+      else if (elArray[index]){
         // Currently Checked
         evArray[index] = false;
+        elArray[index] = false;
         // console.log("Unchecking")
       }
     }
@@ -55,9 +88,10 @@ const FilterBox:React.FC<FilterBoxType> = ({index,displayText,aria}) => {
   };
 
   return (
-    <div className={`filter-box${possibleValues[index] ? "" : " not-possible"}`}>
+    <div className={`filter-box${possibleValues[index] ? (evidenceValues.filter((x: any) => x).length >= evidenceNumber && !evidenceValues[index]) ? " not-possible" : "" : " not-possible-eliminated"
+    }`}>
       <input onClick={handleEvidence} type="checkbox" id={`e${index}-${aria}`}/><label className={`${evidenceValues[index] ? "checked" :
-      eliminatedValues[index] ? "eliminated" : ""}`}  htmlFor={`e${index}-${aria}`}><span>{displayText}</span></label>
+      eliminatedValues[index] ? "eliminated" : !possibleValues[index] ? "eliminated" :""}`}  htmlFor={`e${index}-${aria}`}><span>{displayText}</span></label>
     </div>
   );
 };

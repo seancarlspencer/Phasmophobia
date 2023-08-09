@@ -10,7 +10,9 @@ const initialState = {
   checkSpeed: false,
   lightMode: localStorage.getItem("lightMode")=="true",
   evidenceNumber: localStorage.getItem("evidenceNumber") ? localStorage.getItem("evidenceNumber") : 3,
-  resetNum: 0
+  resetNum: 0,
+  guessArray: new Array<boolean>(24).fill(false),
+  guessDisplayArray: Array.from({length: 24}, () => Math.floor(Math.random() * 8))
 };
 
 const phasReducer = (state = initialState, action: AnyAction) => {
@@ -21,6 +23,13 @@ const phasReducer = (state = initialState, action: AnyAction) => {
       return { ...state, possibleValues: action.payload };
     case 'updateEliminated':
       return { ...state, eliminatedValues: action.payload };
+    case 'updateGuessArray':
+      if(action.payload.filter((x: any) => x).length == 0){
+        return { ...state,
+          guessArray: action.payload,
+          guessDisplayArray: Array.from({length: 24}, () => Math.floor(Math.random() * 8))};
+      }
+      return { ...state, guessArray: action.payload };
     case 'updateSpeed':
       let checkSpeedUpdate = false
       for(let i=0;i<action.payload.length;i++){

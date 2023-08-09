@@ -61,7 +61,7 @@ const GhostTimer:React.FC<GhostTimerType> = ({time,intervals,intervalLabels,time
           
         </div>
         {intervals.map((interval,index)=>{
-          return <div className="interval-container" style={{
+          return <div className="interval-container" key={index} style={{
             left: `${interval/time * 100}%`
           }}>
             <div className="interval"></div>

@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updatePossible } from '../actions/actions';
+import { updateGuessArray, updatePossible } from '../actions/actions';
 import phasGhosts from '../assets/phasEvidenceParsed.json';
 import Ghost from './Ghost';
+import GhostTest from './GhostTest';
 
 const ObjectiveBoard = () => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
@@ -11,7 +12,12 @@ const ObjectiveBoard = () => {
   const checkSpeed = useSelector((state: any) => state.phas.checkSpeed);
   const toggleExpert = useSelector((state: any) => state.phas.toggleExpert);
   const speedValues = useSelector((state: any) => state.phas.speedValues);
+  const guessArray = useSelector((state: any) => state.phas.guessArray);
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+  },[]);
+
 
   useEffect(()=>{
     let possibleValues = [false,false,false,false,false,false,false];
@@ -19,11 +25,11 @@ const ObjectiveBoard = () => {
     for(let x=0;x<evidenceValues.length;x++){
       // Determines which ghosts are possible
       if (evidenceValues.filter((x: any) => x).length >= evidenceNumber){
-        for(let i=0;i<evidenceValues.length;i++){
-          possibleValues[i] = evidenceValues[i];
-        }
-        handlePossible(possibleValues);
-        return;
+        // for(let i=0;i<evidenceValues.length;i++){
+        //   possibleValues[i] = evidenceValues[i];
+        // }
+        // handlePossible(possibleValues);
+        // return;
       }
       if(evidenceValues[x]){
         // Only check for possible ghosts if evidence is selected
@@ -50,17 +56,30 @@ const ObjectiveBoard = () => {
     }
     possibleValues = [true,true,true,true,true,true,true];
     handlePossible(possibleValues);
-  },[evidenceValues,speedValues])
+  },[evidenceValues,speedValues,guessArray])
 
   const handlePossible=(arr: Array<boolean>)=>{
     dispatch(updatePossible(arr))
   }
   
+  const handleToggleGuess = (ghostName: string) => {
+    let ghostIndex = phasGhosts[ghostName as keyof typeof phasGhosts]["index"];
+    let tempGuess = [...guessArray];
+    tempGuess[ghostIndex] = !guessArray[ghostIndex];
+    dispatch(updateGuessArray(tempGuess));
+  }
 
   return (
     <div className="objective-board-content">
       <div className="objective-board-tooltip">
         Tap on Ghost to Eliminate
+      </div>
+      <div className={`all-ghost-test-container${toggleExpert ? " expert" : ""}`}>
+        <GhostTest
+          testType={"Parabolic Microphone"}
+          ghostNames={["Hantu"]}
+          display={true}
+          />
       </div>
       <div className={`objective-board-ghost-container${toggleExpert ? " expert" : ""}`}>
       {Object.keys(phasGhosts).sort((a, b) => phasGhosts[a as keyof typeof phasGhosts]["index"] > phasGhosts[b as keyof typeof phasGhosts]["index"] ? 1 : -1).map((ghost:string)=>{
@@ -73,6 +92,8 @@ const ObjectiveBoard = () => {
                   key={ghost}
                   ghostName={ghost}
                   display={false}
+                  guessed={guessArray[phasGhosts[ghost as keyof typeof phasGhosts]["index"]]}
+                  handleToggleGuess={handleToggleGuess}
                 />;
               }
             }
@@ -82,6 +103,8 @@ const ObjectiveBoard = () => {
                 key={ghost}
                 ghostName={ghost}
                 display={false}
+                guessed={guessArray[phasGhosts[ghost as keyof typeof phasGhosts]["index"]]}
+                handleToggleGuess={handleToggleGuess}
               />;
               }
             }
@@ -91,6 +114,8 @@ const ObjectiveBoard = () => {
                 key={ghost}
                 ghostName={ghost}
                 display={false}
+                guessed={guessArray[phasGhosts[ghost as keyof typeof phasGhosts]["index"]]}
+                handleToggleGuess={handleToggleGuess}
               />;
               }
             }
@@ -100,6 +125,8 @@ const ObjectiveBoard = () => {
                 key={ghost}
                 ghostName={ghost}
                 display={false}
+                guessed={guessArray[phasGhosts[ghost as keyof typeof phasGhosts]["index"]]}
+                handleToggleGuess={handleToggleGuess}
               />;
               }
             }
@@ -112,6 +139,8 @@ const ObjectiveBoard = () => {
               key={ghost}
               ghostName={ghost}
               display={false}
+              guessed={guessArray[phasGhosts[ghost as keyof typeof phasGhosts]["index"]]}
+              handleToggleGuess={handleToggleGuess}
             />;
           }
           // Checks if ghost HAS evidence that user ELIMINATED
@@ -120,6 +149,8 @@ const ObjectiveBoard = () => {
               key={ghost}
               ghostName={ghost}
               display={false}
+              guessed={guessArray[phasGhosts[ghost as keyof typeof phasGhosts]["index"]]}
+              handleToggleGuess={handleToggleGuess}
             />;
           }
         }
@@ -132,6 +163,8 @@ const ObjectiveBoard = () => {
               key={ghost}
               ghostName={ghost}
               display={false}
+              guessed={guessArray[phasGhosts[ghost as keyof typeof phasGhosts]["index"]]}
+              handleToggleGuess={handleToggleGuess}
             />;
             }
           }
@@ -140,6 +173,8 @@ const ObjectiveBoard = () => {
           key={ghost}
           ghostName={ghost}
           display={true}
+          guessed={guessArray[phasGhosts[ghost as keyof typeof phasGhosts]["index"]]}
+          handleToggleGuess={handleToggleGuess}
         />
       })}
       </div>

@@ -33,7 +33,7 @@ const Extras:React.FC<EvidenceType> = ({displayType}) => {
             displayText={speed}
             index={index}
             key={speed}
-            aria={displayType}
+            aria={`extras-${displayType}`}
             />
           })}
         </div>

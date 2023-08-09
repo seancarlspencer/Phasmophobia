@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateEvidence, updateEliminated, updateSpeed, updateEvidenceNumber } from '../actions/actions';
+import { updateEvidence, updateEliminated, updateSpeed, updateEvidenceNumber, updateGuessArray } from '../actions/actions';
 import FilterBox from './FilterBox';
 import GhostSpeed from './GhostSpeed';
 
@@ -48,6 +48,7 @@ const Evidence:React.FC<EvidenceType> = ({displayType}) => {
     dispatch(updateEvidence([false,false,false,false,false,false,false]));
     dispatch(updateEliminated([false,false,false,false,false,false,false]));
     dispatch(updateSpeed([false,false,false]));
+    dispatch(updateGuessArray(new Array<boolean>(24).fill(false)));
   };
 
   return (

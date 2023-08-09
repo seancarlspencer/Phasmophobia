@@ -5,25 +5,27 @@ import phasGhosts from '../assets/phasEvidenceParsed.json';
 interface GhostInterface{
   ghostName: string
   display: boolean
+  guessed: boolean
+  handleToggleGuess: Function
 }
 
-const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
+const Ghost: React.FC<GhostInterface> = ({ghostName, display, guessed, handleToggleGuess}) => {
   const evidenceValues = useSelector((state:any) => state.phas.evidenceValues);
   const toggleExpert = useSelector((state:any) => state.phas.toggleExpert);
+  const guessDisplayArray = useSelector((state:any) => state.phas.guessDisplayArray);
   const [toggleMore,setMore] = useState(false);
-  const [toggleGuess,setGuess] = useState(false);
   let imageArray=["emf","dots","fingerprints","orbs","writing","ghost","freezing"];
   let displayArray=["EMF Level 5","D.O.T.S","Fingerprints","Ghost Orbs","Ghost Writing","Spirit Box","Freezing"];
   let displayArrayExpert=["EMF 5","DOTS","Fingerp.","Orbs","Writing","Spirit Box","Freezing"];
   let eliminatedStrings=[
-    `Not a ${ghostName}.`,
-    `Couldn't be a ${ghostName}.`,
+    `Not a${["Onryo", "Obake","Oni"].includes(ghostName) ? `n ${ghostName}` : ` ${ghostName}`}.`,
+    `Couldn't be a${["Onryo", "Obake","Oni"].includes(ghostName) ? `n ${ghostName}` : ` ${ghostName}`}.`,
     `${ghostName}? Nah...`,
-    `Please don't be a ${ghostName}...`,
-    `Don't think it's a ${ghostName}.`,
+    `Please don't be a${["Onryo", "Obake","Oni"].includes(ghostName) ? `n ${ghostName}` : ` ${ghostName}`}...`,
+    `Don't think it's a${["Onryo", "Obake","Oni"].includes(ghostName) ? `n ${ghostName}` : ` ${ghostName}`}.`,
     `${ghostName}? Probably Not.`,
-    `If it's a ${ghostName}, I swear-`,
-    `Insym says it's not a ${ghostName}.`
+    `If it's a${["Onryo", "Obake","Oni"].includes(ghostName) ? `n ${ghostName}` : ` ${ghostName}`}, I swear-`,
+    `Insym says it's not a${["Onryo", "Obake","Oni"].includes(ghostName) ? `n ${ghostName}` : ` ${ghostName}`}.`
   ];
 
   let eliminatedStringsTwins=[
@@ -37,31 +39,34 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display}) => {
     `Insym says it's not ${ghostName}.`
   ];
 
-  let eliminatedString = eliminatedStrings[Math.floor(Math.random() * eliminatedStrings.length)];
-  let eliminatedStringTwins = eliminatedStringsTwins[Math.floor(Math.random() * eliminatedStringsTwins.length)];
+  let eliminatedString = eliminatedStrings[guessDisplayArray[phasGhosts[ghostName as keyof typeof phasGhosts]["index"]]];
+  let eliminatedStringTwins = eliminatedStringsTwins[guessDisplayArray[phasGhosts[ghostName as keyof typeof phasGhosts]["index"]]];
 
   useEffect(()=>{
-    if(evidenceValues.includes(true)){
-      return;
-    }
-    else{
-      setGuess(false);
-    }
-  },[evidenceValues])
+  },[])
+
+  // useEffect(()=>{
+  //   if(evidenceValues.includes(true)){
+  //     return;
+  //   }
+  //   else{
+  //     // setGuess(false);
+  //   }
+  // },[evidenceValues])
 
   const handleToggleMore = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     setMore(toggleMore => !toggleMore);
   }
 
-  const handleToggleGuess = () => {
-    setGuess(toggleGuess => !toggleGuess);
-  }
+  // const handleToggleGuess = () => {
+  //   setGuess(toggleGuess => !toggleGuess);
+  // }
 
   return (
-    <div className={`ghost-container${display ? "" : " hide"}${toggleGuess ? " eliminated" : ""}${toggleExpert ? " expert" : ""}`} onClick={handleToggleGuess}>
+    <div className={`ghost-container${display ? "" : " hide"}${guessed ? " eliminated" : ""}${toggleExpert ? " expert" : ""}`} onClick={()=>{handleToggleGuess(ghostName)}}>
       <div className="ghost-name">
-        {toggleGuess ? 
+        {guessed ? 
         (["The Twins","The Mimic"].includes(ghostName) ? 
         eliminatedStringTwins : eliminatedString)
          : ghostName}
