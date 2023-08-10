@@ -12,7 +12,8 @@ const initialState = {
   evidenceNumber: localStorage.getItem("evidenceNumber") ? localStorage.getItem("evidenceNumber") : 3,
   resetNum: 0,
   guessArray: new Array<boolean>(24).fill(false),
-  guessDisplayArray: Array.from({length: 24}, () => Math.floor(Math.random() * 8))
+  guessDisplayArray: Array.from({length: 24}, () => Math.floor(Math.random() * 8)),
+  objectiveBoardScreen: localStorage.getItem("objectiveBoardScreen")==null ? "Ghosts" : localStorage.getItem("objectiveBoardScreen")
 };
 
 const phasReducer = (state = initialState, action: AnyAction) => {
@@ -42,6 +43,9 @@ const phasReducer = (state = initialState, action: AnyAction) => {
       checkSpeed: checkSpeedUpdate};
     case 'toggleSticky':
       return { ...state, toggleSticky: !state.toggleSticky };
+    case 'objectiveBoardScreen':
+      localStorage.setItem("objectiveBoardScreen",`${action.payload}`)
+      return {...state, objectiveBoardScreen: action.payload}
     case 'toggleExpert':
       localStorage.setItem("expert",`${!state.toggleExpert}`)
       return { ...state, toggleExpert: !state.toggleExpert };
