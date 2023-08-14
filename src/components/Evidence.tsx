@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateEvidence, updateEliminated, updateSpeed, updateEvidenceNumber, updateGuessArray } from '../actions/actions';
+import { updateEvidence, updateEliminated, updateSpeed, updateEvidenceNumber, updateGuessArray, updateCompletedTasks } from '../actions/actions';
 import FilterBox from './FilterBox';
 import GhostSpeed from './GhostSpeed';
 
@@ -26,6 +26,7 @@ const Evidence:React.FC<EvidenceType> = ({displayType}) => {
   useEffect(()=>{
     if(evidenceNumber != stateEvidenceNum){
       updateStateEvidenceNum(evidenceNumber);
+      dispatch(updateCompletedTasks([]));
       dispatch(updateEvidence([false,false,false,false,false,false,false]));
       dispatch(updateEliminated([false,false,false,false,false,false,false]));
       dispatch(updateSpeed([false,false,false]));
@@ -34,6 +35,7 @@ const Evidence:React.FC<EvidenceType> = ({displayType}) => {
 
   const handleEvidenceNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
     updateStateEvidenceNum(parseInt(e.target.value));
+    dispatch(updateCompletedTasks([]));
     dispatch(updateEvidenceNumber(parseInt(e.target.value)));
     dispatch(updateEvidence([false,false,false,false,false,false,false]));
     dispatch(updateEliminated([false,false,false,false,false,false,false]));
@@ -45,6 +47,7 @@ const Evidence:React.FC<EvidenceType> = ({displayType}) => {
     evidenceArray.forEach((evidence)=>{
       evidence.checked=false;
     })
+    dispatch(updateCompletedTasks([]));
     dispatch(updateEvidence([false,false,false,false,false,false,false]));
     dispatch(updateEliminated([false,false,false,false,false,false,false]));
     dispatch(updateSpeed([false,false,false]));

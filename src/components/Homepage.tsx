@@ -43,8 +43,8 @@ const Homepage = () => {
         </div>
         <div className="objective-board-tab-container">
           <div className="objective-board-page-selector">
-              <div className="page-selector" onClick={()=>handleObjectiveBoard("Ghosts")}>Ghosts</div>
-              <div className="page-selector" onClick={()=>handleObjectiveBoard("Ghost Tests")}>Ghost Tests</div>
+              <div className="page-selector" onClick={()=>handleObjectiveBoard("Ghosts")}><span>Ghosts</span></div>
+              <div className="page-selector" onClick={()=>handleObjectiveBoard("Ghost Tests")}><span>Ghost Tests</span></div>
             </div>
           <div className="objective-board">
             <ObjectiveBoard/>
