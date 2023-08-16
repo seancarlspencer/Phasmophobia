@@ -11,65 +11,51 @@ interface GhostTestInterface{
 
 const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, completed}) => {
   const evidenceValues = useSelector((state:any) => state.phas.evidenceValues);
-  const eliminatedValues = useSelector((state:any) => state.phas.eliminatedValues);
-  const possibleValues = useSelector((state:any) => state.phas.possibleValues);
-  const toggleExpert = useSelector((state:any) => state.phas.toggleExpert);
   const guessArray = useSelector((state: any) => state.phas.guessArray);
-  const completedTasks = useSelector((state: any) => state.phas.completedTasks);
-  const [toggleMore,setMore] = useState(false);
+  const loading = useSelector((state: any) => state.phas.loading);
   const [toggleGuess,setGuess] = useState(false);
   const [toggleComplete,setComplete] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(()=>{
     //Check if should be checked.
+    // if(loading){
+    //   return;
+    // }
     handleCheckingAllTests();
   },[evidenceValues,guessArray,ghostNames])
 
-  const handleToggleMore = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-    setMore(toggleMore => !toggleMore);
-  }
 
   const handleCheckingAllTests = ()=>{
     if(completed){
       return;
     }
-    let testChecked = document.getElementById(`test-type-${testType.toLocaleLowerCase().replace(" ","-")}`) as HTMLInputElement;
-    let shouldCheck = true;
+    let shouldCheck=true;
     ghostNames.forEach((ghost)=>{
+      if(!shouldCheck){
+        return;
+      }
       if(!guessArray[ghost[1]]){
+        //Found ghost that is not eliminated, therefore, set Complete to false and uncheck if it's set as completed.
         shouldCheck=false;
+        if(toggleComplete){
+            let testChecked = document.getElementById(`test-type-${testType.toLocaleLowerCase().replace(" ","-")}`) as HTMLInputElement;
+            if(testChecked){
+              setComplete(false);
+              testChecked.checked = false;
+            }
+        }
+        return;
       }
     })
-      // The Guess Array was modified, not completed Tasks.  So this will not run when a list is unchecked.
-      // Therefore, we can run this as usual.  Check if it should be checked.
-      if(testChecked){
-        if(shouldCheck){
-          if(completed){
-            console.log("setting complete 1 for " +testType);
-            setComplete(false);
-            testChecked.checked = false;
-          }
-          else{
-            console.log("setting complete 2 for " +testType);
+    if(!toggleComplete && shouldCheck){
+          let testChecked = document.getElementById(`test-type-${testType.toLocaleLowerCase().replace(" ","-")}`) as HTMLInputElement;
+          if(testChecked){
             setComplete(true);
             testChecked.checked = true;
+            console.log("Checking"+testType);
           }
-        }
-        else{
-          if(completed){
-            console.log("setting complete 3 for " +testType);
-            setComplete(true);
-            testChecked.checked = true;
-          }
-          else{
-            console.log("setting complete 4 for " +testType);
-            setComplete(false);
-            testChecked.checked = false;
-          }
-        }
-      }
+    }
   }
 
   const handleToggleGuess = () => {
@@ -148,7 +134,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
       {ghostNames.map((ghost)=>{
         return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghost[1])}}>
           <div className={`ghost-test-ghostname${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[0]}</div>
-          <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2]})` :""}</div>
+          <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2].replace("(Requires 1 evidence)","")})` :""}</div>
           </div>
       })}
       </div>
@@ -170,7 +156,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
       {ghostNames.map((ghost)=>{
         return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghost[1])}}>
           <div className={`ghost-test-ghostname${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[0]}</div>
-          <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2]})` :""}</div>
+          <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2].replace("(Requires 1 evidence)","")})` :""}</div>
           </div>
       })}
       </div>

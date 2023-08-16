@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import Evidence from './Evidence';
 import ObjectiveBoard from './ObjectiveBoard';
 import Extras from './Extras';
-import { handleObjectiveBoardScreen } from '../actions/actions';
-import { useDispatch } from 'react-redux';
+import { handleObjectiveBoardScreen, updateLoading } from '../actions/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Homepage = () => {
   const [toggleSticky,setToggleSticky] = useState(false);
+  const objectiveBoardScreen = useSelector((state:any) => state.phas.objectiveBoardScreen);
+  const loading = useSelector((state:any) => state.phas.loading);
   const dispatch = useDispatch();
 
   useEffect(()=>{
@@ -17,6 +19,9 @@ const Homepage = () => {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
     const target = document.querySelector(".objective-board-content");
+    setTimeout(()=>{
+      updateLoading();
+    },50)
 
     document.addEventListener("wheel", function(e){
       // prevent the default scrolling event
@@ -33,7 +38,7 @@ const Homepage = () => {
   }
 
   return (
-    <div className={`homepage${toggleSticky ? " hide" : ""}`}>
+    <div className={`homepage${toggleSticky ? " hide" : ""}${loading ? " loading" : ""}`}>
       <div className="objective-board-container">
         <div className={`evidence evidence-1`}>
           <Evidence displayType='standard'/>
@@ -43,10 +48,10 @@ const Homepage = () => {
         </div>
         <div className="objective-board-tab-container">
           <div className="objective-board-page-selector">
-              <div className="page-selector" onClick={()=>handleObjectiveBoard("Ghosts")}><span>Ghosts</span></div>
-              <div className="page-selector" onClick={()=>handleObjectiveBoard("Ghost Tests")}><span>Ghost Tests</span></div>
+              <div key={"Ghosts"} className={`page-selector${objectiveBoardScreen=="Ghosts" ? " active" : ""}`} onClick={()=>handleObjectiveBoard("Ghosts")}><span>Ghosts</span></div>
+              <div key={"Ghost Tests"} className={`page-selector${objectiveBoardScreen=="Ghost Tests" ? " active" : ""}`} onClick={()=>handleObjectiveBoard("Ghost Tests")}><span>Ghost Tests</span></div>
             </div>
-          <div className="objective-board">
+          <div className={`objective-board${loading ? " loading" : ""}`}>
             <ObjectiveBoard/>
           </div>
         </div>

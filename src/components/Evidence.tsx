@@ -40,6 +40,7 @@ const Evidence:React.FC<EvidenceType> = ({displayType}) => {
     dispatch(updateEvidence([false,false,false,false,false,false,false]));
     dispatch(updateEliminated([false,false,false,false,false,false,false]));
     dispatch(updateSpeed([false,false,false]));
+    dispatch(updateGuessArray(new Array<boolean>(24).fill(false)));
   };
 
   const handleReset = () => {

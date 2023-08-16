@@ -54,3 +54,7 @@
     type: 'updateGuessArray',
     payload: arr
   });
+  
+  export const updateLoading = () => ({
+    type: 'updateLoading'
+  });
