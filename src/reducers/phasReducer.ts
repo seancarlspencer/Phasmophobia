@@ -13,17 +13,23 @@ const initialState = {
   resetNum: 0,
   guessArray: new Array<boolean>(24).fill(false),
   guessDisplayArray: Array.from({length: 24}, () => Math.floor(Math.random() * 8)),
-  objectiveBoardScreen: localStorage.getItem("objectiveBoardScreen")==null ? "Ghosts" : localStorage.getItem("objectiveBoardScreen")
+  objectiveBoardScreen: localStorage.getItem("objectiveBoardScreen")==null ? "Ghosts" : localStorage.getItem("objectiveBoardScreen"),
+  completedTasks:[],
+  loading:true
 };
 
 const phasReducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
+    case 'updateLoading':
+      return { ...state, loading: false };
     case 'updateEvidence':
       return { ...state, evidenceValues: action.payload };
     case 'updatePossible':
       return { ...state, possibleValues: action.payload };
     case 'updateEliminated':
       return { ...state, eliminatedValues: action.payload };
+    case 'updateCompletedTasks':
+      return { ...state, completedTasks: action.payload };
     case 'updateGuessArray':
       if(action.payload.filter((x: any) => x).length == 0){
         return { ...state,

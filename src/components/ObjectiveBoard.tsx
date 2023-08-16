@@ -4,6 +4,7 @@ import { handleObjectiveBoardScreen, updateGuessArray, updatePossible } from '..
 import phasGhosts from '../assets/phasEvidenceParsed.json';
 import Ghost from './Ghost';
 import GhostTest from './GhostTest';
+import { render } from '@testing-library/react';
 
 const ObjectiveBoard = () => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
@@ -14,6 +15,12 @@ const ObjectiveBoard = () => {
   const speedValues = useSelector((state: any) => state.phas.speedValues);
   const guessArray = useSelector((state: any) => state.phas.guessArray);
   const objectiveBoardScreen = useSelector((state: any) => state.phas.objectiveBoardScreen);
+  const completedTasks = useSelector((state: any) => state.phas.completedTasks);
+  const [expandInstructions,setInstructions] = useState(false);
+  const [expandHunt,setHunt] = useState(true);
+  const [expandInteractions,setInteractions] = useState(true);
+  const [expandEquipment,setEquipment] = useState(true);
+  const [expandCompleted,setCompleted] = useState(true);
   const dispatch = useDispatch();
 
   type ghostTestType = {
@@ -41,7 +48,7 @@ const ObjectiveBoard = () => {
         // handlePossible(possibleValues);
         // return;
       }
-      if(evidenceValues[x]){
+      if(evidenceValues[x] || eliminatedValues[x]){
         // Only check for possible ghosts if evidence is selected
         Object.keys(phasGhosts).map((ghost:string)=>{
           let valid = true;
@@ -116,7 +123,6 @@ const ObjectiveBoard = () => {
           })
         })}
         setGhostTests(ghostTestsTemp);
-        console.log(ghostTests);
         handlePossible(possibleValues);
         return;
       }
@@ -141,10 +147,13 @@ const ObjectiveBoard = () => {
       })
     })
     setGhostTests(ghostTestsTemp);
-    console.log(ghostTests);
     possibleValues = [true,true,true,true,true,true,true];
     handlePossible(possibleValues);
-  },[evidenceValues,speedValues,eliminatedValues,guessArray])
+  },[evidenceValues,speedValues,eliminatedValues,guessArray,completedTasks])
+
+  useEffect(()=>{
+
+  },[completedTasks])
 
   const handlePossible=(arr: Array<boolean>)=>{
     dispatch(updatePossible(arr))
@@ -270,37 +279,108 @@ const ObjectiveBoard = () => {
     case "Ghost Tests":
       screenContent =
       <div className={`all-ghost-test-container${toggleExpert ? " expert" : ""}`}>
-      <div className="ghost-test-header">Hunt:</div>
-        {Object.keys(ghostTests).sort((a, b) => ["Hunt Behavior","Hunt Speed","Hunt Appearance"].includes(a) ? -1 : ["Hunt Behavior","Hunt Speed","Hunt Appearance"].includes(b) ? 1 : ghostTests[a as keyof typeof ghostTests].length < ghostTests[b as keyof typeof ghostTests].length ? 1 : -1).filter(test => test.includes("Hunt") || ["Breaker","Sanity","Interaction"].includes(test)).map((test)=>{
+        <div className={`ghost-test-header guide${expandInstructions ? " expand" : ""}`}>
+          <div className={`expand-instructions${expandInstructions ? " expand" : ""}`} onClick={()=>setInstructions(expandInstructions => !expandInstructions)}>☰ INSTRUCTIONS
+          <br/><br/>
+          (Recommended for Insane/0 Evidence Modes)
+          <br/><br/>
+          This is a list of Unique Ghost Tests you can perform.
+          <br/><br/>
+          It will update based on your current evidence and which ghosts you eliminated.
+          <br/>
+          It will also eliminate ghosts for you on your behalf as you use it.
+          <br/><br/>
+          The "Ghosts" and the "Ghost Tests" tabs work together.  Any ghosts eliminated on one will be eliminated in the other.
+          <br/><br/>
+        <ul><span>HOW TO USE:</span><br/><br/>
+          <li>Fill out Evidence/Speed details like you normally would.  This will update your test list.</li>
+          <li>TAP each ghost to ELIMINATE THEM as you test their unique aspects.</li>
+          <li>CHECK OFF entire lists to ELIMINATE ALL GHOSTS in that list (E.G. if Hunt Speed seems normal & unchanging).</li>
+          <li>Any redundant tasks will be eliminated for you based on your eliminations.</li>
+        </ul>
+        </div>
+      </div>
+      <div className={`specific-test-container-container${expandEquipment ? " expand" : ""}`}>
+        <div className="ghost-test-header" onClick={()=>setEquipment(expandEquipment => !expandEquipment)}><span>☰ Equipment-based Tests</span></div>
+        <div className={`specific-test-container`}>
+        {Object.keys(ghostTests).sort((a, b) => ghostTests[a as keyof typeof ghostTests].length < ghostTests[b as keyof typeof ghostTests].length ? 1 : -1).filter(test =>
+        !["Breaker","Sanity","Interaction","Room","Events"].includes(test) &&
+        !test.includes("Hunt")).map((test)=>{
           return <GhostTest
-          ghostNames={ghostTests[test]}
+          ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
           testType={test}
           display={true}
+          completed={false}
           />
           })}
-        <div className="ghost-test-header">Equipment-based:</div>
-        {Object.keys(ghostTests).sort((a, b) => ghostTests[a as keyof typeof ghostTests].length < ghostTests[b as keyof typeof ghostTests].length ? 1 : -1).filter(test =>
-        !test.includes("Hunt") &&
-        !test.includes("Breaker") &&
-        !test.includes("Interaction") &&
-        !test.includes("Sanity")).map((test)=>{
+      </div>
+      </div>
+      <div className={`specific-test-container-container${expandInteractions ? " expand" : ""}`}>
+        <div className="ghost-test-header" onClick={()=>setInteractions(expandInteractions => !expandInteractions)}><span>☰ Unique Interactions</span></div>
+        <div className={`specific-test-container`}>
+        {Object.keys(ghostTests).filter(test => (["Breaker","Sanity","Interaction","Room","Events"].includes(test))).map((test)=>{
+            return <GhostTest
+              ghostNames={evidenceNumber == 0 ? [...ghostTests[test]].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
+              testType={test}
+              display={true}
+              completed={false}
+              />
+          })}
+      </div>
+      </div>
+      <div className={`specific-test-container-container${expandHunt ? " expand" : ""}`}>
+        <div className="ghost-test-header" onClick={()=>setHunt(expandHunt => !expandHunt)}><span>☰ Unique Hunting Traits</span></div>
+        <div className={`specific-test-container`}>
+        {Object.keys(ghostTests).sort((a, b) => ["Hunt Behavior","Hunt Speed","Hunt Appearance"].includes(a) ? -1 : ["Hunt Behavior","Hunt Speed","Hunt Appearance"].includes(b) ? 1 : ghostTests[a as keyof typeof ghostTests].length < ghostTests[b as keyof typeof ghostTests].length ? 1 : -1).filter(test => (test.includes("Hunt"))).map((test)=>{
+            return <GhostTest
+              ghostNames={evidenceNumber == 0 ? [...ghostTests[test]].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
+              testType={test}
+              display={true}
+              completed={false}
+              />
+          })}
+        </div>
+      </div>
+      <div className={`specific-test-container-container${expandCompleted ? " expand" : ""}`}>
+        <div className="ghost-test-header" onClick={()=>setCompleted(expandCompleted => !expandCompleted)}><span>☰ Completed</span></div>
+        <div className={`specific-test-container`}>
+        {Object.keys(ghostTests).sort((a, b) => ghostTests[a as keyof typeof ghostTests].length < ghostTests[b as keyof typeof ghostTests].length ? 1 : -1).map((test)=>{
+          let renderComplete = true;
+          ghostTests[test].forEach((name)=>{
+            if (!guessArray[name[1]]){
+              renderComplete=false;
+            }
+            else{
+            }
+          })
+          if (!renderComplete){
+            return <GhostTest
+            ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
+            testType={test}
+            display={false}
+            completed={true}
+            />
+          }
+          else if(evidenceNumber == 0){
+            if(ghostTests[test].filter(ghost=>ghost[2] != undefined
+              ? !(ghost[2].includes("(Requires 1 evidence)")) : true).length >= 1 ? false : true){
+                return <GhostTest
+                ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
+                testType={test}
+                display={false}
+                completed={true}
+                />
+              }
+          }
           return <GhostTest
-          ghostNames={ghostTests[test]}
+          ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
           testType={test}
           display={true}
+          completed={true}
           />
           })}
-        {/* <div className="ghost-test-header">Other:</div>
-        {Object.keys(ghostTests).sort((a, b) => ghostTests[a as keyof typeof ghostTests].length < ghostTests[b as keyof typeof ghostTests].length ? 1 : -1).filter(test =>
-        test.includes("Breaker") ||
-        test.includes("Interaction") ||
-        test.includes("Sanity")).map((test)=>{
-          return <GhostTest
-          ghostNames={ghostTests[test]}
-          testType={test}
-          display={true}
-          />
-          })} */}
+          </div>
+      </div>
       </div>
       break;
     default:
@@ -308,7 +388,7 @@ const ObjectiveBoard = () => {
   }
 
   return (
-    <div className="objective-board-content">
+    <div className={`objective-board-content ${objectiveBoardScreen.toLocaleLowerCase().replace(" ","-")}`}>
       {screenContent}
     </div>
   );

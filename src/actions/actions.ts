@@ -13,6 +13,11 @@
     payload: arr
   });
 
+  export const updateCompletedTasks = (arr: Array<string>) => ({
+    type: 'updateCompletedTasks',
+    payload: arr
+  });
+
   export const updateSpeed = (arr: Array<boolean>) => ({
     type: 'updateSpeed',
     payload: arr
@@ -48,4 +53,8 @@
   export const updateGuessArray = (arr: Array<boolean>) => ({
     type: 'updateGuessArray',
     payload: arr
+  });
+  
+  export const updateLoading = () => ({
+    type: 'updateLoading'
   });

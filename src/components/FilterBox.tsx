@@ -91,7 +91,7 @@ const FilterBox:React.FC<FilterBoxType> = ({index,displayText,aria}) => {
     <div className={`filter-box${possibleValues[index] ? (evidenceValues.filter((x: any) => x).length >= evidenceNumber && !evidenceValues[index]) ? " not-possible" : "" : " not-possible-eliminated"
     }`}>
       <input onClick={handleEvidence} type="checkbox" id={`e${index}-${aria}`}/><label className={`${evidenceValues[index] ? "checked" :
-      eliminatedValues[index] ? "eliminated" : !possibleValues[index] ? "eliminated" :""}`}  htmlFor={`e${index}-${aria}`}><span>{displayText}</span></label>
+      eliminatedValues[index] ? "eliminated" : !possibleValues[index] ? "eliminated" :""}`} htmlFor={`e${index}-${aria}`}><span>{displayText}</span></label>
     </div>
   );
 };
