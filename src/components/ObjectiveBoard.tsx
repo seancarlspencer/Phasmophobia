@@ -383,12 +383,58 @@ const ObjectiveBoard = () => {
       </div>
       </div>
       break;
+    case "v0.9.0.0 Disclaimer":
+      screenContent =
+      <div className="disclaimer">
+        <p className="disclaimer-important">Site Update to v0.9.0.0 Status: <b>In Progress</b></p>
+        <p>I will be making frequent updates to the site throughout this week as I learn more information about the new patch.</p>
+        <p>Please note that many of these updates are derived based on patch notes and player findings.  Thus, they may be subject to change</p>
+        <p>Once information is finalized/confirmed, I will include it in other tabs.</p>
+        <ul>Notable Gameplay Changes from v0.8.1.7 to v0.9.0.0 (NOT FINALIZED!)
+          <li className="disclaimer-topic"><b>Freezing Temperatures:</b>
+            <li>Cold Breath no longer means it is Freezing Temperatures. (Appears below 5 degrees)</li>
+            <li>Freezing Temperatures must be confirmed by using a Thermometer. (At or below 0 degrees)</li>
+            <li>Cold breath is now useful for discovering where the Ghost Room is in some situations.</li>
+          </li>
+          <li className="disclaimer-topic"><b>Smudge Sticks/Incense:</b>
+            <li>Renamed to Incense.</li>
+            <li>Smudge Timers during a hunt are now dependent on Tier.</li>
+            <li>The Moroi's extended Smudge effect will be 50% longer than whatever smudge is used, making higher tier Smudges more noticable.</li>
+            <li>Tiers may or may not affect Spirit and Demon timers. (TBD)</li>
+            <li>Tiers may or may not affect Yurei Timer to stay in room. (TBD)</li>
+          </li>
+          <li className="disclaimer-topic"><b>Crucifix:</b>
+            <li>Crucifix range is based on tier.</li>
+            <li>The Demon's extended Crucifix range will be 50% larger than whatever crucifix is used, making higher tier crucifixes more noticable.</li>
+          </li>
+          <li className="disclaimer-topic"><b>Fingerprints/Ultraviolet:</b>
+            <li>Fingerprints is now Ultraviolet.</li>
+            <li>Ultraviolet Footprints now count as Ultraviolet Evidence.</li></li>
+          <li className="disclaimer-topic"><b>Candles:</b>
+            <li>Candles no longer prevent 100% Sanity Drain.</li>
+            <li>Instead, they slow down Sanity Drain depending on Tier.</li>
+            <li>When a ghost blows out a candle, it will leave EMF.</li>
+          </li>
+          <li className="disclaimer-topic"><b>Sound Sensors:</b>
+          <li>Sound Sensors now have an adjustable range in the Van.</li></li>
+          <li className="disclaimer-topic"><b>D.O.T.S.:</b>
+          <li>D.O.T.S. is now based on the Ghost's actual position, and reveals when the Ghost enters a "D.O.T.S. State."</li>
+          <li>D.O.T.S. photo will count as ghost photo.</li>
+          <li>Banshee will now move towards its target when in D.O.T.S. state.</li>
+          </li>
+          <li className="disclaimer-topic"><b>Tripods:</b>
+            <li>Ghosts can now rarely knock over Tripods.</li>
+          </li>
+        </ul>
+        <p>If you learn anything new about the Patch that you think should be included here, please reach out to me on Discord, ID: damiascus</p>
+      </div>
+      break;
     default:
       break;
   }
 
   return (
-    <div className={`objective-board-content ${objectiveBoardScreen.toLocaleLowerCase().replace(" ","-")}`}>
+    <div className={`objective-board-content ${objectiveBoardScreen.toLocaleLowerCase().replaceAll(" ","-").replaceAll(".","-")}`}>
       {screenContent}
     </div>
   );

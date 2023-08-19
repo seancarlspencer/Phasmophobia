@@ -20,7 +20,8 @@ const Homepage = () => {
     }
     const target = document.querySelector(".objective-board-content");
     setTimeout(()=>{
-      updateLoading();
+      dispatch(updateLoading());
+      console.log("Updating Loading");
     },50)
 
     document.addEventListener("wheel", function(e){
@@ -31,7 +32,11 @@ const Homepage = () => {
         target.scrollBy(e.deltaX,e.deltaY > 0 ? 100 : -100);
       }
     })
-  },)
+  },[])
+
+  useEffect(()=>{
+    console.log(loading);
+  },[loading])
 
   const handleObjectiveBoard = (screen: string) => {
     dispatch(handleObjectiveBoardScreen(screen));
@@ -50,6 +55,7 @@ const Homepage = () => {
           <div className="objective-board-page-selector">
               <div key={"Ghosts"} className={`page-selector${objectiveBoardScreen=="Ghosts" ? " active" : ""}`} onClick={()=>handleObjectiveBoard("Ghosts")}><span>Ghosts</span></div>
               <div key={"Ghost Tests"} className={`page-selector${objectiveBoardScreen=="Ghost Tests" ? " active" : ""}`} onClick={()=>handleObjectiveBoard("Ghost Tests")}><span>Ghost Tests</span></div>
+              <div key={"v0.9.0.0 Disclaimer"} className={`page-selector${objectiveBoardScreen=="v0.9.0.0 Disclaimer" ? " active" : ""}`} onClick={()=>handleObjectiveBoard("v0.9.0.0 Disclaimer")}><span>v0.9.0.0 Disclaimer</span></div>
             </div>
           <div className={`objective-board${loading ? " loading" : ""}`}>
             <ObjectiveBoard/>

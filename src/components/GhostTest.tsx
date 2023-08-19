@@ -19,21 +19,18 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
 
   useEffect(()=>{
     //Check if should be checked.
-    // if(loading){
-    //   return;
-    // }
+    if(loading || !display || completed){
+      return;
+    }
     handleCheckingAllTests();
   },[evidenceValues,guessArray,ghostNames])
 
 
   const handleCheckingAllTests = ()=>{
-    if(completed){
-      return;
-    }
     let shouldCheck=true;
-    ghostNames.forEach((ghost)=>{
+    ghostNames.every((ghost)=>{
       if(!shouldCheck){
-        return;
+        return false;
       }
       if(!guessArray[ghost[1]]){
         //Found ghost that is not eliminated, therefore, set Complete to false and uncheck if it's set as completed.
@@ -45,16 +42,16 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
               testChecked.checked = false;
             }
         }
-        return;
+        return false;
       }
+      return true;
     })
     if(!toggleComplete && shouldCheck){
-          let testChecked = document.getElementById(`test-type-${testType.toLocaleLowerCase().replace(" ","-")}`) as HTMLInputElement;
-          if(testChecked){
-            setComplete(true);
-            testChecked.checked = true;
-            console.log("Checking"+testType);
-          }
+      let testChecked = document.getElementById(`test-type-${testType.toLocaleLowerCase().replace(" ","-")}`) as HTMLInputElement;
+      if(testChecked){
+        setComplete(true);
+        testChecked.checked = true;
+      }
     }
   }
 

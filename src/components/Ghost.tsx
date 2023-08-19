@@ -15,8 +15,8 @@ const Ghost: React.FC<GhostInterface> = ({ghostName, display, guessed, handleTog
   const guessDisplayArray = useSelector((state:any) => state.phas.guessDisplayArray);
   const [toggleMore,setMore] = useState(false);
   let imageArray=["emf","dots","fingerprints","orbs","writing","ghost","freezing"];
-  let displayArray=["EMF Level 5","D.O.T.S","Fingerprints","Ghost Orbs","Ghost Writing","Spirit Box","Freezing"];
-  let displayArrayExpert=["EMF 5","DOTS","Fingerp.","Orbs","Writing","Spirit Box","Freezing"];
+  let displayArray=["EMF Level 5","D.O.T.S","Ultraviolet","Ghost Orbs","Ghost Writing","Spirit Box","Freezing"];
+  let displayArrayExpert=["EMF 5","DOTS","Ultra V.","Orbs","Writing","Spirit Box","Freezing"];
   let eliminatedStrings=[
     `Not a${["Onryo", "Obake","Oni"].includes(ghostName) ? `n ${ghostName}` : ` ${ghostName}`}.`,
     `Couldn't be a${["Onryo", "Obake","Oni"].includes(ghostName) ? `n ${ghostName}` : ` ${ghostName}`}.`,

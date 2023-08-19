@@ -26,16 +26,16 @@
         "index":9,
         "evidenceArray":[false,false,true,false,true,false,true],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Crucifix|1.33x Range","Smudge|Can hunt after 60s","Early Hunter|70%, Can Insta-hunt"],
+        "ghostTestArray":["Crucifix|50% larger Range","Smudge|Can hunt after 60s","Early Hunter|70%, Can Insta-hunt"],
         "expertMode":[
             "Early/<b class=ability>Insta-hunt</b> (70% or Ability)",
-            "<b class=equipment>Crucifix Range</b> Test (1.66x Larger)",
+            "<b class=equipment>Crucifix Range</b> Test (50% Larger)",
             "<b class=equipment>Smudge</b> stops hunt for only 60s",
             "<b>20s Hunt Cooldown</b> Between hunts"
         ],
         "secondaryEvidence": [
             "<b class=ability>Insta-hunt:</b> Low chance to start a hunt regardless of sanity level.  Only happens every few minutes.",
-            "The <b class=equipment>crucifix's</b> effective radius is much larger: 5m instead of 3m",
+            "The <b class=equipment>crucifix's</b> effective radius is 50% larger than whatever tier you are currently using.",
             "Hunt Cooldown of only 20s between attempted hunts as opposed to 25s",
             "<b class=equipment>Smudges</b> will only stop hunts for 60s as opposed to 90s"
         ],
@@ -88,7 +88,7 @@
         "index":13,
         "evidenceArray":[false,false,true,true,false,false,true],
         "speedArray":[true,true,true],
-        "ghostTestArray":["Hunt Appearance|Breath, Breaker Off", "Hunt Speed|Cold-based"],
+        "ghostTestArray":["Hunt Appearance|Breath, Breaker Off", "Hunt Speed|Cold-based","Interaction|Cannot turn on the breaker"],
         "expertMode":[
             "Fast in <b class=ability>cold rooms.</b>  Slow in <b>warmer rooms.</b>",
             "Model has <b>Breath</b> (Breaker off)",
@@ -110,7 +110,7 @@
         "index":5,
         "evidenceArray":[true,false,true,false,false,false,true],
         "speedArray":[false,true,true],
-        "ghostTestArray":["EMF|Ability = EMF 2 at Breaker","Hunt Speed|Fast in Line-of-Sight","Sanity|EMF at Breaker, -25%"],
+        "ghostTestArray":["EMF|Ability = EMF 2 at Breaker","Hunt Speed|Fast in Line-of-Sight","Sanity|EMF at Breaker, -25%","Interaction|Cannot turn off Breaker"],
         "expertMode":[
             "Fast <b>Chaser</b> (breaker on)",
             "<b class=equipment>EMF</b> at Breaker (Lowers Sanity 25%)",
@@ -151,17 +151,16 @@
         "index":21,
         "evidenceArray":[false,false,false,false,true,true,true],
         "speedArray":[true,true,true],
-        "ghostTestArray":["Spirit Box|Curse(Requires 1 evidence)","Smudge|Wanders for 12s during hunt","Hunt Speed|Sanity-based, faster when lower","Paramic|Curse","Sanity|Curse drains Sanity"],
+        "ghostTestArray":["Spirit Box|Curse(Requires 1 evidence)","Smudge|Wanders for 50% longer during hunt","Hunt Speed|Sanity-based, faster when lower","Paramic|Curse","Sanity|Curse drains Sanity"],
         "expertMode":[
             "<b>Faster</b> at <b>lower sanity</b>",
-            "<b class=equipment>Smudge</b> twice as effective during hunt (12s)",
-            "<b class=ability>Curse Test</b> with <b class=equipment>Spirit Box/Candle/Pills</b> (in 'More...')",
+            "<b class=equipment>Smudge</b> 50% more effective during hunt",
+            "<b class=ability>Curse Test</b> with <b class=equipment>Spirit Box/Paramic</b>",
             "Guaranteed <b class=evidence-highlight>Spirit Box</b> in <b>Nightmare/Insane</b>"
         ],
         "secondaryEvidence": [
             "When <b class=equipment>smudged</b> during a hunt it wanders for around 12s",
             "<b class=ability>Cursed Voice:</b> Curses any player whom it responds over the <b class=equipment>Spirit Box or Paramic</b>. Cursed players constantly lose sanity over time (0.3%/s).  Leaving the house stops the sanity drain, and taking sanity pills lifts the curse.",
-            "<b class=ability>Curse Test:</b> At <b>100% Sanity</b>, walk into the house with a <b class=equipment>Spirit Box (or Paramic) and Candle.</b> Speak to the Potential Moroi and get <b>cursed</b> on purpose.  Walk back to the van with your <b class=equipment>candle</b> and try to take <b class=equipment>Pills</b>.  If you can take them, you were successfully <b>cursed</b>, and it is a Moroi",
             "<b class=equipment>Candles</b> will not prevent <b>sanity drain,</b> which is why the above test is effective",
             "<b>Walking speed</b> is affected by average <b>team sanity</b>.  The lower the sanity, the <b>faster</b> it is",
             "Always gives the <b class=evidence-highlight>Spirit Box</b> evidence on <b>nightmare or higher</b> difficulty"
@@ -194,16 +193,16 @@
         "speedArray":[false,true,false],
         "ghostTestArray":["UV Flashlight|Six Fingers(Requires 1 evidence)","Hunt Appearance|Shapeshifts at least once"],
         "expertMode":[
-            "<b class=evidence-highlight>Fingerprints</b> can have <b class=evidence-highlight>6 fingers,</b> disappear quicker, and have reduced chance to appear",
+            "<b class=evidence-highlight>Ultraviolet</b> can have <b class=evidence-highlight>6 fingers,</b> disappear quicker, and have reduced chance to appear",
             "<b class=ability>Shapeshifts</b> during hunt",
-            "Guaranteed <b class=evidence-highlight>Fingerprints</b> in <b>Nightmare/Insane</b>"
+            "Guaranteed <b class=evidence-highlight>Ultraviolet</b> in <b>Nightmare/Insane</b>"
         ],
         "secondaryEvidence": [
             "<b class=ability>Shapeshifter:</b> During a hunt, it has a 6.66% chance each time it flickers to <b>shapeshift</b> into a different ghost form and back. This is <b>guaranteed</b> to happen at least <b>once per hunt</b>",
-            "Reduced chance of 75% to leave <b class=evidence-highlight>fingerprints</b>",
+            "Reduced chance of 75% to leave <b class=evidence-highlight>Ultraviolet</b>",
             "Low chance to leave <b class=evidence-highlight>fingerprints</b> with <b>6 fingers</b>",
             "Can leave <b class=evidence-highlight>double fingerprints</b> on light switches, and 5 fingerprints on prison doors and keyboards (instead of 4)",
-            "Always gives the <b class=evidence-highlight>Fingerprints</b> evidence on <b>nightmare or higher<b/> difficulty",
+            "Always gives the <b class=evidence-highlight>Ultraviolet</b> evidence on <b>nightmare or higher<b/> difficulty",
             "Fingerprints have a 50% chance to disappear earlier (60s) than of other ghosts (120s)"
         ],
         "tertiaryEvidence": [

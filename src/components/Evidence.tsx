@@ -10,12 +10,13 @@ type EvidenceType = {
 
 const Evidence:React.FC<EvidenceType> = ({displayType}) => {
   const evidenceNumber = useSelector((state: any) => state.phas.evidenceNumber);
+  const loading = useSelector((state: any) => state.phas.loading);
   const [stateEvidenceNum, updateStateEvidenceNum] = useState(evidenceNumber);
   const dispatch = useDispatch();
   let evidenceArrayDisplay = [
     "EMF Level 5",
     "D.O.T.S",
-    "Fingerprints",
+    "Ultraviolet",
     "Ghost Orbs",
     "Ghost Writing",
     "Spirit Box",
@@ -24,6 +25,9 @@ const Evidence:React.FC<EvidenceType> = ({displayType}) => {
   let speedDisplayValues = ["Slow","Normal","Fast"]
 
   useEffect(()=>{
+    if(loading){
+      return;
+    }
     if(evidenceNumber != stateEvidenceNum){
       updateStateEvidenceNum(evidenceNumber);
       dispatch(updateCompletedTasks([]));
