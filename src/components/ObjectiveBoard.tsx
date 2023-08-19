@@ -17,6 +17,10 @@ const ObjectiveBoard = () => {
   const guessArray = useSelector((state: any) => state.phas.guessArray);
   const objectiveBoardScreen = useSelector((state: any) => state.phas.objectiveBoardScreen);
   const completedTasks = useSelector((state: any) => state.phas.completedTasks);
+
+  const [userLocal, setUserLocal] = useState<any>(null)
+
+  
   const [expandInstructions,setInstructions] = useState(false);
   const [expandHunt,setHunt] = useState(true);
   const [expandInteractions,setInteractions] = useState(true);
@@ -33,13 +37,8 @@ const ObjectiveBoard = () => {
 
   const [ghostTests,setGhostTests] = useState<ghostTestType>({})
 
-
   useEffect(()=>{
-
-  },[]);
-
-
-  useEffect(()=>{
+    console.log(userLocal);
     let ghostTestsTemp:ghostTestType = {}
     let possibleValues = [false,false,false,false,false,false,false];
     // Skip Speed Check if no speed selected
@@ -119,6 +118,7 @@ const ObjectiveBoard = () => {
             }
           })
         })
+        setUserLocal([speedValues,guessArray,eliminatedValues,evidenceValues]) 
         setGhostTests(ghostTestsTemp);
         handlePossible(possibleValues);
         return;
@@ -143,15 +143,12 @@ const ObjectiveBoard = () => {
         }
       })
     })
+    setUserLocal([speedValues,guessArray,eliminatedValues,evidenceValues]) 
     setGhostTests(ghostTestsTemp);
     console.log(ghostTestsTemp);
     possibleValues = [true,true,true,true,true,true,true];
     handlePossible(possibleValues);
-  },[evidenceValues,speedValues,eliminatedValues,guessArray,completedTasks])
-
-  useEffect(()=>{
-
-  },[completedTasks])
+  },[evidenceValues,speedValues,eliminatedValues])
 
   const handlePossible=(arr: Array<boolean>)=>{
     dispatch(updatePossible(arr))

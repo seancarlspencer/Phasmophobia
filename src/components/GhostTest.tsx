@@ -7,9 +7,10 @@ interface GhostTestInterface{
   display: boolean
   testType: string
   completed: boolean
+  // guessArray: Array<boolean>
 }
 
-const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, completed}) => {
+const GhostTest: React.FC<GhostTestInterface> = React.memo(({ghostNames,display, testType, completed}) => {
   const evidenceValues = useSelector((state:any) => state.phas.evidenceValues);
   const guessArray = useSelector((state: any) => state.phas.guessArray);
   const loading = useSelector((state: any) => state.phas.loading);
@@ -21,6 +22,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
 
   useEffect(()=>{
     //Check if should be checked.
+    console.log("Rerendered");
     if(loading || !display || completed){
       return;
     }
@@ -154,8 +156,21 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
       </div>
     </div>
   );
-};
+}, arePropsEqual);
 
 export default GhostTest;
 
-export const MemoizedGhostTest = React.memo(GhostTest);
+function arePropsEqual(prevProps: Readonly<GhostTestInterface>, nextProps: Readonly<GhostTestInterface>): boolean {
+  if(prevProps.completed != nextProps.completed){
+    return true;
+  }
+  if(prevProps.display != nextProps.display){
+    return true;
+  }
+  prevProps.ghostNames.forEach((ghost)=>{
+
+  })
+    return true;
+  
+  throw new Error('Function not implemented.');
+}
