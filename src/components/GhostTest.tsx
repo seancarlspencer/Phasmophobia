@@ -17,6 +17,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
   const [toggleComplete,setComplete] = useState(false);
   const dispatch = useDispatch();
   let classNameParsed = testType.toLocaleLowerCase().replace(" ","-");
+  let ghostIndexes = ['Spirit', 'Wraith', 'Phantom', 'Poltergeist', 'Banshee', 'Jinn', 'Mare', 'Revenant', 'Shade', 'Demon', 'Yurei', 'Oni', 'Yokai', 'Hantu', 'Goryo', 'Myling', 'Onryo', 'The Twins', 'Raiju', 'Obake', 'The Mimic', 'Moroi', 'Deogen', 'Thaye'];
 
   useEffect(()=>{
     //Check if should be checked.
@@ -33,7 +34,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
       if(!shouldCheck){
         return false;
       }
-      if(!guessArray[ghost[1]]){
+      if(!guessArray[ghostIndexes.indexOf(ghost[0])]){
         //Found ghost that is not eliminated, therefore, set Complete to false and uncheck if it's set as completed.
         shouldCheck=false;
         if(toggleComplete){
@@ -65,20 +66,20 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
       if(completed){
         setComplete(false);
         ghostNames.forEach((ghost)=>{
-          tempGuess[ghost[1]] = false;
+          tempGuess[ghostIndexes.indexOf(ghost[0])] = false;
         })
       }
       else{
         if(testChecked.checked){
             setComplete(true);
             ghostNames.forEach((ghost)=>{
-              tempGuess[ghost[1]] = true;
+              tempGuess[ghostIndexes.indexOf(ghost[0])] = true;
             })
         }
         else{
             setComplete(false);
             ghostNames.forEach((ghost)=>{
-              tempGuess[ghost[1]] = false;
+              tempGuess[ghostIndexes.indexOf(ghost[0])] = false;
             })
         }
       }
@@ -100,7 +101,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
     dispatch(updateGuessArray(tempGuess));
     let shouldCheck = true;
     ghostNames.forEach((ghost)=>{
-      if(!tempGuess[ghost[1]]){
+      if(!tempGuess[ghostIndexes.indexOf(ghost[0])]){
         setComplete(false);
         shouldCheck=false;
         return;
@@ -117,9 +118,6 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
   return (
     completed ? 
     <div className={`ghost-test-container${completed ? " completed-list" : ""}${display ? "" : " hide"}${toggleComplete ? " completed" : ""}${toggleGuess ? " eliminated" : ""}${["Hunt Behavior","Hunt Speed","Hunt Appearance"].includes(testType) ? "" : ""}`}>
-      {/* <div className="test-type" onClick={handleToggleGuess}>
-        {testType}
-      </div> */}
       <div className="test-type-container">
         <input className="test-type" id={`test-type-${completed ? "completed-" : ""}${classNameParsed}`} type="checkbox" onChange={handleToggleGuess} checked>
         </input><label htmlFor={`test-type-${completed ? "completed-" : ""}${classNameParsed}`}>{testType}</label>
@@ -130,31 +128,27 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
       }
       <div className="ghost-test-list">
       {ghostNames.map((ghost)=>{
-        return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghost[1])}}>
-          <div className={`ghost-test-ghostname${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[0]}</div>
-          <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2].replace("(Requires 1 evidence)","")})` :""}</div>
+        let ghostIndex = ghostIndexes.indexOf(ghost[0]);
+        return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghostIndex)}}>
+          <div className={`ghost-test-ghostname${guessArray[ghostIndex] ? " eliminated" : ""}`}>{ghost[0]}</div>
+          <div className={`ghost-test-ghostadditional${guessArray[ghostIndex] ? " eliminated" : ""}`}>{ghost[1] != undefined ? `(${ghost[1].replace("(Requires 1 evidence)","")})` :""}</div>
         </div>
       })}
       </div>
     </div>
     :
     <div className={`ghost-test-container${completed ? " completed-list" : ""}${display ? "" : " hide"}${toggleComplete ? " completed" : ""}${toggleGuess ? " eliminated" : ""}${["Hunt Behavior","Hunt Speed","Hunt Appearance"].includes(testType) ? "" : ""}`}>
-      {/* <div className="test-type" onClick={handleToggleGuess}>
-        {testType}
-      </div> */}
       <div className="test-type-container">
         <input className="test-type" id={`test-type-${completed ? "completed-" : ""}${classNameParsed}`} type="checkbox" onChange={handleToggleGuess}>
         </input><label htmlFor={`test-type-${completed ? "completed-" : ""}${classNameParsed}`}>{testType}</label>
         <div className="custom-checkbox"></div>
       </div>
-      {
-        
-      }
       <div className="ghost-test-list">
       {ghostNames.map((ghost)=>{
-        return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghost[1])}}>
-          <div className={`ghost-test-ghostname${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[0]}</div>
-          <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2].replace("(Requires 1 evidence)","")})` :""}</div>
+        let ghostIndex = ghostIndexes.indexOf(ghost[0]);
+        return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghostIndex)}}>
+          <div className={`ghost-test-ghostname${guessArray[ghostIndex] ? " eliminated" : ""}`}>{ghost[0]}</div>
+          <div className={`ghost-test-ghostadditional${guessArray[ghostIndex] ? " eliminated" : ""}`}>{ghost[1] != undefined ? `(${ghost[1].replace("(Requires 1 evidence)","")})` :""}</div>
           </div>
       })}
       </div>
@@ -163,3 +157,5 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
 };
 
 export default GhostTest;
+
+export const MemoizedGhostTest = React.memo(GhostTest);

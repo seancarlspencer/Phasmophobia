@@ -5,6 +5,7 @@ import phasGhosts from '../assets/phasEvidenceParsed.json';
 import phasGhostsTests from '../assets/phasEvidenceTests.json';
 import Ghost from './Ghost';
 import GhostTest from './GhostTest';
+import MemoizedGhostTest from './GhostTest';
 
 const ObjectiveBoard = () => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
@@ -22,6 +23,9 @@ const ObjectiveBoard = () => {
   const [expandEquipment,setEquipment] = useState(true);
   const [expandCompleted,setCompleted] = useState(true);
   const dispatch = useDispatch();
+
+  let ghostIndexes = ['Spirit', 'Wraith', 'Phantom', 'Poltergeist', 'Banshee', 'Jinn', 'Mare', 'Revenant', 'Shade', 'Demon', 'Yurei', 'Oni', 'Yokai', 'Hantu', 'Goryo', 'Myling', 'Onryo', 'The Twins', 'Raiju', 'Obake', 'The Mimic', 'Moroi', 'Deogen', 'Thaye']
+  let ghostNamesConsole = Object.keys(phasGhosts).sort((a, b) => phasGhosts[a as keyof typeof phasGhosts]["index"] > phasGhosts[b as keyof typeof phasGhosts]["index"] ? 1 : -1);
 
   type ghostTestType = {
     [key: string]: Array<any[]>
@@ -41,13 +45,6 @@ const ObjectiveBoard = () => {
     // Skip Speed Check if no speed selected
     for(let x=0;x<evidenceValues.length;x++){
       // Determines which ghosts are possible
-      if (evidenceValues.filter((x: any) => x).length >= evidenceNumber){
-        // for(let i=0;i<evidenceValues.length;i++){
-        //   possibleValues[i] = evidenceValues[i];
-        // }
-        // handlePossible(possibleValues);
-        // return;
-      }
       if(evidenceValues[x] || eliminatedValues[x]){
         // Only check for possible ghosts if evidence is selected
         Object.keys(phasGhosts).map((ghost:string)=>{
@@ -67,7 +64,7 @@ const ObjectiveBoard = () => {
             }
           }
         });
-        {Object.keys(phasGhosts).sort((a, b) => phasGhosts[a as keyof typeof phasGhosts]["index"] > phasGhosts[b as keyof typeof phasGhosts]["index"] ? 1 : -1).map((ghost:string)=>{
+        ghostNamesConsole.map((ghost:string)=>{
           if(["Hantu","Goryo","Obake","Deogen","Moroi"].includes(ghost)){
             let guaranteedEvCheck = evidenceValues.filter((x: any) => x).length;
             if(guaranteedEvCheck == evidenceNumber && evidenceNumber!=0){
@@ -114,14 +111,14 @@ const ObjectiveBoard = () => {
           }
           phasGhostsTests[ghost as keyof typeof phasGhostsTests]["ghostTestArray"].map((test)=>{
             if(ghostTestsTemp[test.split("|")[0]]){
-              ghostTestsTemp[test.split("|")[0]].push([ghost,phasGhostsTests[ghost as keyof typeof phasGhostsTests]["index"],test.split("|")[1]]);
+              ghostTestsTemp[test.split("|")[0]].push([ghost,test.split("|")[1]]);
             }
             else{
               ghostTestsTemp[test.split("|")[0]] = [];
-              ghostTestsTemp[test.split("|")[0]].push([ghost,phasGhostsTests[ghost as keyof typeof phasGhostsTests]["index"],test.split("|")[1]]);
+              ghostTestsTemp[test.split("|")[0]].push([ghost,test.split("|")[1]]);
             }
           })
-        })}
+        })
         setGhostTests(ghostTestsTemp);
         handlePossible(possibleValues);
         return;
@@ -138,15 +135,16 @@ const ObjectiveBoard = () => {
       }
       phasGhostsTests[ghost as keyof typeof phasGhostsTests]["ghostTestArray"].map((test)=>{
         if(ghostTestsTemp[test.split("|")[0]]){
-          ghostTestsTemp[test.split("|")[0]].push([ghost,phasGhostsTests[ghost as keyof typeof phasGhostsTests]["index"],test.split("|")[1]]);
+          ghostTestsTemp[test.split("|")[0]].push([ghost,test.split("|")[1]]);
         }
         else{
           ghostTestsTemp[test.split("|")[0]] = [];
-          ghostTestsTemp[test.split("|")[0]].push([ghost,phasGhostsTests[ghost as keyof typeof phasGhostsTests]["index"],test.split("|")[1]]);
+          ghostTestsTemp[test.split("|")[0]].push([ghost,test.split("|")[1]]);
         }
       })
     })
     setGhostTests(ghostTestsTemp);
+    console.log(ghostTestsTemp);
     possibleValues = [true,true,true,true,true,true,true];
     handlePossible(possibleValues);
   },[evidenceValues,speedValues,eliminatedValues,guessArray,completedTasks])
@@ -179,7 +177,7 @@ const ObjectiveBoard = () => {
       <div className="objective-board-tooltip">
         Tap on Ghost to Eliminate
       </div>
-      {Object.keys(phasGhosts).sort((a, b) => phasGhosts[a as keyof typeof phasGhosts]["index"] > phasGhosts[b as keyof typeof phasGhosts]["index"] ? 1 : -1).map((ghost:string)=>{
+      {ghostNamesConsole.map((ghost:string)=>{
         if(["Hantu","Goryo","Obake","Deogen","Moroi"].includes(ghost)){
           let guaranteedEvCheck = evidenceValues.filter((x: any) => x).length;
           if(guaranteedEvCheck == evidenceNumber && evidenceNumber!=0){
@@ -306,8 +304,8 @@ const ObjectiveBoard = () => {
         {Object.keys(ghostTests).sort((a, b) => ghostTests[a as keyof typeof ghostTests].length < ghostTests[b as keyof typeof ghostTests].length ? 1 : -1).filter(test =>
         !["Breaker","Sanity","Interaction","Room","Events"].includes(test) &&
         !test.includes("Hunt")).map((test)=>{
-          return <GhostTest
-          ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
+          return <MemoizedGhostTest
+          ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[1] != undefined ? !(ghost[1].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
           testType={test}
           display={true}
           completed={false}
@@ -320,8 +318,8 @@ const ObjectiveBoard = () => {
         <div className="ghost-test-header" onClick={()=>setInteractions(expandInteractions => !expandInteractions)}><span>☰ Unique Interactions</span></div>
         <div className={`specific-test-container`}>
         {Object.keys(ghostTests).filter(test => (["Breaker","Sanity","Interaction","Room","Events"].includes(test))).map((test)=>{
-            return <GhostTest
-              ghostNames={evidenceNumber == 0 ? [...ghostTests[test]].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
+            return <MemoizedGhostTest
+              ghostNames={evidenceNumber == 0 ? [...ghostTests[test]].filter(ghost=>ghost[1] != undefined ? !(ghost[1].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
               testType={test}
               display={true}
               completed={false}
@@ -334,8 +332,8 @@ const ObjectiveBoard = () => {
         <div className="ghost-test-header" onClick={()=>setHunt(expandHunt => !expandHunt)}><span>☰ Unique Hunting Traits</span></div>
         <div className={`specific-test-container`}>
         {Object.keys(ghostTests).sort((a, b) => ["Hunt Behavior","Hunt Speed","Hunt Appearance"].includes(a) ? -1 : ["Hunt Behavior","Hunt Speed","Hunt Appearance"].includes(b) ? 1 : ghostTests[a as keyof typeof ghostTests].length < ghostTests[b as keyof typeof ghostTests].length ? 1 : -1).filter(test => (test.includes("Hunt"))).map((test)=>{
-            return <GhostTest
-              ghostNames={evidenceNumber == 0 ? [...ghostTests[test]].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
+            return <MemoizedGhostTest
+              ghostNames={evidenceNumber == 0 ? [...ghostTests[test]].filter(ghost=>ghost[1] != undefined ? !(ghost[1].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
               testType={test}
               display={true}
               completed={false}
@@ -350,35 +348,25 @@ const ObjectiveBoard = () => {
         {Object.keys(ghostTests).sort((a, b) => ghostTests[a as keyof typeof ghostTests].length < ghostTests[b as keyof typeof ghostTests].length ? 1 : -1).map((test)=>{
           let renderComplete = true;
           ghostTests[test].forEach((name)=>{
-            if (!guessArray[name[1]]){
+            if (!guessArray[ghostIndexes.indexOf(name[0])]){
               renderComplete=false;
+              // Check if there is a ghost that is not eliminated.  If so, do not render complete.
             }
             else{
             }
           })
           if (!renderComplete){
-            return <GhostTest
-            ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
-            testType={test}
-            display={false}
-            completed={true}
-            key={`complete-${test}-1`}
-            />
+            return
           }
           else if(evidenceNumber == 0){
-            if(ghostTests[test].filter(ghost=>ghost[2] != undefined
-              ? !(ghost[2].includes("(Requires 1 evidence)")) : true).length >= 1 ? false : true){
-                return <GhostTest
-                ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
-                testType={test}
-                display={false}
-                completed={true}
-                key={`complete-${test}-2`}
-                />
+            if(ghostTests[test].filter(ghost=>ghost[1] != undefined
+              ? !(ghost[1].includes("(Requires 1 evidence)")) : true).length >= 1 ? false : true){
+                // If there is 0 evidence, and the ghost list only contains ghosts that require at least one evidence to test it (EG Spirit box for Deogen and Moroi), then do not render complete.
+                return
               }
           }
-          return <GhostTest
-          ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
+          return <MemoizedGhostTest
+          ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[1] != undefined ? !(ghost[1].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
           testType={test}
           display={true}
           completed={true}
