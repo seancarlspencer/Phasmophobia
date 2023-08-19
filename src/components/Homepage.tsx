@@ -21,7 +21,6 @@ const Homepage = () => {
     const target = document.querySelector(".objective-board-content");
     setTimeout(()=>{
       dispatch(updateLoading());
-      console.log("Updating Loading");
     },50)
 
     document.addEventListener("wheel", function(e){
@@ -32,11 +31,7 @@ const Homepage = () => {
         target.scrollBy(e.deltaX,e.deltaY > 0 ? 100 : -100);
       }
     })
-  },[])
-
-  useEffect(()=>{
-    console.log(loading);
-  },[loading])
+  })
 
   const handleObjectiveBoard = (screen: string) => {
     dispatch(handleObjectiveBoardScreen(screen));
