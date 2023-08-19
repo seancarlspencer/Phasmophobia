@@ -839,7 +839,13 @@ body *{
   }
   &.v0-9-0-0-disclaimer{
     margin-top: 6px;
-    overflow:hidden;
+    height: 100%;
+    // overflow:hidden;
+  }
+  &.items{
+    margin-top: 6px;
+    height: 100%;
+    // overflow:hidden;
   }
   @media screen and (max-width: 911px) {
     height: calc(100% - 24px);
@@ -1748,4 +1754,10 @@ p{
   b{
     color: var(--evidenceTextColor);
   }
+}
+
+.tiers-container{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }

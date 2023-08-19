@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateCompletedTasks, updateGuessArray } from '../actions/actions';
+import { updateGuessArray } from '../actions/actions';
 
 interface GhostTestInterface{
   ghostNames: Array<any>

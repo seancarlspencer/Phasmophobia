@@ -429,7 +429,23 @@ const ObjectiveBoard = () => {
         <p>If you learn anything new about the Patch that you think should be included here, please reach out to me on Discord, ID: damiascus</p>
       </div>
       break;
-    default:
+    case "Items":
+      screenContent =
+      <div className="items-screen-container">
+        <div className="tiers-container">
+          <div className="tiers-header">Items</div>
+          <div className="tiers-header">Tier I</div>
+          <div className="tiers-header">Tier II</div>
+          <div className="tiers-header">Tier III</div>
+
+          <div className="tiers-item"></div>
+          <div className="tiers-tier"></div>
+          <div className="tiers-tier"></div>
+          <div className="tiers-tier"></div>
+        </div>
+      </div>
+      break;
+      default:
       break;
   }
 
