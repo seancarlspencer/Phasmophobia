@@ -16,6 +16,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
   const [toggleGuess,setGuess] = useState(false);
   const [toggleComplete,setComplete] = useState(false);
   const dispatch = useDispatch();
+  let classNameParsed = testType.toLocaleLowerCase().replace(" ","-");
 
   useEffect(()=>{
     //Check if should be checked.
@@ -36,7 +37,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
         //Found ghost that is not eliminated, therefore, set Complete to false and uncheck if it's set as completed.
         shouldCheck=false;
         if(toggleComplete){
-            let testChecked = document.getElementById(`test-type-${testType.toLocaleLowerCase().replace(" ","-")}`) as HTMLInputElement;
+            let testChecked = document.getElementById(`test-type-${classNameParsed}`) as HTMLInputElement;
             if(testChecked){
               setComplete(false);
               testChecked.checked = false;
@@ -47,7 +48,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
       return true;
     })
     if(!toggleComplete && shouldCheck){
-      let testChecked = document.getElementById(`test-type-${testType.toLocaleLowerCase().replace(" ","-")}`) as HTMLInputElement;
+      let testChecked = document.getElementById(`test-type-${classNameParsed}`) as HTMLInputElement;
       if(testChecked){
         setComplete(true);
         testChecked.checked = true;
@@ -56,7 +57,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
   }
 
   const handleToggleGuess = () => {
-    let testChecked = document.getElementById(`test-type-${completed ? "completed-" : ""}${testType.toLocaleLowerCase().replace(" ","-")}`) as HTMLInputElement;
+    let testChecked = document.getElementById(`test-type-${completed ? "completed-" : ""}${classNameParsed}`) as HTMLInputElement;
 
     //This should only affect completed Tasks if we are checking a list to completion, or unchecking a completed list.
     if(testChecked){
@@ -86,7 +87,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
   }
 
   const handleToggleSingleGuess = (index:number) => {
-    let testChecked = document.getElementById(`test-type-${completed ? "completed-" : ""}${testType.toLocaleLowerCase().replace(" ","-")}`) as HTMLInputElement;
+    let testChecked = document.getElementById(`test-type-${completed ? "completed-" : ""}${classNameParsed}`) as HTMLInputElement;
     if(testChecked){
       if(testChecked.checked && guessArray[index]){
         //Uncheck if we are unchecking a ghost task
@@ -120,8 +121,8 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
         {testType}
       </div> */}
       <div className="test-type-container">
-        <input className="test-type" id={`test-type-${completed ? "completed-" : ""}${testType.toLocaleLowerCase().replace(" ","-")}`} type="checkbox" onChange={handleToggleGuess} checked>
-        </input><label htmlFor={`test-type-${completed ? "completed-" : ""}${testType.toLocaleLowerCase().replace(" ","-")}`}>{testType}</label>
+        <input className="test-type" id={`test-type-${completed ? "completed-" : ""}${classNameParsed}`} type="checkbox" onChange={handleToggleGuess} checked>
+        </input><label htmlFor={`test-type-${completed ? "completed-" : ""}${classNameParsed}`}>{testType}</label>
         <div className="custom-checkbox"></div>
       </div>
       {
@@ -132,7 +133,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
         return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghost[1])}}>
           <div className={`ghost-test-ghostname${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[0]}</div>
           <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2].replace("(Requires 1 evidence)","")})` :""}</div>
-          </div>
+        </div>
       })}
       </div>
     </div>
@@ -142,8 +143,8 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
         {testType}
       </div> */}
       <div className="test-type-container">
-        <input className="test-type" id={`test-type-${completed ? "completed-" : ""}${testType.toLocaleLowerCase().replace(" ","-")}`} type="checkbox" onChange={handleToggleGuess}>
-        </input><label htmlFor={`test-type-${completed ? "completed-" : ""}${testType.toLocaleLowerCase().replace(" ","-")}`}>{testType}</label>
+        <input className="test-type" id={`test-type-${completed ? "completed-" : ""}${classNameParsed}`} type="checkbox" onChange={handleToggleGuess}>
+        </input><label htmlFor={`test-type-${completed ? "completed-" : ""}${classNameParsed}`}>{testType}</label>
         <div className="custom-checkbox"></div>
       </div>
       {

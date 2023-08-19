@@ -1,0 +1,98 @@
+{
+    "Banshee": {
+        "index":4,
+        "ghostTestArray":["Paramic|Wail, 33% Chance","Hunt Behavior|Solo Target","Events|Singing Events more often","Sanity|Hunts based on Target Sanity"]
+    },
+    "Demon": {
+        "index":9,
+        "ghostTestArray":["Crucifix|50% larger Range","Smudge|Can hunt after 60s","Early Hunter|70%, Can Insta-hunt"]
+    },
+    "Deogen": {
+        "index":22,
+        "ghostTestArray":["Spirit Box|Growl(Requires 1 evidence)","Hunt Speed|Fast seeker, slow chaser","Late Hunter|40%"]
+    },
+    "Goryo": {
+        "index":14,
+        "ghostTestArray":["Video Camera|Only shows D.O.T.S. on Video(Requires 1 evidence)","Room|Doesn't Change"]
+    },
+    "Hantu": {
+        "index":13,
+        "ghostTestArray":["Hunt Appearance|Breath, Breaker Off", "Hunt Speed|Cold-based","Interaction|Cannot turn on the breaker"]
+    },
+    "Jinn": {
+        "index":5,
+        "ghostTestArray":["EMF|Ability = EMF 2 at Breaker","Hunt Speed|Fast in Line-of-Sight","Sanity|EMF at Breaker, -25%","Interaction|Cannot turn off Breaker"]
+    },
+    "Mare": {
+        "index":6,
+        "ghostTestArray":["Early Hunter|60%, Dark Rooms","Hunt Behavior|Favors Going to Dark Rooms","Interaction|Small % to immediately turn off light","Events|Light Events more often","Late Hunter|40%, Lights on"]
+    },
+    "Moroi": {
+        "index":21,
+        "ghostTestArray":["Spirit Box|Curse(Requires 1 evidence)","Smudge|Wanders for 50% longer during hunt","Hunt Speed|Sanity-based, faster when lower","Paramic|Curse","Sanity|Curse drains Sanity"]
+    },
+    "Myling": {
+        "index":15,
+        "ghostTestArray":["Paramic|More Often","Hunt Behavior|Quiet, Flashlight flickers before Audible"]
+    },
+    "Obake": {
+        "index":19,
+        "ghostTestArray":["UV Flashlight|Six Fingers(Requires 1 evidence)","Hunt Appearance|Shapeshifts at least once"]
+    },
+    "Oni": {
+        "index":11,
+        "ghostTestArray":["Hunt Appearance|More Visible","Sanity|Events Drain Double, -20%","Events|No Airball, Events drain double Sanity"]
+    },
+    "Onryo": {
+        "index":16,
+        "ghostTestArray":["Early Hunter|60%, or after 3 candle blows","Candle|/w Crucifix, uses Candle first","Crucifix|w/ Candle, uses Candle first"]
+    },
+    "Phantom": {
+        "index":2,
+        "ghostTestArray":["Photo Camera|Disappears during Event","Hunt Appearance|Less Visible","Events|Photo makes it disappear"]
+    },
+    "Poltergeist": {
+        "index":3,
+        "ghostTestArray":["Interaction|Big/Many Item Throws","Hunt Behavior|Throws Items Rapidly"]
+    },
+    "Raiju": {
+        "index":18,
+        "ghostTestArray":["Hunt Speed|Fast Around Equipment","Early Hunter|65%, Around Equipment"]
+    },
+    "Revenant": {
+        "index":7,
+        "ghostTestArray":["Hunt Speed|Fast Chaser, Slow Seeker"]
+    },
+    "Shade": {
+        "index":8,
+        "ghostTestArray":["Late Hunter|35%, won't hunt w/ multiple","Events|Overall less Events"]
+    },
+    "Spirit": {
+        "index":0,
+        "ghostTestArray":["Smudge|Can't hunt for 180s"]
+    },
+    "Thaye": {
+        "index":23,
+        "ghostTestArray":["Hunt Speed|Age-based, starts fast","Early Hunter|70% when young","Late Hunter|15% when fully aged"]
+    },
+    "The Mimic": {
+        "index":20,
+        "ghostTestArray":["Hunt Behavior|Mimics Other Ghosts","Video Camera|Orbs Fake Evidence"]
+    },
+    "The Twins": {
+        "index":17,
+        "ghostTestArray":["Hunt Speed|Slow/Fast Twin","Interaction|Multiple Rooms"]
+    },
+    "Wraith": {
+        "index":1,
+        "ghostTestArray":["Salt|Cannot step","EMF|Teleports, leaves EMF 2","Interaction|Teleports to Player, leaves EMF 2"]
+    },
+    "Yokai": {
+        "index":12,
+        "ghostTestArray":["Hunt Behavior|Can't hear, can't sense flashlight","Early Hunter|80%, Talking nearby"]
+    },
+    "Yurei": {
+        "index":10,
+        "ghostTestArray":["Smudge|Stays in room for 90s","Interaction|Closes Door w/o Event, even Exit","Sanity|Door Slam, -15%","Room|Stays for 90s when Smudged"]
+    }
+}

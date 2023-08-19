@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { handleObjectiveBoardScreen, updateGuessArray, updatePossible } from '../actions/actions';
 import phasGhosts from '../assets/phasEvidenceParsed.json';
+import phasGhostsTests from '../assets/phasEvidenceTests.json';
 import Ghost from './Ghost';
 import GhostTest from './GhostTest';
-import { render } from '@testing-library/react';
 
 const ObjectiveBoard = () => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
@@ -112,13 +112,13 @@ const ObjectiveBoard = () => {
               }
             }
           }
-          phasGhosts[ghost as keyof typeof phasGhosts]["ghostTestArray"].map((test)=>{
+          phasGhostsTests[ghost as keyof typeof phasGhostsTests]["ghostTestArray"].map((test)=>{
             if(ghostTestsTemp[test.split("|")[0]]){
-              ghostTestsTemp[test.split("|")[0]].push([ghost,phasGhosts[ghost as keyof typeof phasGhosts]["index"],test.split("|")[1]]);
+              ghostTestsTemp[test.split("|")[0]].push([ghost,phasGhostsTests[ghost as keyof typeof phasGhostsTests]["index"],test.split("|")[1]]);
             }
             else{
               ghostTestsTemp[test.split("|")[0]] = [];
-              ghostTestsTemp[test.split("|")[0]].push([ghost,phasGhosts[ghost as keyof typeof phasGhosts]["index"],test.split("|")[1]]);
+              ghostTestsTemp[test.split("|")[0]].push([ghost,phasGhostsTests[ghost as keyof typeof phasGhostsTests]["index"],test.split("|")[1]]);
             }
           })
         })}
@@ -136,13 +136,13 @@ const ObjectiveBoard = () => {
           }
         }
       }
-      phasGhosts[ghost as keyof typeof phasGhosts]["ghostTestArray"].map((test)=>{
+      phasGhostsTests[ghost as keyof typeof phasGhostsTests]["ghostTestArray"].map((test)=>{
         if(ghostTestsTemp[test.split("|")[0]]){
-          ghostTestsTemp[test.split("|")[0]].push([ghost,phasGhosts[ghost as keyof typeof phasGhosts]["index"],test.split("|")[1]]);
+          ghostTestsTemp[test.split("|")[0]].push([ghost,phasGhostsTests[ghost as keyof typeof phasGhostsTests]["index"],test.split("|")[1]]);
         }
         else{
           ghostTestsTemp[test.split("|")[0]] = [];
-          ghostTestsTemp[test.split("|")[0]].push([ghost,phasGhosts[ghost as keyof typeof phasGhosts]["index"],test.split("|")[1]]);
+          ghostTestsTemp[test.split("|")[0]].push([ghost,phasGhostsTests[ghost as keyof typeof phasGhostsTests]["index"],test.split("|")[1]]);
         }
       })
     })
@@ -311,6 +311,7 @@ const ObjectiveBoard = () => {
           testType={test}
           display={true}
           completed={false}
+          key={`equipment-${test}`}
           />
           })}
       </div>
@@ -324,6 +325,7 @@ const ObjectiveBoard = () => {
               testType={test}
               display={true}
               completed={false}
+              key={`interaction-${test}`}
               />
           })}
       </div>
@@ -337,6 +339,7 @@ const ObjectiveBoard = () => {
               testType={test}
               display={true}
               completed={false}
+              key={`hunt-${test}`}
               />
           })}
         </div>
@@ -359,6 +362,7 @@ const ObjectiveBoard = () => {
             testType={test}
             display={false}
             completed={true}
+            key={`complete-${test}-1`}
             />
           }
           else if(evidenceNumber == 0){
@@ -369,6 +373,7 @@ const ObjectiveBoard = () => {
                 testType={test}
                 display={false}
                 completed={true}
+                key={`complete-${test}-2`}
                 />
               }
           }
@@ -377,6 +382,7 @@ const ObjectiveBoard = () => {
           testType={test}
           display={true}
           completed={true}
+          key={`complete-${test}-3`}
           />
           })}
           </div>

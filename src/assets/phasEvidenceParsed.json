@@ -3,7 +3,6 @@
         "index":4,
         "evidenceArray":[false,true,true,true,false,false,false],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Paramic|Wail, 33% Chance","Hunt Behavior|Solo Target","Events|Singing Events more often","Sanity|Hunts based on Target Sanity"],
         "expertMode":[
             "<b class=ability>Solo Target Test</b> (target in area)",
             "<b class=equipment>Paramic Wail</b> (33% chance), <b>Singing Events</b> Often",
@@ -26,7 +25,6 @@
         "index":9,
         "evidenceArray":[false,false,true,false,true,false,true],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Crucifix|50% larger Range","Smudge|Can hunt after 60s","Early Hunter|70%, Can Insta-hunt"],
         "expertMode":[
             "Early/<b class=ability>Insta-hunt</b> (70% or Ability)",
             "<b class=equipment>Crucifix Range</b> Test (50% Larger)",
@@ -48,7 +46,6 @@
         "index":22,
         "evidenceArray":[false,true,false,false,true,true,false],
         "speedArray":[true,false,true],
-        "ghostTestArray":["Spirit Box|Growl(Requires 1 evidence)","Hunt Speed|Fast seeker, slow chaser","Late Hunter|40%"],
         "expertMode":[
             "<b class=equipment>Spirit Box</b> Heavy Breathing (within 1m of ghost)",
             "<b>Low Sanity</b> Hunt (40%)",
@@ -70,7 +67,6 @@
         "index":14,
         "evidenceArray":[true,true,true,false,false,false,false],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Video Camera|Only shows D.O.T.S. on Video(Requires 1 evidence)","Room|Doesn't Change"],
         "expertMode":[
             "<b class=equipment>Video</b> <b class=evidence-highlight>D.O.T.S.</b> only (No players in room)",
             "<b>Ghost Room</b> doesn't change, no <b>Long-distance Roam.</b>",
@@ -88,7 +84,6 @@
         "index":13,
         "evidenceArray":[false,false,true,true,false,false,true],
         "speedArray":[true,true,true],
-        "ghostTestArray":["Hunt Appearance|Breath, Breaker Off", "Hunt Speed|Cold-based","Interaction|Cannot turn on the breaker"],
         "expertMode":[
             "Fast in <b class=ability>cold rooms.</b>  Slow in <b>warmer rooms.</b>",
             "Model has <b>Breath</b> (Breaker off)",
@@ -110,7 +105,6 @@
         "index":5,
         "evidenceArray":[true,false,true,false,false,false,true],
         "speedArray":[false,true,true],
-        "ghostTestArray":["EMF|Ability = EMF 2 at Breaker","Hunt Speed|Fast in Line-of-Sight","Sanity|EMF at Breaker, -25%","Interaction|Cannot turn off Breaker"],
         "expertMode":[
             "Fast <b>Chaser</b> (breaker on)",
             "<b class=equipment>EMF</b> at Breaker (Lowers Sanity 25%)",
@@ -129,7 +123,6 @@
         "index":6,
         "evidenceArray":[false,false,false,true,true,true,false],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Early Hunter|60%, Dark Rooms","Hunt Behavior|Favors Going to Dark Rooms","Interaction|Small % to immediately turn off light","Events|Light Events more often","Late Hunter|40%, Lights on"],
         "expertMode":[
             "Favors <b>Light Events</b> and <b>cannot turn on lights</b>",
             "<b class=ability>Turns off light</b> immediately (tiny %)",
@@ -151,7 +144,6 @@
         "index":21,
         "evidenceArray":[false,false,false,false,true,true,true],
         "speedArray":[true,true,true],
-        "ghostTestArray":["Spirit Box|Curse(Requires 1 evidence)","Smudge|Wanders for 50% longer during hunt","Hunt Speed|Sanity-based, faster when lower","Paramic|Curse","Sanity|Curse drains Sanity"],
         "expertMode":[
             "<b>Faster</b> at <b>lower sanity</b>",
             "<b class=equipment>Smudge</b> 50% more effective during hunt",
@@ -174,7 +166,6 @@
         "index":15,
         "evidenceArray":[true,false,true,false,true,false,false],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Paramic|More Often","Hunt Behavior|Quiet, Flashlight flickers before Audible"],
         "expertMode":[
             "<b class=ability>Sound Test</b> w/ <b class=equipment>Flashlight</b> Flicker (same floor)",
             "<b class=equipment>Paramic Sounds</b> More Often"
@@ -191,7 +182,6 @@
         "index":19,
         "evidenceArray":[true,false,true,true,false,false,false],
         "speedArray":[false,true,false],
-        "ghostTestArray":["UV Flashlight|Six Fingers(Requires 1 evidence)","Hunt Appearance|Shapeshifts at least once"],
         "expertMode":[
             "<b class=evidence-highlight>Ultraviolet</b> can have <b class=evidence-highlight>6 fingers,</b> disappear quicker, and have reduced chance to appear",
             "<b class=ability>Shapeshifts</b> during hunt",
@@ -212,7 +202,6 @@
         "index":11,
         "evidenceArray":[true,true,false,false,false,false,true],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Hunt Appearance|More Visible","Sanity|Events Drain Double, -20%","Events|No Airball, Events drain double Sanity"],
         "expertMode":[
             "No <b>Airball</b>, ghost events drain <b class=ability>20% Sanity</b> instead of 10%",
             "<b>More Visible</b> when hunting (flickers less)",
@@ -232,7 +221,6 @@
         "index":16,
         "evidenceArray":[false,false,false,true,false,true,true],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Early Hunter|60%, or after 3 candle blows","Candle|/w Crucifix, uses Candle first","Crucifix|w/ Candle, uses Candle first"],
         "expertMode":[
             "<b class=equipment>Crucifix/Candle</b> Test (If <b class=equipment>Crucifix</b> activates first, NOT Onryo)",
             "Hunts every <b class=ability>third flame blown</b>",
@@ -251,7 +239,6 @@
         "index":2,
         "evidenceArray":[false,true,true,false,false,true,false],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Photo Camera|Disappears during Event","Hunt Appearance|Less Visible","Events|Photo makes it disappear"],
         "expertMode":[
             "<b>Disappears</b> with <b class=equipment>Photo</b> (not hunting)",
             "<b>Less Visible</b> when Hunting (Every 1-2s)"
@@ -269,7 +256,6 @@
         "index":3,
         "evidenceArray":[false,false,true,false,true,true,false],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Interaction|Big/Many Item Throws","Hunt Behavior|Throws Items Rapidly"],
         "expertMode":[
             "Many <b class=equipment>Items</b> Test (Throws every 0.5s)",
             "<b class=ability>Big/Multiple Throws</b> (Sometimes)"
@@ -288,7 +274,6 @@
         "index":18,
         "evidenceArray":[true,true,false,true,false,false,false],
         "speedArray":[false,true,true],
-        "ghostTestArray":["Hunt Speed|Fast Around Equipment","Early Hunter|65%, Around Equipment"],
         "expertMode":[
             "<b>Faster</b> Around <b class=equipment>Electric Equipment</b>",
             "Early Hunt Around <b class=equipment>Electric Equipment</b> (65%)"
@@ -307,7 +292,6 @@
         "index":7,
         "evidenceArray":[false,false,false,true,true,false,true],
         "speedArray":[true,false,true],
-        "ghostTestArray":["Hunt Speed|Fast Chaser, Slow Seeker"],
         "expertMode":[
             "<b>Slow</b> When <b>Not Chasing</b>",
             "<b>Fast</b> When <b>Chasing</b>"
@@ -325,7 +309,6 @@
         "index":8,
         "evidenceArray":[true,false,false,false,true,false,true],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Late Hunter|35%, won't hunt w/ multiple","Events|Overall less Events"],
         "expertMode":[
             "<b>Less Activity</b> with 2+ people",
             "<b>Low Sanity</b> Hunt (35%)",
@@ -344,7 +327,6 @@
         "index":0,
         "evidenceArray":[true,false,false,false,true,true,false],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Smudge|Can't hunt for 180s"],
         "expertMode":[
             "<b class=equipment>Smudge</b> stops hunt for <b>twice as long</b> (3m)"
         ],
@@ -359,7 +341,6 @@
         "index":23,
         "evidenceArray":[false,true,false,true,true,false,false],
         "speedArray":[true,true,true],
-        "ghostTestArray":["Hunt Speed|Age-based, starts fast","Early Hunter|70% when young","Late Hunter|15% when fully aged"],
         "expertMode":[
             "<b>Early Hunt</b> (70%)",
             "<b>Starts Fast</b>, Slower as it <b class=ability>Ages</b>",
@@ -378,7 +359,6 @@
         "index":20,
         "evidenceArray":[false,false,true,true,false,true,true],
         "speedArray":[true,true,true],
-        "ghostTestArray":["Hunt Behavior|Mimics Other Ghosts","Video Camera|Orbs Fake Evidence"],
         "expertMode":[
             "<b class=evidence-highlight>Ghost Orbs</b> Fake Evidence",
             "<b class=ability>Changes Behaviors</b>"
@@ -395,7 +375,6 @@
         "index":17,
         "evidenceArray":[true,false,false,false,false,true,true],
         "speedArray":[true,false,true],
-        "ghostTestArray":["Hunt Speed|Slow/Fast Twin","Interaction|Multiple Rooms"],
         "expertMode":[
             "Two <b>abnormal speeds</b> (Main 10% slower, twin 10% faster)",
             "No <b class=evidence-highlight>Freezing/Spirit Box</b> in other interacted rooms"
@@ -415,7 +394,6 @@
         "index":1,
         "evidenceArray":[true,true,false,false,false,true,false],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Salt|Cannot step","EMF|Teleports, leaves EMF 2","Interaction|Teleports to Player, leaves EMF 2"],
         "expertMode":[
             "No <b class=equipment>Salt</b> interaction",
             "<b class=equipment>EMF 2/5</b> <b class=ability>Teleport</b> Test",
@@ -433,7 +411,6 @@
         "index":12,
         "evidenceArray":[false,true,false,true,false,true,false],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Hunt Behavior|Can't hear, can't sense flashlight","Early Hunter|80%, Talking nearby"],
         "expertMode":[
             "<b>Early Hunt</b> when <b>talking nearby</b> (80%)",
             "Use <b class=equipment>Device</b>/Talk when <b>Hiding</b> and not in <b>line-of-sight</b>"
@@ -450,7 +427,6 @@
         "index":10,
         "evidenceArray":[false,true,false,true,false,false,true],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Smudge|Stays in room for 90s","Interaction|Closes Door w/o Event, even Exit","Sanity|Door Slam, -15%","Room|Stays for 90s when Smudged"],
         "expertMode":[
             "<b class=equipment>Smudge</b> makes Yurei stay in room (1.5m)",
             "<b class=ability>Closes Door</b> without event/hunt (exit door, Yurei guaranteed)",
