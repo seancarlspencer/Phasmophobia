@@ -11,7 +11,7 @@
         "descriptions": ["","","Scans"]
     },
     "EMF Reader": {
-        "level": [0,29,60],
+        "level": [0,29,52],
         "descriptor":"Accuracy",
         "descriptorValues":["LOW","HIGH","HIGH"],
         "consumable": [],
@@ -210,7 +210,7 @@
     },
     "Tripod": {
         "level": [10,34,62],
-        "descriptor":"Knockdown Change",
+        "descriptor":"Knockdown Chance",
         "descriptorValues":["MEDIUM","MEDIUM","LOW"],
         "consumable": [],
         "range": [],
