@@ -128,8 +128,8 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
         
       }
       <div className="ghost-test-list">
-      {ghostNames.map((ghost)=>{
-        return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghost[1])}}>
+      {ghostNames.map((ghost,index)=>{
+        return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghost[1])}} key={index}>
           <div className={`ghost-test-ghostname${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[0]}</div>
           <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2].replace("(Requires 1 evidence)","")})` :""}</div>
           </div>
@@ -150,8 +150,8 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
         
       }
       <div className="ghost-test-list">
-      {ghostNames.map((ghost)=>{
-        return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghost[1])}}>
+      {ghostNames.map((ghost,index)=>{
+        return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghost[1])}} key={index}>
           <div className={`ghost-test-ghostname${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[0]}</div>
           <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2].replace("(Requires 1 evidence)","")})` :""}</div>
           </div>

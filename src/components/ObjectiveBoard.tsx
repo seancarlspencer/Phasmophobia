@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { handleObjectiveBoardScreen, updateGuessArray, updatePossible } from '../actions/actions';
 import phasGhosts from '../assets/phasEvidenceParsed.json';
+import Items from '../assets/Items.json';
 import Ghost from './Ghost';
 import GhostTest from './GhostTest';
 import { render } from '@testing-library/react';
+import Item from './Item';
 
 const ObjectiveBoard = () => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
@@ -28,12 +30,6 @@ const ObjectiveBoard = () => {
   }
 
   const [ghostTests,setGhostTests] = useState<ghostTestType>({})
-
-
-  useEffect(()=>{
-
-  },[]);
-
 
   useEffect(()=>{
     let ghostTestsTemp:ghostTestType = {}
@@ -149,11 +145,7 @@ const ObjectiveBoard = () => {
     setGhostTests(ghostTestsTemp);
     possibleValues = [true,true,true,true,true,true,true];
     handlePossible(possibleValues);
-  },[evidenceValues,speedValues,eliminatedValues,guessArray,completedTasks])
-
-  useEffect(()=>{
-
-  },[completedTasks])
+  },[evidenceValues,speedValues,eliminatedValues])
 
   const handlePossible=(arr: Array<boolean>)=>{
     dispatch(updatePossible(arr))
@@ -311,6 +303,7 @@ const ObjectiveBoard = () => {
           testType={test}
           display={true}
           completed={false}
+          key={`equipment-${test}`}
           />
           })}
       </div>
@@ -324,6 +317,7 @@ const ObjectiveBoard = () => {
               testType={test}
               display={true}
               completed={false}
+              key={`interaction-${test}`}
               />
           })}
       </div>
@@ -337,6 +331,7 @@ const ObjectiveBoard = () => {
               testType={test}
               display={true}
               completed={false}
+              key={`hunt-${test}`}
               />
           })}
         </div>
@@ -354,22 +349,12 @@ const ObjectiveBoard = () => {
             }
           })
           if (!renderComplete){
-            return <GhostTest
-            ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
-            testType={test}
-            display={false}
-            completed={true}
-            />
+            return;
           }
           else if(evidenceNumber == 0){
             if(ghostTests[test].filter(ghost=>ghost[2] != undefined
               ? !(ghost[2].includes("(Requires 1 evidence)")) : true).length >= 1 ? false : true){
-                return <GhostTest
-                ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
-                testType={test}
-                display={false}
-                completed={true}
-                />
+                return;
               }
           }
           return <GhostTest
@@ -377,76 +362,105 @@ const ObjectiveBoard = () => {
           testType={test}
           display={true}
           completed={true}
+          key={`complete-${test}`}
           />
           })}
           </div>
       </div>
       </div>
       break;
-    case "v0.9.0.0 Disclaimer":
-      screenContent =
-      <div className="disclaimer">
-        <p className="disclaimer-important">Site Update to v0.9.0.0 Status: <b>In Progress</b></p>
-        <p>I will be making frequent updates to the site throughout this week as I learn more information about the new patch.</p>
-        <p>Please note that many of these updates are derived based on patch notes and player findings.  Thus, they may be subject to change</p>
-        <p>Once information is finalized/confirmed, I will include it in other tabs.</p>
-        <ul>Notable Gameplay Changes from v0.8.1.7 to v0.9.0.0 (NOT FINALIZED!)
-          <li className="disclaimer-topic"><b>Freezing Temperatures:</b>
-            <li>Cold Breath no longer means it is Freezing Temperatures. (Appears below 5 degrees)</li>
-            <li>Freezing Temperatures must be confirmed by using a Thermometer. (At or below 0 degrees)</li>
-            <li>Cold breath is now useful for discovering where the Ghost Room is in some situations.</li>
-          </li>
-          <li className="disclaimer-topic"><b>Smudge Sticks/Incense:</b>
-            <li>Renamed to Incense.</li>
-            <li>Smudge Timers during a hunt are now dependent on Tier.</li>
-            <li>The Moroi's extended Smudge effect will be 50% longer than whatever smudge is used, making higher tier Smudges more noticable.</li>
-            <li>Tiers may or may not affect Spirit and Demon timers. (TBD)</li>
-            <li>Tiers may or may not affect Yurei Timer to stay in room. (TBD)</li>
-          </li>
-          <li className="disclaimer-topic"><b>Crucifix:</b>
-            <li>Crucifix range is based on tier.</li>
-            <li>The Demon's extended Crucifix range will be 50% larger than whatever crucifix is used, making higher tier crucifixes more noticable.</li>
-          </li>
-          <li className="disclaimer-topic"><b>Fingerprints/Ultraviolet:</b>
-            <li>Fingerprints is now Ultraviolet.</li>
-            <li>Ultraviolet Footprints now count as Ultraviolet Evidence.</li></li>
-          <li className="disclaimer-topic"><b>Candles:</b>
-            <li>Candles no longer prevent 100% Sanity Drain.</li>
-            <li>Instead, they slow down Sanity Drain depending on Tier.</li>
-            <li>When a ghost blows out a candle, it will leave EMF.</li>
-          </li>
-          <li className="disclaimer-topic"><b>Sound Sensors:</b>
-          <li>Sound Sensors now have an adjustable range in the Van.</li></li>
-          <li className="disclaimer-topic"><b>D.O.T.S.:</b>
-          <li>D.O.T.S. is now based on the Ghost's actual position, and reveals when the Ghost enters a "D.O.T.S. State."</li>
-          <li>D.O.T.S. photo will count as ghost photo.</li>
-          <li>Banshee will now move towards its target when in D.O.T.S. state.</li>
-          </li>
-          <li className="disclaimer-topic"><b>Tripods:</b>
-            <li>Ghosts can now rarely knock over Tripods.</li>
-          </li>
-        </ul>
-        <p>If you learn anything new about the Patch that you think should be included here, please reach out to me on Discord, ID: damiascus</p>
-      </div>
-      break;
-    case "Items":
+      case "Items":
       screenContent =
       <div className="items-screen-container">
         <div className="tiers-container">
-          <div className="tiers-header">Items</div>
-          <div className="tiers-header">Tier I</div>
-          <div className="tiers-header">Tier II</div>
-          <div className="tiers-header">Tier III</div>
-
-          <div className="tiers-item"></div>
-          <div className="tiers-tier"></div>
-          <div className="tiers-tier"></div>
-          <div className="tiers-tier"></div>
+          <div className="tiers-header-container tiers-row">
+            <div className="tiers-header">Item</div>
+            <div className="tiers-header">Tier I</div>
+            <div className="tiers-header">Tier II</div>
+            <div className="tiers-header">Tier III</div>
+          </div>
+          {Object.keys(Items).map((item)=>{
+            return <Item
+              itemName={item}
+              level={Items[item as keyof typeof Items]["level"]}
+              consumable={Items[item as keyof typeof Items]["consumable"]}
+              descriptor={Items[item as keyof typeof Items]["descriptor"]}
+              descriptorValues={Items[item as keyof typeof Items]["descriptorValues"]}
+              range={Items[item as keyof typeof Items]["range"]}
+              price={Items[item as keyof typeof Items]["price"]}
+              electronic={Items[item as keyof typeof Items]["electronic"]}
+              uses={Items[item as keyof typeof Items]["uses"]}
+              descriptions={Items[item as keyof typeof Items]["descriptions"]}
+            />
+          })}
         </div>
       </div>
       break;
+      case "v0.9.0.0 Disclaimer":
       default:
-      break;
+        screenContent =
+        <div className="disclaimer">
+          <p className="disclaimer-important">Site Update to v0.9.0.0 Status: <b>In Progress</b></p>
+          <p>I will be making frequent updates to the site throughout this week as I learn more information about the new patch.</p>
+          <p>Please note that many of these updates are derived based on patch notes and player findings.  Thus, they may be subject to change</p>
+          <p>Once information is finalized/confirmed, I will include it in other tabs.</p>
+          <ul>Notable Gameplay Changes from v0.8.1.7 to v0.9.0.0 (NOT FINALIZED!)
+            <li className="disclaimer-topic"><b>Freezing Temperatures:</b>
+            <ul>
+              <li>Cold Breath no longer means it is Freezing Temperatures. (Appears below 5 degrees)</li>
+              <li>Freezing Temperatures must be confirmed by using a Thermometer. (At or below 0 degrees)</li>
+              <li>Cold breath is now useful for discovering where the Ghost Room is in some situations.</li>
+            </ul>
+            </li>
+            <li className="disclaimer-topic"><b>Smudge Sticks/Incense:</b>
+            <ul>
+              <li>Renamed to Incense.</li>
+              <li>Smudge Timers during a hunt are now dependent on Tier.</li>
+              <li>The Moroi's extended Smudge effect will be 50% longer than whatever smudge is used, making higher tier Smudges more noticable.</li>
+              <li>Tiers may or may not affect Spirit and Demon timers. (TBD)</li>
+              <li>Tiers may or may not affect Yurei Timer to stay in room. (TBD)</li>
+            </ul>
+            </li>
+            <li className="disclaimer-topic"><b>Crucifix:</b>
+            <ul>
+              <li>Crucifix range is based on tier.</li>
+              <li>The Demon's extended Crucifix range will be 50% larger than whatever crucifix is used, making higher tier crucifixes more noticable.</li>
+            </ul>
+            </li>
+            <li className="disclaimer-topic"><b>Fingerprints/Ultraviolet:</b>
+            <ul>
+              <li>Fingerprints is now Ultraviolet.</li>
+              <li>Ultraviolet Footprints now count as Ultraviolet Evidence.</li>
+            </ul>
+            </li>
+            <li className="disclaimer-topic"><b>Candles:</b>
+            <ul>
+              <li>Candles no longer prevent 100% Sanity Drain.</li>
+              <li>Instead, they slow down Sanity Drain depending on Tier.</li>
+              <li>When a ghost blows out a candle, it will leave EMF.</li>
+            </ul>
+            </li>
+            <li className="disclaimer-topic"><b>Sound Sensors:</b>
+            <ul>
+            <li>Sound Sensors now have an adjustable range in the Van.</li>
+            </ul>
+            </li>
+            <li className="disclaimer-topic"><b>D.O.T.S.:</b>
+            <ul>
+            <li>D.O.T.S. is now based on the Ghost's actual position, and reveals when the Ghost enters a "D.O.T.S. State."</li>
+            <li>D.O.T.S. photo will count as ghost photo.</li>
+            <li>Banshee will now move towards its target when in D.O.T.S. state.</li>
+            </ul>
+            </li>
+            <li className="disclaimer-topic"><b>Tripods:</b>
+            <ul>
+              <li>Ghosts can now rarely knock over Tripods.</li>
+            </ul>
+            </li>
+          </ul>
+          <p>If you learn anything new about the Patch that you think should be included here, please reach out to me on Discord, ID: damiascus</p>
+        </div>
+        break;
   }
 
   return (

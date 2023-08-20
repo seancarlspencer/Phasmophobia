@@ -1,0 +1,222 @@
+{
+    "D.O.T.S. Projector": {
+        "level": [0,29,60],
+        "descriptor":"",
+        "descriptorValues":[],
+        "consumable": [],
+        "range": [5,2.5,7],
+        "price": 65,
+        "electronic": [true, true, true],
+        "uses": [],
+        "descriptions": ["","","Scans"]
+    },
+    "EMF Reader": {
+        "level": [0,29,60],
+        "descriptor":"Accuracy",
+        "descriptorValues":["LOW","HIGH","HIGH"],
+        "consumable": [],
+        "range": [1.7,1.7,3.5],
+        "price": 45,
+        "electronic": [true, true, true],
+        "uses": [],
+        "descriptions": ["","","Tracks up to 3, newest readings at bottom"]
+    },
+    "Ghost Writing Book": {
+        "level": [0,23,63],
+        "descriptor":"Interaction Rate",
+        "descriptorValues":["LOW","MEDIUM","HIGH"],
+        "consumable": [],
+        "range": [3,4,5],
+        "price": 40,
+        "electronic": [],
+        "uses": [],
+        "descriptions": ["","",""]
+    },
+    "Spirit Box": {
+        "level": [0,27,54],
+        "descriptor":"Response Rate",
+        "descriptorValues":["LOW","MEDIUM","HIGH"],
+        "consumable": [],
+        "range": [3,4,5],
+        "price": 50,
+        "electronic": [true, true, true],
+        "uses": [],
+        "descriptions": ["","",""]
+    },
+    "Thermometer": {
+        "level": [0,36,64],
+        "descriptor":"Accuracy",
+        "descriptorValues":["MEDIUM","HIGH","HIGH"],
+        "consumable": [],
+        "range": [],
+        "price": 30,
+        "electronic": [false, false, true],
+        "uses": [],
+        "descriptions": ["Sample Speed: Slow","Sample Speed: Medium","Sample Speed: High"]
+    },
+    "UV Light": {
+        "level": [0,21,56],
+        "descriptor":"Charge Time",
+        "descriptorValues":["10s","5s","1.5s"],
+        "consumable": [],
+        "range": [],
+        "price": 20,
+        "electronic": [false, true, true],
+        "uses": [],
+        "descriptions": ["Lasts 60s, Right click to recharge","",""]
+    },
+    "Video Camera": {
+        "level": [0,33,61],
+        "descriptor":"Paranormal Interference",
+        "descriptorValues":["LOW","MEDIUM","HIGH"],
+        "consumable": [],
+        "range": [],
+        "price": 50,
+        "electronic": [true, true, true],
+        "uses": [],
+        "descriptions": []
+    },
+    "Crucifix": {
+        "level": [8,37,90],
+        "descriptor":"",
+        "descriptorValues":[],
+        "consumable": [true, true, true],
+        "range": [3,4,5],
+        "price": 30,
+        "electronic": [],
+        "uses": [1,2,2],
+        "descriptions": ["","","Can Prevent Cursed Hunt"]
+    },
+    "Firelight": {
+        "level": [12,47,79],
+        "descriptor":"Sanity Drain Reduction",
+        "descriptorValues":["33%","50%","66%"],
+        "consumable": [true, true, true],
+        "range": [2,2,2],
+        "price": 15,
+        "electronic": [],
+        "uses": [],
+        "descriptions": ["Needs to be held for Sanity Benefits, Duration: 3m","Duration: 5m","Waterproof"]
+    },
+    "Flashlight": {
+        "level": [0,19,35],
+        "descriptor":"",
+        "descriptorValues":[],
+        "consumable": [],
+        "range": [],
+        "price": 30,
+        "electronic": [true,true,true],
+        "uses": [],
+        "descriptions": ["","",""]
+    },
+    "Headgear": {
+        "level": [13,49,82],
+        "descriptor":"Special Key to Toggle on/off",
+        "descriptorValues":[],
+        "consumable": [],
+        "range": [],
+        "price": 60,
+        "electronic": [true,true,true],
+        "uses": [],
+        "descriptions": ["","","Night Vision"]
+    },
+    "Igniter": {
+        "level": [12,41,57],
+        "descriptor":"Duration",
+        "descriptorValues":["5s","5m","10m"],
+        "consumable": [true, true, false],
+        "range": [],
+        "price": 10,
+        "electronic": [],
+        "uses": [10,0,0],
+        "descriptions": ["","","Waterproof"]
+    },
+    "Incense": {
+        "level": [14,42,85],
+        "descriptor":"Duration",
+        "descriptorValues":["5s","6s","7s"],
+        "consumable": [true,true,false],
+        "range": [3,4,5],
+        "price": 15,
+        "electronic": [],
+        "uses": [1,1,1],
+        "descriptions": ["","",""]
+    },
+    "Motion Sensor": {
+        "level": [5,45,74],
+        "descriptor":"Sensor Shape",
+        "descriptorValues":["Line","Line, Cone","Circle"],
+        "consumable": [true,true,false],
+        "range": [3,4,5],
+        "price": 100,
+        "electronic": [true, true, true],
+        "uses": [],
+        "descriptions": ["","",""]
+    },
+    "Parabolic Microphone": {
+        "level": [7,31,72],
+        "descriptor":"",
+        "descriptorValues":[],
+        "consumable": [],
+        "range": [20,30,30],
+        "price": 50,
+        "electronic": [true, true, true],
+        "uses": [],
+        "descriptions": ["","","Directional/Distance Indicators"]
+    },
+    "Photo Camera": {
+        "level": [3,25,70],
+        "descriptor":"Time Between Photos",
+        "descriptorValues":["HIGH","MEDIUM","LOW"],
+        "consumable": [],
+        "range": [],
+        "price": 40,
+        "electronic": [false, true, true],
+        "uses": [],
+        "descriptions": ["","",""]
+    },
+    "Salt": {
+        "level": [9,43,68],
+        "descriptor":"",
+        "descriptorValues":[],
+        "consumable": [true, true, true],
+        "range": [],
+        "price": 15,
+        "electronic": [],
+        "uses": [2,3,3],
+        "descriptions": ["","","Slows down Ghost during hunt for 2s, traps ghost in room when passive"]
+    },
+    "Sanity Medication": {
+        "level": [16,39,77],
+        "descriptor":"Sanity Restoration Speed",
+        "descriptorValues":["30s","20s","10s"],
+        "consumable": [true, true, true],
+        "range": [],
+        "price": 20,
+        "electronic": [],
+        "uses": [],
+        "descriptions": ["","","Boosts Sprint for 10s"]
+    },
+    "Sound Sensor": {
+        "level": [11,32,58],
+        "descriptor":"Ranges",
+        "descriptorValues":["5, 10","5, 10, 15","5, 10, 15"],
+        "consumable": [],
+        "range": [],
+        "price": 80,
+        "electronic": [true, true, true],
+        "uses": [],
+        "descriptions": ["","","Modes: Forward: Cone, Outward: Sides, Inward: Sphere"]
+    },
+    "Tripod": {
+        "level": [10,34,62],
+        "descriptor":"Knockdown Change",
+        "descriptorValues":["MEDIUM","MEDIUM","LOW"],
+        "consumable": [],
+        "range": [],
+        "price": 25,
+        "electronic": [],
+        "uses": [],
+        "descriptions": ["","Has Rotation Control","Has Rotation Control"]
+    }
+}
