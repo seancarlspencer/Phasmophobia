@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { handleToggleStickyAction } from '../actions/actions';
+import { handleToggleStickyAction, updateMobileView } from '../actions/actions';
 import Evidence from './Evidence';
 import Extras from './Extras';
 
 const EvidenceMobile = () => {
   const toggleSticky = useSelector((state: any) => state.phas.toggleSticky);
+  const mobileView = useSelector((state: any) => state.phas.mobileView);
   const [evidenceScreenOn, toggleEvidenceScreenOn] = useState(true);
   const dispatch = useDispatch();
+
+  if(window.screen.width < 912){
+    dispatch(updateMobileView(true));
+  }
 
   useEffect(() =>{
     window.addEventListener("resize",(e)=>{
       if(window.screen.width < 912){
+        if(!mobileView){
+          dispatch(updateMobileView(true));
+        }
         var offsetHeight = document.querySelector<HTMLDivElement>('.evidence');
         var objectiveBoard = document.querySelector<HTMLDivElement>('.homepage');
         if (offsetHeight && objectiveBoard && toggleSticky){
@@ -21,6 +29,11 @@ const EvidenceMobile = () => {
         else if (offsetHeight && objectiveBoard && !toggleSticky){
           // console.log(offsetHeight.offsetHeight);
           objectiveBoard.style.transform = `translateY(0px)`;
+        }
+      }
+      else{
+        if(mobileView){
+          dispatch(updateMobileView(false));
         }
       }
     })

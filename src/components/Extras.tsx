@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {handleToggleExpert, handleLightMode } from '../actions/actions';
 import GhostSpeed from './GhostSpeed';
 import GhostTimer from './GhostTimer';
+import GhostSpeedClock from './GhostSpeedClock';
 
 type EvidenceType = {
   displayType: string
@@ -58,6 +59,13 @@ const Extras:React.FC<EvidenceType> = ({displayType}) => {
             timerType={`hunt${displayType}`}
             intervals={[20,25]}
             intervalLabels={["Demon","Normal"]} />
+        </div>
+        <div className="timer-container speed-clock">
+          <div className="timer-header">
+            N<span>ORMAL</span> G<span>HOST</span> S<span>PEED</span>
+          </div>
+          <GhostSpeedClock
+            baseSpeed={1} />
         </div>
         <div className={`filter-box expert`}>
           <img alt="checkmark" src={require("../assets/check.png").default} className={!toggleExpert ? "checked" : ""}/>

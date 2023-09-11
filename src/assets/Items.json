@@ -6,17 +6,19 @@
         "consumable": [],
         "range": [5,2.5,7],
         "price": 65,
+        "priceToUnlock":[0,3000,3000],
         "electronic": [true, true, true],
         "uses": [],
         "descriptions": ["","","Scans"]
     },
     "EMF Reader": {
-        "level": [0,29,52],
+        "level": [0,20,52],
         "descriptor":"Accuracy",
         "descriptorValues":["LOW","HIGH","HIGH"],
         "consumable": [],
         "range": [1.7,1.7,3.5],
         "price": 45,
+        "priceToUnlock":[0,3000,4500],
         "electronic": [true, true, true],
         "uses": [],
         "descriptions": ["","","Tracks up to 3, newest readings at bottom"]
@@ -28,6 +30,7 @@
         "consumable": [],
         "range": [3,4,5],
         "price": 40,
+        "priceToUnlock":[0,3000,3000],
         "electronic": [],
         "uses": [],
         "descriptions": ["","",""]
@@ -39,6 +42,7 @@
         "consumable": [],
         "range": [3,4,5],
         "price": 50,
+        "priceToUnlock":[0,3000,3000],
         "electronic": [true, true, true],
         "uses": [],
         "descriptions": ["","",""]
@@ -50,6 +54,7 @@
         "consumable": [],
         "range": [],
         "price": 30,
+        "priceToUnlock":[0,3000,3000],
         "electronic": [false, false, true],
         "uses": [],
         "descriptions": ["Sample Speed: Slow","Sample Speed: Medium","Sample Speed: High"]
@@ -61,6 +66,7 @@
         "consumable": [],
         "range": [],
         "price": 20,
+        "priceToUnlock":[0,3000,2000],
         "electronic": [false, true, true],
         "uses": [],
         "descriptions": ["Lasts 60s, Right click to recharge","",""]
@@ -72,9 +78,10 @@
         "consumable": [],
         "range": [],
         "price": 50,
+        "priceToUnlock":[0,3000,3000],
         "electronic": [true, true, true],
         "uses": [],
-        "descriptions": []
+        "descriptions": ["","",""]
     },
     "Crucifix": {
         "level": [8,37,90],
@@ -83,6 +90,7 @@
         "consumable": [true, true, true],
         "range": [3,4,5],
         "price": 30,
+        "priceToUnlock":[0,4000,20000],
         "electronic": [],
         "uses": [1,2,2],
         "descriptions": ["","","Can Prevent Cursed Hunt"]
@@ -94,6 +102,7 @@
         "consumable": [true, true, true],
         "range": [2,2,2],
         "price": 15,
+        "priceToUnlock":[0,3000,10000],
         "electronic": [],
         "uses": [],
         "descriptions": ["Needs to be held for Sanity Benefits, Duration: 3m","Duration: 5m","Waterproof"]
@@ -105,6 +114,7 @@
         "consumable": [],
         "range": [],
         "price": 30,
+        "priceToUnlock":[0,3000,2500],
         "electronic": [true,true,true],
         "uses": [],
         "descriptions": ["","",""]
@@ -116,9 +126,10 @@
         "consumable": [],
         "range": [],
         "price": 60,
+        "priceToUnlock":[0,10000,10000],
         "electronic": [true,true,true],
         "uses": [],
-        "descriptions": ["","","Night Vision"]
+        "descriptions": ["","Has a narrow flashlight","Night Vision"]
     },
     "Igniter": {
         "level": [12,41,57],
@@ -127,6 +138,8 @@
         "consumable": [true, true, false],
         "range": [],
         "price": 10,
+        "priceToUpgrade":[0,2000,8000],
+        "priceToUnlock":[0,500,750],
         "electronic": [],
         "uses": [10,0,0],
         "descriptions": ["","","Waterproof"]
@@ -138,9 +151,10 @@
         "consumable": [true,true,false],
         "range": [3,4,5],
         "price": 15,
+        "priceToUnlock":[0,3500,15000],
         "electronic": [],
         "uses": [1,1,1],
-        "descriptions": ["","",""]
+        "descriptions": ["","Slows Ghost Movement","Stuns Ghost"]
     },
     "Motion Sensor": {
         "level": [5,45,74],
@@ -149,6 +163,7 @@
         "consumable": [true,true,false],
         "range": [3,4,5],
         "price": 100,
+        "priceToUnlock":[0,2500,8000],
         "electronic": [true, true, true],
         "uses": [],
         "descriptions": ["","",""]
@@ -160,6 +175,7 @@
         "consumable": [],
         "range": [20,30,30],
         "price": 50,
+        "priceToUnlock":[0,3000,5000],
         "electronic": [true, true, true],
         "uses": [],
         "descriptions": ["","","Directional/Distance Indicators"]
@@ -171,6 +187,7 @@
         "consumable": [],
         "range": [],
         "price": 40,
+        "priceToUnlock":[0,3000,5000],
         "electronic": [false, true, true],
         "uses": [],
         "descriptions": ["","",""]
@@ -182,6 +199,7 @@
         "consumable": [true, true, true],
         "range": [],
         "price": 15,
+        "priceToUnlock":[0,2500,5000],
         "electronic": [],
         "uses": [2,3,3],
         "descriptions": ["","","Slows down Ghost during hunt for 2s, traps ghost in room when passive"]
@@ -193,6 +211,7 @@
         "consumable": [true, true, true],
         "range": [],
         "price": 20,
+        "priceToUnlock":[0,2000,5000],
         "electronic": [],
         "uses": [],
         "descriptions": ["","","Boosts Sprint for 10s"]
@@ -204,6 +223,7 @@
         "consumable": [],
         "range": [],
         "price": 80,
+        "priceToUnlock":[0,3000,1500],
         "electronic": [true, true, true],
         "uses": [],
         "descriptions": ["","","Modes: Forward: Cone, Outward: Sides, Inward: Sphere"]
@@ -215,6 +235,7 @@
         "consumable": [],
         "range": [],
         "price": 25,
+        "priceToUnlock":[0,5000,3000],
         "electronic": [],
         "uses": [],
         "descriptions": ["","Has Rotation Control","Has Rotation Control"]

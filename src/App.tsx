@@ -3,6 +3,11 @@ import store from './store/store';
 import './App.scss'
 import Homepage from './components/Homepage';
 import EvidenceMobile from './components/EvidenceMobile';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('G-TBV3N5KDLL');
+// ReactGA.initialize('G-TBV3N5KDLL', {
+//   debug: true});
 
 // Reminder of how Redux works, Provider provides a store which holds all the states of application.
 // Reducers handle state transactions

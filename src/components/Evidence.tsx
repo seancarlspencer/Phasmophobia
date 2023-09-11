@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateEvidence, updateEliminated, updateSpeed, updateEvidenceNumber, updateGuessArray} from '../actions/actions';
 import FilterBox from './FilterBox';
 import GhostSpeed from './GhostSpeed';
+import ReactGA from 'react-ga';
 
 type EvidenceType = {
   displayType: string
@@ -10,6 +11,7 @@ type EvidenceType = {
 
 const Evidence:React.FC<EvidenceType> = ({displayType}) => {
   const evidenceNumber = useSelector((state: any) => state.phas.evidenceNumber);
+  const mobileView = useSelector((state: any) => state.phas.mobileView);
   const loading = useSelector((state: any) => state.phas.loading);
   const [stateEvidenceNum, updateStateEvidenceNum] = useState(evidenceNumber);
   const dispatch = useDispatch();
@@ -37,6 +39,11 @@ const Evidence:React.FC<EvidenceType> = ({displayType}) => {
   },[evidenceNumber])
 
   const handleEvidenceNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    // ReactGA.event({
+    //   category: 'Evidence',
+    //   action: 'Changed Evidence #',
+    //   value: parseInt(e.target.value)
+    // });
     updateStateEvidenceNum(parseInt(e.target.value));
     dispatch(updateEvidenceNumber(parseInt(e.target.value)));
     dispatch(updateEvidence([false,false,false,false,false,false,false]));
@@ -46,6 +53,10 @@ const Evidence:React.FC<EvidenceType> = ({displayType}) => {
   };
 
   const handleReset = () => {
+    // ReactGA.event({
+    //   category: 'Evidence',
+    //   action: 'Reset',
+    // });
     let evidenceArray = document.querySelectorAll<HTMLInputElement>(".evidence-filters .paper-filters input");
     evidenceArray.forEach((evidence)=>{
       evidence.checked=false;

@@ -4,7 +4,8 @@ import { handleObjectiveBoardScreen, updateGuessArray, updatePossible } from '..
 import phasGhosts from '../assets/phasEvidenceParsed.json';
 import Items from '../assets/Items.json';
 import Ghost from './Ghost';
-import GhostTest from './GhostTest';
+// import GhostTest from './GhostTest';
+import {MemoizedGhostTest} from './GhostTest';
 import { render } from '@testing-library/react';
 import Item from './Item';
 
@@ -18,18 +19,30 @@ const ObjectiveBoard = () => {
   const guessArray = useSelector((state: any) => state.phas.guessArray);
   const objectiveBoardScreen = useSelector((state: any) => state.phas.objectiveBoardScreen);
   const completedTasks = useSelector((state: any) => state.phas.completedTasks);
+  const mobileView = useSelector((state: any) => state.phas.mobileView);
+
+
   const [expandInstructions,setInstructions] = useState(false);
   const [expandHunt,setHunt] = useState(true);
   const [expandInteractions,setInteractions] = useState(true);
   const [expandEquipment,setEquipment] = useState(true);
   const [expandCompleted,setCompleted] = useState(true);
+  const [expandTestOptions,setTestOptions] = useState(true);
+  const [definitive,setDefinitive] = useState(false);
+  const [itemStart,setItemStart] = useState(0);
   const dispatch = useDispatch();
 
   type ghostTestType = {
     [key: string]: Array<any[]>
   }
 
+  type renderTestType = string[]
+
   const [ghostTests,setGhostTests] = useState<ghostTestType>({})
+  const [equipmentTests,setEquipmentTests] = useState<renderTestType>([])
+  const [huntTests,setHuntTests] = useState<renderTestType>([])
+  const [interactionTests,setInteractionTests] = useState<renderTestType>([])
+  const [completedTests,setCompletedTests] = useState<renderTestType>([])
 
   useEffect(()=>{
     let ghostTestsTemp:ghostTestType = {}
@@ -118,7 +131,20 @@ const ObjectiveBoard = () => {
             }
           })
         })}
+
+        let sortedCalc = Object.keys(ghostTestsTemp).sort((a, b) => ghostTestsTemp[a as keyof typeof ghostTestsTemp].length < ghostTestsTemp[b as keyof typeof ghostTestsTemp].length ? 1 : -1);
+
+
+
         setGhostTests(ghostTestsTemp);
+        setEquipmentTests(sortedCalc.filter(test =>
+          !["Breaker","Sanity","Activity","Room","Events","Environment","Breaker & Lights","Cursed Possessions"].includes(test) &&
+          !test.includes("Hunt")));
+        setInteractionTests(sortedCalc.filter(test => (["Breaker","Sanity","Activity","Room","Events","Environment","Breaker & Lights","Cursed Possessions"].includes(test))));
+        setHuntTests(sortedCalc.filter(test => (test.includes("Hunt"))).sort((a, b) => ["Hunt Appearance","Hunt Behavior","Hunt Speed"].indexOf(a) > ["Hunt Behavior","Hunt Speed","Hunt Appearance"].indexOf(b) ? -1 : 1));
+        setCompletedTests(sortedCalc);
+
+
         handlePossible(possibleValues);
         return;
       }
@@ -142,7 +168,18 @@ const ObjectiveBoard = () => {
         }
       })
     })
+
+    let sortedCalc = Object.keys(ghostTestsTemp).sort((a, b) => ghostTestsTemp[a as keyof typeof ghostTestsTemp].length < ghostTestsTemp[b as keyof typeof ghostTestsTemp].length ? 1 : -1);
+
     setGhostTests(ghostTestsTemp);
+    setEquipmentTests(sortedCalc.filter(test =>
+      !["Breaker","Sanity","Activity","Room","Events","Environment","Breaker & Lights","Cursed Possessions"].includes(test) &&
+      !test.includes("Hunt")));
+    setInteractionTests(sortedCalc.filter(test => (["Breaker","Sanity","Activity","Room","Events","Environment","Breaker & Lights","Cursed Possessions"].includes(test))));
+    setHuntTests(sortedCalc.filter(test => (test.includes("Hunt"))).sort((a, b) => ["Hunt Appearance","Hunt Behavior","Hunt Speed"].indexOf(a) > ["Hunt Behavior","Hunt Speed","Hunt Appearance"].indexOf(b) ? -1 : 1));
+    setCompletedTests(sortedCalc);
+
+
     possibleValues = [true,true,true,true,true,true,true];
     handlePossible(possibleValues);
   },[evidenceValues,speedValues,eliminatedValues])
@@ -292,18 +329,46 @@ const ObjectiveBoard = () => {
         </ul>
         </div>
       </div>
+      {/* <div className={`specific-test-container-container`}>
+        <div className="ghost-test-header"><span>Options</span></div>
+        <div className="ghost-test-options">
+          <div className="toggle-definitive-container">
+            <div className={`definitive-toggle${definitive ? " only-definitive" : ""}`} onClick={()=>{setDefinitive(definitive => !definitive)}}>
+              <div className="definitive-toggle-shape"></div>
+            </div>
+            <div className="toggle-definitive">Definitive Tests Only</div>
+            <div className="definitive-tooltip">
+              Only show tests that guarantee either identifying or eliminating a ghost option
+            </div>
+            </div>
+        </div>
+      </div> */}
       <div className={`specific-test-container-container${expandEquipment ? " expand" : ""}`}>
         <div className="ghost-test-header" onClick={()=>setEquipment(expandEquipment => !expandEquipment)}><span>☰ Equipment-based Tests</span></div>
         <div className={`specific-test-container`}>
-        {Object.keys(ghostTests).sort((a, b) => ghostTests[a as keyof typeof ghostTests].length < ghostTests[b as keyof typeof ghostTests].length ? 1 : -1).filter(test =>
-        !["Breaker","Sanity","Interaction","Room","Events"].includes(test) &&
-        !test.includes("Hunt")).map((test)=>{
-          return <GhostTest
-          ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
+        {equipmentTests.map((test)=>{
+          let ghostNamesParsed = evidenceNumber == 0 ? [...ghostTests[test]].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test];
+          // If 0 evidence, filter out ghosts that have tests that require 1 evidence.
+
+          if(definitive){
+            ghostNamesParsed = ghostNamesParsed.filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Not definitive)")) : true)
+          }
+          // If definitive, filter out ghosts that have not definitive tests.
+
+          if (ghostNamesParsed.length <1){
+            return;
+          }
+          
+          return <MemoizedGhostTest
+          ghostNames={ghostNamesParsed}
+          // ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
           testType={test}
           display={true}
           completed={false}
           key={`equipment-${test}`}
+          ghostNamesChecked={ghostNamesParsed.map((ghost)=>{
+            return guessArray[ghost[1]];
+          })}
           />
           })}
       </div>
@@ -311,13 +376,23 @@ const ObjectiveBoard = () => {
       <div className={`specific-test-container-container${expandInteractions ? " expand" : ""}`}>
         <div className="ghost-test-header" onClick={()=>setInteractions(expandInteractions => !expandInteractions)}><span>☰ Unique Interactions</span></div>
         <div className={`specific-test-container`}>
-        {Object.keys(ghostTests).filter(test => (["Breaker","Sanity","Interaction","Room","Events"].includes(test))).map((test)=>{
-            return <GhostTest
-              ghostNames={evidenceNumber == 0 ? [...ghostTests[test]].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
+        {interactionTests.map((test)=>{
+          let ghostNamesParsed = evidenceNumber == 0 ? [...ghostTests[test]].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test];
+          if(definitive){
+            ghostNamesParsed = ghostNamesParsed.filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Not definitive)")) : true)
+          }
+          if (ghostNamesParsed.length <1){
+            return;
+          }
+            return <MemoizedGhostTest
+              ghostNames={ghostNamesParsed}
               testType={test}
               display={true}
               completed={false}
               key={`interaction-${test}`}
+              ghostNamesChecked={ghostNamesParsed.map((ghost)=>{
+                return guessArray[ghost[1]];
+              })}
               />
           })}
       </div>
@@ -325,13 +400,23 @@ const ObjectiveBoard = () => {
       <div className={`specific-test-container-container${expandHunt ? " expand" : ""}`}>
         <div className="ghost-test-header" onClick={()=>setHunt(expandHunt => !expandHunt)}><span>☰ Unique Hunting Traits</span></div>
         <div className={`specific-test-container`}>
-        {Object.keys(ghostTests).sort((a, b) => ["Hunt Behavior","Hunt Speed","Hunt Appearance"].includes(a) ? -1 : ["Hunt Behavior","Hunt Speed","Hunt Appearance"].includes(b) ? 1 : ghostTests[a as keyof typeof ghostTests].length < ghostTests[b as keyof typeof ghostTests].length ? 1 : -1).filter(test => (test.includes("Hunt"))).map((test)=>{
-            return <GhostTest
-              ghostNames={evidenceNumber == 0 ? [...ghostTests[test]].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
+        {huntTests.map((test)=>{
+          let ghostNamesParsed = evidenceNumber == 0 ? [...ghostTests[test]].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test];
+          if(definitive){
+            ghostNamesParsed = ghostNamesParsed.filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Not definitive)")) : true)
+          }
+          if (ghostNamesParsed.length <1){
+            return;
+          }
+            return <MemoizedGhostTest
+              ghostNames={ghostNamesParsed}
               testType={test}
               display={true}
               completed={false}
               key={`hunt-${test}`}
+              ghostNamesChecked={ghostNamesParsed.map((ghost)=>{
+                return guessArray[ghost[1]];
+              })}
               />
           })}
         </div>
@@ -339,7 +424,7 @@ const ObjectiveBoard = () => {
       <div className={`specific-test-container-container${expandCompleted ? " expand" : ""}`}>
         <div className="ghost-test-header" onClick={()=>setCompleted(expandCompleted => !expandCompleted)}><span>☰ Completed</span></div>
         <div className={`specific-test-container`}>
-        {Object.keys(ghostTests).sort((a, b) => ghostTests[a as keyof typeof ghostTests].length < ghostTests[b as keyof typeof ghostTests].length ? 1 : -1).map((test)=>{
+        {completedTests.map((test)=>{
           let renderComplete = true;
           ghostTests[test].forEach((name)=>{
             if (!guessArray[name[1]]){
@@ -351,18 +436,28 @@ const ObjectiveBoard = () => {
           if (!renderComplete){
             return;
           }
-          else if(evidenceNumber == 0){
-            if(ghostTests[test].filter(ghost=>ghost[2] != undefined
-              ? !(ghost[2].includes("(Requires 1 evidence)")) : true).length >= 1 ? false : true){
-                return;
-              }
+          // else if(evidenceNumber == 0){
+          //   if(ghostTests[test].filter(ghost=>ghost[2] != undefined
+          //     ? !(ghost[2].includes("(Requires 1 evidence)")) : true).length >= 1 ? false : true){
+          //       return;
+          //     }
+          // }
+          let ghostNamesParsed = evidenceNumber == 0 ? [...ghostTests[test]].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test];
+          if(definitive){
+            ghostNamesParsed = ghostNamesParsed.filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Not definitive)")) : true)
           }
-          return <GhostTest
-          ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
+          if (ghostNamesParsed.length <1){
+            return;
+          }
+          return <MemoizedGhostTest
+          ghostNames={ghostNamesParsed}
           testType={test}
           display={true}
           completed={true}
           key={`complete-${test}`}
+          ghostNamesChecked={ghostNamesParsed.map((ghost)=>{
+            return guessArray[ghost[1]];
+          })}
           />
           })}
           </div>
@@ -373,25 +468,53 @@ const ObjectiveBoard = () => {
       screenContent =
       <div className="items-screen-container">
         <div className="tiers-container">
+          {mobileView ?
+          <div className="item-page-buttons">
+            <div className="item-page" data-selected={`${itemStart==0}`} onClick={()=>setItemStart(0)}>Page 1</div>
+            <div className="item-page" data-selected={`${itemStart==5}`} onClick={()=>setItemStart(5)}>Page 2</div>
+            <div className="item-page" data-selected={`${itemStart==10}`} onClick={()=>setItemStart(10)}>Page 3</div>
+            <div className="item-page" data-selected={`${itemStart==15}`} onClick={()=>setItemStart(15)}>Page 4</div>
+          </div>
+          :null}
           <div className="tiers-header-container tiers-row">
             <div className="tiers-header">Item</div>
             <div className="tiers-header">Tier I</div>
             <div className="tiers-header">Tier II</div>
             <div className="tiers-header">Tier III</div>
           </div>
-          {Object.keys(Items).map((item)=>{
-            return <Item
-              itemName={item}
-              level={Items[item as keyof typeof Items]["level"]}
-              consumable={Items[item as keyof typeof Items]["consumable"]}
-              descriptor={Items[item as keyof typeof Items]["descriptor"]}
-              descriptorValues={Items[item as keyof typeof Items]["descriptorValues"]}
-              range={Items[item as keyof typeof Items]["range"]}
-              price={Items[item as keyof typeof Items]["price"]}
-              electronic={Items[item as keyof typeof Items]["electronic"]}
-              uses={Items[item as keyof typeof Items]["uses"]}
-              descriptions={Items[item as keyof typeof Items]["descriptions"]}
-            />
+          {mobileView ? 
+          Object.keys(Items).map((item,index)=>{
+            if(index >= itemStart && index < itemStart+5){
+              return <Item
+                itemName={item}
+                level={Items[item as keyof typeof Items]["level"]}
+                consumable={Items[item as keyof typeof Items]["consumable"]}
+                descriptor={Items[item as keyof typeof Items]["descriptor"]}
+                descriptorValues={Items[item as keyof typeof Items]["descriptorValues"]}
+                range={Items[item as keyof typeof Items]["range"]}
+                price={Items[item as keyof typeof Items]["price"]}
+                electronic={Items[item as keyof typeof Items]["electronic"]}
+                uses={Items[item as keyof typeof Items]["uses"]}
+                descriptions={Items[item as keyof typeof Items]["descriptions"]}
+                priceToUnlock={Items[item as keyof typeof Items]["priceToUnlock"]}
+              />
+            }
+          })
+          :
+          Object.keys(Items).map((item,index)=>{
+              return <Item
+                itemName={item}
+                level={Items[item as keyof typeof Items]["level"]}
+                consumable={Items[item as keyof typeof Items]["consumable"]}
+                descriptor={Items[item as keyof typeof Items]["descriptor"]}
+                descriptorValues={Items[item as keyof typeof Items]["descriptorValues"]}
+                range={Items[item as keyof typeof Items]["range"]}
+                price={Items[item as keyof typeof Items]["price"]}
+                electronic={Items[item as keyof typeof Items]["electronic"]}
+                uses={Items[item as keyof typeof Items]["uses"]}
+                descriptions={Items[item as keyof typeof Items]["descriptions"]}
+                priceToUnlock={Items[item as keyof typeof Items]["priceToUnlock"]}
+              />
           })}
         </div>
       </div>
@@ -400,11 +523,11 @@ const ObjectiveBoard = () => {
       default:
         screenContent =
         <div className="disclaimer">
-          <p className="disclaimer-important">Site Update to v0.9.0.0 Status: <b>In Progress</b></p>
+          <p className="disclaimer-important">Site Update to v0.9.0.X Status: <b>Mostly Complete</b></p>
           <p>I will be making frequent updates to the site throughout this week as I learn more information about the new patch.</p>
           <p>Please note that many of these updates are derived based on patch notes and player findings.  Thus, they may be subject to change</p>
           <p>Once information is finalized/confirmed, I will include it in other tabs.</p>
-          <ul>Notable Gameplay Changes from v0.8.1.7 to v0.9.0.0 (NOT FINALIZED!)
+          <ul>Notable Gameplay Changes from v0.8.1.7 to v0.9.0.X (NOT FINALIZED!)
             <li className="disclaimer-topic"><b>Freezing Temperatures:</b>
             <ul>
               <li>Cold Breath no longer means it is Freezing Temperatures. (Appears below 5 degrees)</li>
@@ -417,8 +540,6 @@ const ObjectiveBoard = () => {
               <li>Renamed to Incense.</li>
               <li>Smudge Timers during a hunt are now dependent on Tier.</li>
               <li>The Moroi's extended Smudge effect will be 50% longer than whatever smudge is used, making higher tier Smudges more noticable.</li>
-              <li>Tiers may or may not affect Spirit and Demon timers. (TBD)</li>
-              <li>Tiers may or may not affect Yurei Timer to stay in room. (TBD)</li>
             </ul>
             </li>
             <li className="disclaimer-topic"><b>Crucifix:</b>

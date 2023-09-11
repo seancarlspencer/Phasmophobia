@@ -4,10 +4,13 @@ import ObjectiveBoard from './ObjectiveBoard';
 import Extras from './Extras';
 import { handleObjectiveBoardScreen, updateLoading } from '../actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import ReactGA from 'react-ga';
+import {useSearchParams} from 'react-router-dom'
 
 const Homepage = () => {
   const [toggleSticky,setToggleSticky] = useState(false);
   const objectiveBoardScreen = useSelector((state:any) => state.phas.objectiveBoardScreen);
+  // const [searchParams, setSearchParams] = useSearchParams();
   const loading = useSelector((state:any) => state.phas.loading);
   const dispatch = useDispatch();
 
@@ -33,7 +36,16 @@ const Homepage = () => {
     })
   },[])
 
+  // useEffect(()=>{
+  //   const url = new URL("https://phasmophobia.seancsapps.com/");
+  //   url.searchParams.set("foo", "bar");
+  //   setSearchParams({
+  //     screen:objectiveBoardScreen
+  //   })
+  // })
+
   const handleObjectiveBoard = (screen: string) => {
+    // ReactGA.pageview(`/${screen.toLocaleLowerCase().replaceAll(" ","-").replaceAll(".","-")}`);
     dispatch(handleObjectiveBoardScreen(screen));
   }
 
@@ -49,8 +61,8 @@ const Homepage = () => {
         <div className="objective-board-tab-container">
           <div className="objective-board-page-selector">
               <div key={"Ghosts"} className={`page-selector${objectiveBoardScreen=="Ghosts" ? " active" : ""}`} onClick={()=>handleObjectiveBoard("Ghosts")}><span>Ghosts</span></div>
-              <div key={"Ghost Tests"} className={`page-selector${objectiveBoardScreen=="Ghost Tests" ? " active" : ""}`} onClick={()=>handleObjectiveBoard("Ghost Tests")}><span>Ghost Tests</span></div>
-              <div key={"Items"} className={`page-selector${objectiveBoardScreen=="Items" ? " active" : ""}`} onClick={()=>handleObjectiveBoard("Items")}><span>Items (WIP)</span></div>
+              <div key={"Ghost Tests"} className={`page-selector${objectiveBoardScreen=="Ghost Tests" ? " active" : ""}`} onClick={()=>handleObjectiveBoard("Ghost Tests")}><span>Tests</span></div>
+              <div key={"Items"} className={`page-selector${objectiveBoardScreen=="Items" ? " active" : ""}`} onClick={()=>handleObjectiveBoard("Items")}><span>Items</span></div>
               <div key={"v0.9.0.0 Disclaimer"} className={`page-selector${objectiveBoardScreen=="v0.9.0.0 Disclaimer" ? " active" : ""}`} onClick={()=>handleObjectiveBoard("v0.9.0.0 Disclaimer")}><span>v0.9 Disclaimer</span></div>
             </div>
           <div className={`objective-board${loading ? " loading" : ""}`}>

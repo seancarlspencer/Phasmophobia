@@ -14,11 +14,14 @@ const initialState = {
   guessArray: new Array<boolean>(24).fill(false),
   guessDisplayArray: Array.from({length: 24}, () => Math.floor(Math.random() * 8)),
   objectiveBoardScreen: localStorage.getItem("objectiveBoardScreen")==null ? "Ghosts" : localStorage.getItem("objectiveBoardScreen"),
-  loading:true
+  loading:true,
+  mobileView:false
 };
 
 const phasReducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
+    case 'updateMobileView':
+      return { ...state, mobileView: action.payload };
     case 'updateLoading':
       return { ...state, loading: false };
     case 'updateEvidence':

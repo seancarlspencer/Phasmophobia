@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateGuessArray } from '../actions/actions';
+import Ghost from './Ghost';
 
 interface GhostTestInterface{
   ghostNames: Array<any>
   display: boolean
   testType: string
   completed: boolean
+  ghostNamesChecked: boolean[]
 }
 
-const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, completed}) => {
+const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, completed, ghostNamesChecked}) => {
   const evidenceValues = useSelector((state:any) => state.phas.evidenceValues);
   const guessArray = useSelector((state: any) => state.phas.guessArray);
   const loading = useSelector((state: any) => state.phas.loading);
   const [toggleGuess,setGuess] = useState(false);
   const [toggleComplete,setComplete] = useState(false);
   const dispatch = useDispatch();
+  const ghostNamesCheckedParsed = JSON.stringify(ghostNamesChecked);
 
   useEffect(()=>{
     //Check if should be checked.
@@ -23,7 +26,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
       return;
     }
     handleCheckingAllTests();
-  },[evidenceValues,guessArray,ghostNames])
+  },[ghostNamesCheckedParsed,ghostNames])
 
 
   const handleCheckingAllTests = ()=>{
@@ -131,7 +134,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
       {ghostNames.map((ghost,index)=>{
         return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghost[1])}} key={index}>
           <div className={`ghost-test-ghostname${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[0]}</div>
-          <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2].replace("(Requires 1 evidence)","")})` :""}</div>
+          <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2].replace("(Requires 1 evidence)","").replace("(Not definitive)","")})` :""}</div>
           </div>
       })}
       </div>
@@ -153,7 +156,7 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
       {ghostNames.map((ghost,index)=>{
         return <div className="ghost-test" onClick={()=>{handleToggleSingleGuess(ghost[1])}} key={index}>
           <div className={`ghost-test-ghostname${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[0]}</div>
-          <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2].replace("(Requires 1 evidence)","")})` :""}</div>
+          <div className={`ghost-test-ghostadditional${guessArray[ghost[1]] ? " eliminated" : ""}`}>{ghost[2] != undefined ? `(${ghost[2].replace("(Requires 1 evidence)","").replace("(Not definitive)","")})` :""}</div>
           </div>
       })}
       </div>
@@ -161,4 +164,23 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
   );
 };
 
-export default GhostTest;
+// export default GhostTest;
+
+const MemoizedGhostTest = React.memo(GhostTest, (props,nextProps)=>{
+  if(props.display!=nextProps.display){
+    return false;
+  }
+  if(props.completed!=nextProps.completed){
+    return false;
+  }
+  if(props.ghostNames.length!=nextProps.ghostNames.length){
+    return false;
+  }
+  if (`${props.ghostNamesChecked}` != `${nextProps.ghostNamesChecked}`){
+    return false;
+  }
+  return true;
+  // True means 'use Memo' as in, the data has not changed, so we can use a memoized version of it.
+});
+
+export {MemoizedGhostTest}

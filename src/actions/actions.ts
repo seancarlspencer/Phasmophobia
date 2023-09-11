@@ -53,3 +53,8 @@
   export const updateLoading = () => ({
     type: 'updateLoading'
   });
+  
+  export const updateMobileView = (bool: boolean) => ({
+    type: 'updateMobileView',
+    payload: bool
+  });
