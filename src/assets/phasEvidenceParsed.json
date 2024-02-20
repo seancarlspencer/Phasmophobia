@@ -252,16 +252,16 @@
         "index":2,
         "evidenceArray":[false,true,true,false,false,true,false],
         "speedArray":[false,true,false],
-        "ghostTestArray":["Photo Camera|Disappears during Event/DOTS, picture not distorted","Hunt Appearance|Less Visible","Events|Photo makes it disappear","EMF|Roams to Player, leaves EMF 2"],
+        "ghostTestArray":["Photo Camera|Disappears during Event/DOTS","Hunt Appearance|Less Visible","Events|Photo makes it disappear","EMF|Roams to Player, leaves EMF 2"],
         "expertMode":[
-            "<b>Disappears</b> with <b class=equipment>Photo</b> (not hunting), even during <b class=equipment>D.O.T.S.</b> (picture will not be distorted)",
+            "<b>Disappears</b> with <b class=equipment>Photo</b> (not hunting), even during <b class=equipment>D.O.T.S.</b> (event picture will not be distorted)",
             "<b>Less Visible</b> when Hunting (Every 1-2s)",
             "<b class=equipment>EMF 2</b> when <b>Roaming</b> to Player"
         ],
         "secondaryEvidence": [
             "Taking a <b class=equipment>photo</b> makes the ghost temporarily <b>disappear</b> (while not hunting, even during <b class=equipment>D.O.T.S.</b>)",
-            "The Ghost Picture will also not be blurry/distorted when viewed in the album.",
-            "Flickers <b>slower</b> during hunts (1s to 2s instead of 0.3s to 1s)",
+            "The Ghost Picture of an Event will also <b>not be blurry/distorted</b> when viewed in the album.",
+            "Flickers <b>slower</b> during hunts (1s to 2s instead of 0.3s to 1s), making the ghost less visible.",
             "<b class=ability>Surprise:</b> Can walk to a random player <b>anywhere</b> on the map (while not hunting) and do <b class=evidence-highlight>interactions</b>",
             "Will roam to a player, leaving an <b class=equipment>EMF of 2</b>"
         ],

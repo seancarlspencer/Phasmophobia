@@ -68,12 +68,12 @@ const Extras:React.FC<EvidenceType> = ({displayType}) => {
             baseSpeed={1} />
         </div>
         <div className={`filter-box expert`}>
-          <img alt="checkmark" src={require("../assets/check.png").default} className={!toggleExpert ? "checked" : ""}/>
+          <img width="25" height="25" alt="checkmark" src={require("../assets/check.png").default} className={!toggleExpert ? "checked" : ""}/>
           <input onChange={handleToggleExpertAction} type="checkbox" id="expert"/><label className="extra-input" htmlFor="expert"><span className="skew">Verbose Mode</span></label>
           <div className="recommended">(Recommended for Learning Players)</div>
         </div>
         <div className={`filter-box expert`}>
-          <img alt="checkmark" src={require("../assets/check.png").default}/>
+          <img width="25" height="25" alt="checkmark" src={require("../assets/check.png").default}/>
           <input onChange={handleLightModeAction} type="checkbox" id="light"/><label className="extra-input" htmlFor="light"><span className="skew">{lightMode ? "Back to the Asylum": "Back to the Van"}</span></label>
           <div className="recommended">{lightMode ? "(Dark Mode)": "(Light Mode)"}</div>
         </div>

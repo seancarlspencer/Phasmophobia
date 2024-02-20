@@ -119,9 +119,6 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
   return (
     completed ? 
     <div className={`ghost-test-container${completed ? " completed-list" : ""}${display ? "" : " hide"}${toggleComplete ? " completed" : ""}${toggleGuess ? " eliminated" : ""}${["Hunt Behavior","Hunt Speed","Hunt Appearance"].includes(testType) ? "" : ""}`}>
-      {/* <div className="test-type" onClick={handleToggleGuess}>
-        {testType}
-      </div> */}
       <div className="test-type-container">
         <input className="test-type" id={`test-type-${completed ? "completed-" : ""}${testType.toLocaleLowerCase().replace(" ","-")}`} type="checkbox" onChange={handleToggleGuess} checked>
         </input><label htmlFor={`test-type-${completed ? "completed-" : ""}${testType.toLocaleLowerCase().replace(" ","-")}`}>{testType}</label>
@@ -141,9 +138,6 @@ const GhostTest: React.FC<GhostTestInterface> = ({ghostNames,display, testType, 
     </div>
     :
     <div className={`ghost-test-container${completed ? " completed-list" : ""}${display ? "" : " hide"}${toggleComplete ? " completed" : ""}${toggleGuess ? " eliminated" : ""}${["Hunt Behavior","Hunt Speed","Hunt Appearance"].includes(testType) ? "" : ""}`}>
-      {/* <div className="test-type" onClick={handleToggleGuess}>
-        {testType}
-      </div> */}
       <div className="test-type-container">
         <input className="test-type" id={`test-type-${completed ? "completed-" : ""}${testType.toLocaleLowerCase().replace(" ","-")}`} type="checkbox" onChange={handleToggleGuess}>
         </input><label htmlFor={`test-type-${completed ? "completed-" : ""}${testType.toLocaleLowerCase().replace(" ","-")}`}>{testType}</label>

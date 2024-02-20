@@ -8,8 +8,10 @@ import Ghost from './Ghost';
 import {MemoizedGhostTest} from './GhostTest';
 import { render } from '@testing-library/react';
 import Item from './Item';
+import { THomepage } from './Homepage';
 
-const ObjectiveBoard = () => {
+
+const ObjectiveBoard:React.FC<THomepage> = ({objectiveScreen}) => {
   const evidenceValues = useSelector((state: any) => state.phas.evidenceValues);
   const eliminatedValues = useSelector((state: any) => state.phas.eliminatedValues);
   const evidenceNumber = useSelector((state: any) => state.phas.evidenceNumber);
@@ -201,8 +203,8 @@ const ObjectiveBoard = () => {
 
   let screenContent = <div></div>;
 
-  switch(objectiveBoardScreen){
-    case "Ghosts":
+  switch(objectiveScreen){
+    case "":
       screenContent = 
       <div className={`objective-board-ghost-container${toggleExpert ? " expert" : ""}`}>
       <div className="objective-board-tooltip">
@@ -305,11 +307,11 @@ const ObjectiveBoard = () => {
       })}
       </div>
       break;
-    case "Ghost Tests":
+    case "tests":
       screenContent =
       <div className={`all-ghost-test-container${toggleExpert ? " expert" : ""}`}>
-        <div className={`ghost-test-header guide${expandInstructions ? " expand" : ""}`}>
-          <div className={`expand-instructions${expandInstructions ? " expand" : ""}`} onClick={()=>setInstructions(expandInstructions => !expandInstructions)}>☰ INSTRUCTIONS
+        <div className={`ghost-test-header guide${expandInstructions ? " expand" : ""}`} onClick={()=>setInstructions(expandInstructions => !expandInstructions)}>
+          <div className={`expand-instructions${expandInstructions ? " expand" : ""}`}>☰ INSTRUCTIONS
           <br/><br/>
           (Recommended for Insane/0 Evidence Modes)
           <br/><br/>
@@ -361,7 +363,6 @@ const ObjectiveBoard = () => {
           
           return <MemoizedGhostTest
           ghostNames={ghostNamesParsed}
-          // ghostNames={evidenceNumber == 0 ? ghostTests[test].filter(ghost=>ghost[2] != undefined ? !(ghost[2].includes("(Requires 1 evidence)")) : true) : ghostTests[test]}
           testType={test}
           display={true}
           completed={false}
@@ -464,25 +465,40 @@ const ObjectiveBoard = () => {
       </div>
       </div>
       break;
-      case "Items":
+    case "items":
       screenContent =
       <div className="items-screen-container">
         <div className="tiers-container">
-          {mobileView ?
+          {/* {mobileView ?
           <div className="item-page-buttons">
             <div className="item-page" data-selected={`${itemStart==0}`} onClick={()=>setItemStart(0)}>Page 1</div>
             <div className="item-page" data-selected={`${itemStart==5}`} onClick={()=>setItemStart(5)}>Page 2</div>
             <div className="item-page" data-selected={`${itemStart==10}`} onClick={()=>setItemStart(10)}>Page 3</div>
             <div className="item-page" data-selected={`${itemStart==15}`} onClick={()=>setItemStart(15)}>Page 4</div>
           </div>
-          :null}
+          :null} */}
           <div className="tiers-header-container tiers-row">
             <div className="tiers-header">Item</div>
             <div className="tiers-header">Tier I</div>
             <div className="tiers-header">Tier II</div>
             <div className="tiers-header">Tier III</div>
           </div>
-          {mobileView ? 
+          {Object.keys(Items).map((item,index)=>{
+              return <Item
+                itemName={item}
+                level={Items[item as keyof typeof Items]["level"]}
+                consumable={Items[item as keyof typeof Items]["consumable"]}
+                descriptor={Items[item as keyof typeof Items]["descriptor"]}
+                descriptorValues={Items[item as keyof typeof Items]["descriptorValues"]}
+                range={Items[item as keyof typeof Items]["range"]}
+                price={Items[item as keyof typeof Items]["price"]}
+                electronic={Items[item as keyof typeof Items]["electronic"]}
+                uses={Items[item as keyof typeof Items]["uses"]}
+                descriptions={Items[item as keyof typeof Items]["descriptions"]}
+                priceToUnlock={Items[item as keyof typeof Items]["priceToUnlock"]}
+              />
+          })}
+          {/* {mobileView ? 
           Object.keys(Items).map((item,index)=>{
             if(index >= itemStart && index < itemStart+5){
               return <Item
@@ -515,19 +531,18 @@ const ObjectiveBoard = () => {
                 descriptions={Items[item as keyof typeof Items]["descriptions"]}
                 priceToUnlock={Items[item as keyof typeof Items]["priceToUnlock"]}
               />
-          })}
+          })} */}
         </div>
       </div>
       break;
-      case "v0.9.0.0 Disclaimer":
+      case "disclaimer":
       default:
         screenContent =
-        <div className="disclaimer">
-          <p className="disclaimer-important">Site Update to v0.9.0.X Status: <b>Mostly Complete</b></p>
-          <p>I will be making frequent updates to the site throughout this week as I learn more information about the new patch.</p>
+        <div className="disclaimer inner">
+          <p className="disclaimer-important">Site Update to v0.9.0.X Status: <b>Complete</b></p>
           <p>Please note that many of these updates are derived based on patch notes and player findings.  Thus, they may be subject to change</p>
           <p>Once information is finalized/confirmed, I will include it in other tabs.</p>
-          <ul>Notable Gameplay Changes from v0.8.1.7 to v0.9.0.X (NOT FINALIZED!)
+          <ul>Notable Gameplay Changes from v0.8.1.7 to v0.9.0.X
             <li className="disclaimer-topic"><b>Freezing Temperatures:</b>
             <ul>
               <li>Cold Breath no longer means it is Freezing Temperatures. (Appears below 5 degrees)</li>
@@ -569,7 +584,7 @@ const ObjectiveBoard = () => {
             <li className="disclaimer-topic"><b>D.O.T.S.:</b>
             <ul>
             <li>D.O.T.S. is now based on the Ghost's actual position, and reveals when the Ghost enters a "D.O.T.S. State."</li>
-            <li>D.O.T.S. photo will count as ghost photo.</li>
+            <li>D.O.T.S. photo will count as ghost photo, relevant for the Phantom's unique trait.</li>
             <li>Banshee will now move towards its target when in D.O.T.S. state.</li>
             </ul>
             </li>
@@ -585,7 +600,7 @@ const ObjectiveBoard = () => {
   }
 
   return (
-    <div className={`objective-board-content ${objectiveBoardScreen.toLocaleLowerCase().replaceAll(" ","-").replaceAll(".","-")}`}>
+    <div className={`objective-board-content ${objectiveScreen.toLocaleLowerCase().replaceAll(" ","-").replaceAll(".","-")}`}>
       {screenContent}
     </div>
   );

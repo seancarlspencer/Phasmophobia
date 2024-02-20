@@ -56,8 +56,8 @@ const Item: React.FC<ItemInterface> = ({
               </div>
               {consumable[tier] || electronic[tier] ?
               <div className="consumable-electronic">
-                {consumable[tier] ? <div data-consumable={`${consumable[tier] ? "true" : "false"}`}>Consumable</div>:null}
-                {electronic[tier] ? <div data-electronic={`${electronic[tier] ? "true" : "false"}`}>Electronic</div>:null}
+                {consumable[tier] ? <div className="consumable">Consumable</div>:null}
+                {electronic[tier] ? <div className="electronic">Electronic</div>:null}
               </div>
               :
               null}

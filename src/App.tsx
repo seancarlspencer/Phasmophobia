@@ -4,6 +4,7 @@ import './App.scss'
 import Homepage from './components/Homepage';
 import EvidenceMobile from './components/EvidenceMobile';
 import ReactGA from 'react-ga';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 ReactGA.initialize('G-TBV3N5KDLL');
 // ReactGA.initialize('G-TBV3N5KDLL', {
@@ -25,10 +26,26 @@ ReactGA.initialize('G-TBV3N5KDLL');
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <EvidenceMobile/>
-      <Homepage/>
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <EvidenceMobile/>
+        <Routes>
+          <Route path="/" element={<Homepage
+            objectiveScreen=''
+          />} />
+          <Route path="/tests" element={<Homepage
+            objectiveScreen='tests'
+          />} />
+          <Route path="/items" element={<Homepage
+            objectiveScreen='items'
+          />} />
+          <Route path="/disclaimer" element={<Homepage
+            objectiveScreen='disclaimer'
+          />} />
+        </Routes>
+        {/* <Homepage/> */}
+      </Provider>
+    </BrowserRouter>
   );
 };
 

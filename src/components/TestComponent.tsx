@@ -19,10 +19,6 @@ const TestComponent: React.FC<GhostTestInterface> = ({ghostNames,display, testTy
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    console.log("rerendering");
-  })
-
-  useEffect(()=>{
     //Check if should be checked.
     if(loading || !display || completed){
       return;
