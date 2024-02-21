@@ -53,8 +53,6 @@ table {
   --paperColor: #FFFBCF;
   --newPaperColor: rgba(56, 14, 14, 0.15);
   --newPaperColor: rgba(114, 116, 0, 0.15);
-  // --newPaperColor: rgba(78, 49, 45,.9);
-  // --newPaperColor: rgba(66, 13, 9,.8);
   background-color: #22180D;
   --newPaperColorFlat: #EAE7B0;
 
@@ -63,7 +61,6 @@ table {
   --listColor: rgb(48, 48, 48);
   --listTertiaryColor: rgb(64, 64, 64);
   --evidenceTextColor: rgb(97, 96, 76);
-  // --evidenceTextColor: rgb(58, 58, 58);
   --boardTipColor: #FFFBCF;
 
   --tooltipColor: rgba(0, 0, 0,.5);
@@ -142,23 +139,32 @@ table {
 }
 
 :root {
-  --paperColor: rgb(0, 63, 87);
-  --paperColor: rgb(0, 57, 80);
-  --newPaperColor: rgb(0, 37, 51);
-  --newPaperColor: rgba(0, 37, 51, .4);
-  --newPaperColor: rgba(0, 37, 51, .5);
-  --newPaperColorFlat: #003144;
-  --newPaperColorFlat: #002F42;
+  --paperColor: #29233C;
+  --newPaperColor: #18122B;
+  --newPaperColorFlat: #18122B;
 
-  --fontColor: rgb(198, 198, 222);
-  --tipColor: rgb(198, 198, 222);
-  --listColor: rgb(176, 176, 199);
-  --listTertiaryColor: rgb(158, 158, 179);
-  --evidenceTextColor: #0d9759;
-  --boardTipColor: rgb(158, 158, 179);
+  --paperColor: #003853;
+  --newPaperColor: #00172B;
+  --newPaperColorFlat: #00172B;
 
-  --tooltipColor: rgba(198, 198, 222, .5);
-  --tooltipColorShadow: rgba(198, 198, 222, .15);
+  --fontColor: #B5ECFF;
+  --tipColor: #B5ECFF;
+  --listColor: #B5ECFF;
+  --listTertiaryColor: #B5ECFF;
+
+
+
+  --evidenceTextColor: #82BC92;
+  --huntTextColor: #B4FFFF;
+  --equipmentTextColor: #95D8AB;
+  --abilityTextColor: #9D9BCC;
+  --evidenceHighlightTextColor: #E5E5AC;
+
+
+  --boardTipColor: #B5ECFF;
+
+  --tooltipColor: #46A8CB;
+  --tooltipColorShadow: #46A8CB;
   --tooltipColorShadow: none;
 
   --backgroundImage: url("./assets/concrete-min.jpg");
@@ -169,21 +175,18 @@ table {
   --mobileBorderColor: #00121A;
   background-color: black;
   b{
-    filter:brightness(2) contrast(.3);
     &.ability{
-      filter:brightness(2) contrast(.25);
     }
     &.equipment,&.evidence-highlight{
-      filter:brightness(2) contrast(.4);
     }
   }
   .evidence-text{
     @media screen and (max-width: 1309px) {
-      filter:contrast(.7);
+      // filter:contrast(.7);
     }
   }
   .expert .evidence-text{
-    filter:contrast(.7);
+    // filter:contrast(.7);
   }
   .homepage{
     &::before{
@@ -204,7 +207,7 @@ table {
           background-color: rgba(0, 63, 87,.5);
           background-blend-mode:screen;
           @media screen and (max-width: 911px) {
-            filter: brightness(.5);
+            // filter: brightness(.5);
           }
         }
       }
@@ -220,12 +223,98 @@ table {
     }
   }
   .fill-bar{
-    filter:contrast(.7) brightness(1) !important;
+    // filter:contrast(.7) brightness(1) !important;
   }
   .ghost-test-ghostname,.item-name{
-    filter: contrast(.7);
+    // filter: contrast(.7);
   }
 }
+
+// :root {
+//   --paperColor: rgb(0, 63, 87);
+//   --paperColor: rgb(0, 57, 80);
+//   --newPaperColor: rgb(0, 37, 51);
+//   --newPaperColor: rgba(0, 37, 51, .4);
+//   --newPaperColor: rgba(0, 37, 51, .5);
+//   --newPaperColorFlat: #003144;
+//   --newPaperColorFlat: #002F42;
+
+//   --fontColor: rgb(198, 198, 222);
+//   --tipColor: rgb(198, 198, 222);
+//   --listColor: rgb(176, 176, 199);
+//   --listTertiaryColor: rgb(158, 158, 179);
+//   --evidenceTextColor: #0d9759;
+//   --boardTipColor: rgb(158, 158, 179);
+
+//   --tooltipColor: rgba(198, 198, 222, .5);
+//   --tooltipColorShadow: rgba(198, 198, 222, .15);
+//   --tooltipColorShadow: none;
+
+//   --backgroundImage: url("./assets/concrete-min.jpg");
+//   --boardImage: url("./assets/metalNew-min.jpg");
+
+//   --mobileBGColor: rgb(0, 36, 51);
+//   --mobileBGColorLighter: rgb(0, 40, 57);
+//   --mobileBorderColor: #00121A;
+//   background-color: black;
+//   b{
+//     filter:brightness(2) contrast(.3);
+//     &.ability{
+//       filter:brightness(2) contrast(.25);
+//     }
+//     &.equipment,&.evidence-highlight{
+//       filter:brightness(2) contrast(.4);
+//     }
+//   }
+//   .evidence-text{
+//     @media screen and (max-width: 1309px) {
+//       filter:contrast(.7);
+//     }
+//   }
+//   .expert .evidence-text{
+//     filter:contrast(.7);
+//   }
+//   .homepage{
+//     &::before{
+//       filter: brightness(.5);
+//       background-color: rgba(0, 63, 87,.5);
+//       background-blend-mode:screen;
+//     }
+//   }
+//   .objective-board{
+//     &::before{
+//           filter: brightness(.1);
+//         }
+//       }
+//     .objective-board-container{
+//       &>div{
+//         &::before{
+//           filter: brightness(.2);
+//           background-color: rgba(0, 63, 87,.5);
+//           background-blend-mode:screen;
+//           @media screen and (max-width: 911px) {
+//             filter: brightness(.5);
+//           }
+//         }
+//       }
+//     }
+//   .objective-board-content{
+//     &::-webkit-scrollbar-thumb {
+//         background: rgb(0, 57, 80);
+//         border-radius: 24px;
+//     }
+    
+//     &::-webkit-scrollbar-track {
+//       background: rgba(0, 57, 80,.3);
+//     }
+//   }
+//   .fill-bar{
+//     filter:contrast(.7) brightness(1) !important;
+//   }
+//   .ghost-test-ghostname,.item-name{
+//     filter: contrast(.7);
+//   }
+// }
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -1103,18 +1192,19 @@ h2{
           font-size: 1.8rem;
           color:#f01246;
           color:#ff2c5d;
-          // color: var(--listTertiaryColor);
+          color:var(--huntTextColor);
           font-weight: 700;
           &.equipment{
             color:#0d9759;
+            color:var(--equipmentTextColor);
           }
           &.ability{
             color: blue;
+            color:var(--abilityTextColor);
           }
           &.evidence-highlight{
-            color: #b9a102;
-            color: var(--evidenceTextColor);
             color: #0d9759;
+            color:var(--evidenceHighlightTextColor);
           }
         }
       }
