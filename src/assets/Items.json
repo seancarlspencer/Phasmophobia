@@ -114,7 +114,7 @@
         "consumable": [],
         "range": [],
         "price": 30,
-        "priceToUnlock":[0,3000,2500],
+        "priceToUnlock":[0,3000,3000],
         "electronic": [true,true,true],
         "uses": [],
         "descriptions": ["","",""]

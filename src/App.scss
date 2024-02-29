@@ -61,6 +61,7 @@ table {
   --listColor: #362222;
   --listTertiaryColor: #362222;
   --boardTipColor: #FFFBCF;
+  --ghostTestColor: #563636;
 
   --evidenceTextColor: #362222;
   --huntTextColor: #862B0D;
@@ -125,6 +126,17 @@ table {
     .consumable{
     }
     .electronic{
+    }
+  }
+  .ghost-test-ghostadditional{
+    font-weight: 700 !important;
+    &.eliminated{
+      opacity: .4 !important;
+    }
+  }
+  .ghost-test-ghostname{
+    &.eliminated{
+      opacity: .3 !important;
     }
   }
   // .fill-bar{
@@ -233,6 +245,8 @@ table {
   --tipColor: #B5ECFF;
   --listColor: #B5ECFF;
   --listTertiaryColor: #B5ECFF;
+
+  --ghostTestColor: #B5ECFF;
 
 
 
@@ -1992,6 +2006,7 @@ h2{
       text-align: end;
       opacity: .75;
       font-weight: 300;
+      color: var(--ghostTestColor);
       &.eliminated{
         opacity: .25;
       }
